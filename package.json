@@ -1,0 +1,35 @@
+{
+  "name": "quasar-admin",
+  "version": "0.0.1",
+  "description": "A Quasar Framework app",
+  "productName": "Quasar Admin",
+  "cordovaId": "org.cordova.quasar.app",
+  "capacitorId": "",
+  "author": "pratikpatelpp802@gmail.com",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.0.0",
+    "apexcharts": "^3.16.0",
+    "axios": "^0.18.1",
+    "echarts": "^4.6.0",
+    "quasar": "^1.0.0",
+    "vue-apexcharts": "^1.5.2",
+    "vue-echarts-v3": "^2.0.1",
+    "vue-i18n": "^8.0.0"
+  },
+  "devDependencies": {
+    "@quasar/app": "^1.0.0",
+    "quasar-app-extension-qhierarchy": "0.0.1"
+  },
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  },
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ]
+}
