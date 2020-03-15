@@ -71,5 +71,5 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 
 - Planning to add new pages
 - Task manager with drag and drop
-- Forms Examples 
-- Cards Layout etc.
+- Form Examples 
+- Cards Examples etc.
