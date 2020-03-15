@@ -66,10 +66,3 @@ See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
-
-## Roadmap
-
-- Planning to add new pages
-- Task manager with drag and drop
-- Form Examples 
-- Cards Examples etc.
