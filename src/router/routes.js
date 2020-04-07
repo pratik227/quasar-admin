@@ -10,6 +10,8 @@ const routes = [
       {path: '/StreetView', component: () => import('pages/StreetView.vue')},
       {path: '/TreeTable', component: () => import('pages/TreeTable.vue')},
       {path: '/Charts', component: () => import('pages/Charts.vue')},
+      {path: '/Cards', component: () => import('pages/Cards.vue')},
+      {path: '/Tables', component: () => import('pages/Tables.vue')},
     ]
   },
   {

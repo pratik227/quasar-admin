@@ -168,6 +168,22 @@
             <q-item-label>Charts</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item to="/Cards" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="card_giftcard"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Cards</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item to="/Tables" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="table_chart"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Tables</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-expansion-item
           icon="menu_open"
           label="Menu Levels"
