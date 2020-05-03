@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@quasar/app": "^1.0.0",
+    "@quasar/quasar-app-extension-qcalendar": "^1.5.6",
     "quasar-app-extension-qhierarchy": "0.0.1"
   },
   "engines": {

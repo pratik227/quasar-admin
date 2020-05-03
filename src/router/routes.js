@@ -12,6 +12,9 @@ const routes = [
       {path: '/Charts', component: () => import('pages/Charts.vue')},
       {path: '/Cards', component: () => import('pages/Cards.vue')},
       {path: '/Tables', component: () => import('pages/Tables.vue')},
+      {path: '/Contact', component: () => import('pages/Contact.vue')},
+      {path: '/Checkout', component: () => import('pages/Checkout.vue')},
+      {path: '/Calendar', component: () => import('pages/Calendar.vue')},
     ]
   },
   {
