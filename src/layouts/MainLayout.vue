@@ -208,6 +208,14 @@
             <q-item-label>Calendar</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item to="/Pagination" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="date_range"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Pagination</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-expansion-item
           icon="menu_open"
           label="Menu Levels"
