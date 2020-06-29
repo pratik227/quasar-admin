@@ -1,41 +1,8 @@
 <template>
   <q-page class="q-pa-sm">
-    <q-card class="bg-transparent no-shadow no-border">
-      <q-card-section class="row">
-        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
-          <div class="text-h6 float-left q-ml-md q-mt-sm">Pagination With Filters</div>
-          <q-space/>
-          <q-select dense outlined style="min-width: 200px" v-model="type" :options="['All','Free','Paid']"
-                    class="float-right" label="Category"/>
-        </div>
-      </q-card-section>
-      <q-card-section class="q-mx-sm">
-        <div class="row q-col-gutter-lg">
-          <div class="col-lg-3 col-sm-12 col-xs-12 col-md-3" v-for="data in getData">
-            <q-card style="background-color: #292845" class="text-white">
-              <q-img
-                :src="data.img"
-              />
-              <q-separator></q-separator>
-              <q-card-section class="text-h5 text-center">
-                {{data.title}}
-              </q-card-section>
-              <q-card-section class="text-justify">
-                <div>
-                  {{text}}
-                </div>
-              </q-card-section>
-              <q-card-actions align="around" class="text-subtitle1">
-                <q-btn color="" icon="remove_red_eye" class="bg-transparent text-capitalize" flat label="200 Views"/>
-                <div class="float-right">
-                  <q-btn color="" icon="chat_bubble" class="bg-transparent" flat label="56"/>
-                </div>
-              </q-card-actions>
-            </q-card>
-          </div>
-        </div>
-      </q-card-section>
-    </q-card>
+    <div class="text-h6 q-ma-md">Pagination and Filters</div>
+    <q-separator/>
+    <CardPagination></CardPagination>
 
     <q-card class="bg-transparent no-shadow no-border">
       <q-card-section class="row q-pa-sm">
@@ -72,12 +39,52 @@
         </q-pagination>
       </q-card-actions>
     </q-card>
+
+    <q-card class="bg-transparent no-shadow no-border">
+      <q-card-section class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
+          <div class="text-h6 float-left q-ml-md q-mt-sm">Filters</div>
+          <q-space/>
+          <q-select dense outlined style="min-width: 200px" v-model="type" :options="['All','Free','Paid']"
+                    class="float-right" label="Category"/>
+        </div>
+      </q-card-section>
+      <q-card-section class="q-mx-sm">
+        <div class="row q-col-gutter-lg">
+          <div class="col-lg-3 col-sm-12 col-xs-12 col-md-3" v-for="data in getData">
+            <q-card style="background-color: #292845" class="text-white">
+              <q-img
+                :src="data.img"
+              />
+              <q-separator></q-separator>
+              <q-card-section class="text-h5 text-center">
+                {{data.title}}
+              </q-card-section>
+              <q-card-section class="text-justify">
+                <div>
+                  {{text}}
+                </div>
+              </q-card-section>
+              <q-card-actions align="around" class="text-subtitle1">
+                <q-btn color="" icon="remove_red_eye" class="bg-transparent text-capitalize" flat label="200 Views"/>
+                <div class="float-right">
+                  <q-btn color="" icon="chat_bubble" class="bg-transparent" flat label="56"/>
+                </div>
+              </q-card-actions>
+            </q-card>
+          </div>
+        </div>
+      </q-card-section>
+
+    </q-card>
   </q-page>
 </template>
 
 <script>
+    import CardPagination from "../components/CardPagination";
     export default {
         name: "Pagination",
+        components: {CardPagination},
         data() {
             return {
                 cards_data: [
