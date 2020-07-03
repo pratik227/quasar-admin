@@ -14,7 +14,13 @@
         <div class="row q-col-gutter-lg">
           <div class="col-lg-3 col-sm-12 col-xs-12 col-md-3" v-for="data in getData2">
             <q-card style="background-color: #292845" class="text-white">
-              <q-img :src="data.img"/>
+              <q-img :src="data.img">
+                <template v-slot:loading>
+                  <div class="text-subtitle1 text-white">
+                    Loading...
+                  </div>
+                </template>
+              </q-img>
               <q-separator></q-separator>
               <q-card-section class="text-h5 text-center">{{data.title}}</q-card-section>
               <q-card-section class="text-justify">
