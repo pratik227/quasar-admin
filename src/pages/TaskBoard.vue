@@ -45,13 +45,22 @@
                 v-for="(item, index) in planned_task"
                 v-bind:key="index"
                 class="rounded-borders q-my-sm"
-                @mouseover="selected_index.panned_index = index"
-                @mouseleave="selected_index.panned_index = null"
+                @mouseover="$set(task_selected_index,'planned',index)"
+                @mouseleave="task_selected_index.planned = null"
               >
                 <q-card-section class="row q-pa-sm">
                   <div class="col-12">
                     <span class="text-weight-bold text-h6 q-ml-sm">{{item.title}}</span>
-                    <span class="float-right text-grey-8 q-mt-sm">{{item.label}}</span>
+                    <span class="float-right text-grey-8 q-mt-sm">{{item.label}}
+                    <q-icon
+                      filled
+                      size="xs"
+                      name="close"
+                      class="absolute-top-right q-mr-md q-mt-xs text-red"
+                      v-if="index==task_selected_index.planned"
+                      @click="deleteTask('panned', task_selected_index.planned)"
+                    />
+                    </span>
                   </div>
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
@@ -130,13 +139,22 @@
                 v-for="(item, index) in wip_task"
                 v-bind:key="index"
                 class="rounded-borders q-my-sm"
-                @mouseover="selected_index.panned_index = index"
-                @mouseleave="selected_index.panned_index = null"
+                @mouseover="task_selected_index.wip = index"
+                @mouseleave="task_selected_index.wip = null"
               >
                 <q-card-section class="row q-pa-sm">
                   <div class="col-12">
                     <span class="text-weight-bold text-h6 q-ml-sm">{{item.title}}</span>
-                    <span class="float-right text-grey-8 q-mt-sm">{{item.label}}</span>
+                    <span class="float-right text-grey-8 q-mt-sm">{{item.label}}
+                    <q-icon
+                      filled
+                      size="xs"
+                      name="close"
+                      class="absolute-top-right q-mr-md q-mt-xs text-red"
+                      v-if="index==task_selected_index.wip"
+                      @click="deleteTask('wip', task_selected_index.wip)"
+                    />
+                    </span>
                   </div>
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
@@ -216,13 +234,23 @@
                 v-for="(item, index) in blocked_task"
                 v-bind:key="index"
                 class="rounded-borders q-my-sm"
-                @mouseover="selected_index.panned_index = index"
-                @mouseleave="selected_index.panned_index = null"
+                @mouseover="task_selected_index.blocked = index"
+                @mouseleave="task_selected_index.blocked  = null"
               >
                 <q-card-section class="row q-pa-sm">
                   <div class="col-12">
                     <span class="text-weight-bold text-h6 q-ml-sm">{{item.title}}</span>
-                    <span class="float-right text-grey-8 q-mt-sm">{{item.label}}</span>
+                    <span class="float-right text-grey-8 q-mt-sm">{{item.label}}
+
+                    <q-icon
+                      filled
+                      size="xs"
+                      name="close"
+                      class="absolute-top-right q-mr-md q-mt-xs text-red"
+                      v-if="index==task_selected_index.blocked"
+                      @click="deleteTask('blocked', task_selected_index.blocked)"
+                    />
+                    </span>
                   </div>
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
@@ -301,13 +329,22 @@
                 v-for="(item, index) in completed_task"
                 v-bind:key="index"
                 class="rounded-borders q-my-sm"
-                @mouseover="selected_index.panned_index = index"
-                @mouseleave="selected_index.panned_index = null"
+                @mouseover="task_selected_index.completed = index"
+                @mouseleave="task_selected_index.completed = null"
               >
                 <q-card-section class="row q-pa-sm">
                   <div class="col-12">
                     <span class="text-weight-bold text-h6 q-ml-sm">{{item.title}}</span>
-                    <span class="float-right text-grey-8 q-mt-sm">{{item.label}}</span>
+                    <span class="float-right text-grey-8 q-mt-sm">{{item.label}}
+                    <q-icon
+                      filled
+                      size="xs"
+                      name="close"
+                      class="absolute-top-right q-mr-md q-mt-xs text-red"
+                      v-if="index==task_selected_index.completed"
+                      @click="deleteTask('completed', task_selected_index.completed)"
+                    />
+                    </span>
                   </div>
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
@@ -359,6 +396,12 @@
         name: "TaskBoard",
         data() {
             return {
+                task_selected_index:{
+                    blocked: null,
+                    completed: null,
+                    planned: null,
+                    wip: null
+                },
                 thumbStyle: {
                     right: '4px',
                     borderRadius: '5px',
@@ -386,7 +429,6 @@
                     width: '9px',
                     opacity: 0.2
                 },
-                selected_index: {},
                 planned_task: [
                     {
                         title: 'Buy milk',
@@ -484,7 +526,20 @@
             onResize(size) {
                 this.size = size
             },
-
+            deleteTask(name,index){
+              if(name=='panned'){
+                  this.planned_task.splice(index, 1)
+              }
+              if(name=='wip'){
+                  this.wip_task.splice(index, 1)
+              }
+              if(name=='completed'){
+                  this.completed_task.splice(index, 1)
+              }
+              if(name=='blocked'){
+                  this.blocked_task.splice(index, 1)
+              }
+            }
         }
     };
 </script>
