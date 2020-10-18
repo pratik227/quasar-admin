@@ -1,5 +1,7 @@
 # Quasar Admin Template
 
+[![MadeWithVueJs.com shield](https://madewithvuejs.com/storage/repo-shields/2604-shield.svg)](https://madewithvuejs.com/p/quasar-admin/shield-link)
+
 Free Quasar Admin Template based on Vue.js and used Quasar Framework.
 
 ## Site: [https://quasar-admin-demo.netlify.com/](https://quasar-admin-demo.netlify.com/)
