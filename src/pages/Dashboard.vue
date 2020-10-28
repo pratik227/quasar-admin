@@ -86,7 +86,7 @@
 
     <div class="row q-col-gutter-sm  q-py-sm">
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <q-card>
+        <q-card class="fit">
           <q-tabs
             v-model="tab"
             dense
@@ -111,7 +111,12 @@
             <q-tab-panel name="contact" class="q-pa-sm">
               <q-list class="rounded-borders" separator>
 
-                <q-item clickable v-ripple v-for="contact in contacts">
+                <q-item
+                  v-for="(contact, index) in contacts"
+                  :key="index"
+                  clickable
+                  v-ripple 
+                >
                   <q-item-section avatar>
                     <q-avatar>
                       <img :src="contact.avatar">
@@ -236,7 +241,7 @@
         </q-card>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <q-card class="">
+        <q-card class="fit">
           <q-card-section class="text-h6 q-pb-none">
             <q-item>
               <q-item-section avatar class="">
@@ -251,10 +256,12 @@
           <q-card-section class="">
             <q-timeline :layout="layout" :side="side" color="secondary">
 
-              <q-timeline-entry v-for="timeline in timeline_list"
-                                :title="timeline.title"
-                                :subtitle="timeline.subtitle" :color="timeline.color" :icon="timeline.icon"
-                                :side="timeline.side"
+              <q-timeline-entry
+                v-for="(timeline, index) in timeline_list"
+                :key="index"
+                :title="timeline.title"
+                :subtitle="timeline.subtitle" :color="timeline.color" :icon="timeline.icon"
+                :side="timeline.side"
               >
                 <div>
                   {{timeline.desc}}

@@ -64,7 +64,7 @@
                   </div>
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
-                  <q-chip dense v-for="tag in item.tags" :color="tag.color" text-color="white">
+                  <q-chip dense v-for="(tag, index) in item.tags" :key="index" :color="tag.color" text-color="white">
                     {{tag.name}}
                   </q-chip>
                 </q-card-section>
@@ -158,7 +158,7 @@
                   </div>
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
-                  <q-chip dense v-for="tag in item.tags" :color="tag.color" text-color="white">
+                  <q-chip dense v-for="(tag, index) in item.tags" :key="index" :color="tag.color" text-color="white">
                     {{tag.name}}
                   </q-chip>
                 </q-card-section>
@@ -254,7 +254,7 @@
                   </div>
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
-                  <q-chip dense v-for="tag in item.tags" :color="tag.color" text-color="white">
+                  <q-chip dense v-for="(tag, index) in item.tags" :key="index" :color="tag.color" text-color="white">
                     {{tag.name}}
                   </q-chip>
                 </q-card-section>
@@ -348,7 +348,7 @@
                   </div>
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
-                  <q-chip dense v-for="tag in item.tags" :color="tag.color" text-color="white">
+                  <q-chip dense v-for="(tag, index) in item.tags" :key="index" :color="tag.color" text-color="white">
                     {{tag.name}}
                   </q-chip>
                 </q-card-section>
