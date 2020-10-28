@@ -18,7 +18,10 @@
                 </q-item-label>
                 <q-item-label header class="text-center">{{contacts_list.length}} CONTACTS</q-item-label>
 
-                <q-item clickable v-ripple v-for="contact in contacts_list" @click="selected_contact=contact">
+                <q-item
+                  v-for="(contact, index) in contacts_list" 
+                  :key="index"
+                  @click="selected_contact=contact">
                   <q-item-section avatar>
                     <q-avatar>
                       <img :src="contact.avatar">
@@ -47,7 +50,12 @@
                 </q-item-label>
                 <q-item-label header class="text-center">{{favorites_list.length}} Favorites</q-item-label>
 
-                <q-item clickable v-ripple v-for="favorite in favorites_list">
+                <q-item
+                  v-for="(favorite, index) in favorites_list"
+                  :key="index"
+                  clickable
+                  v-ripple
+                >
                   <q-item-section avatar>
                     <q-avatar>
                       <img :src="favorite.avatar">
@@ -198,7 +206,11 @@
               </q-item-label>
               <q-item-label header class="text-center">{{contacts_list.length}} CONTACTS</q-item-label>
 
-              <q-item clickable v-ripple v-for="contact in contacts_list" @click="selected_contact=contact">
+              <q-item
+                v-for="(contact, index) in contacts_list"
+                :key="index"
+                @click="selected_contact=contact"
+              >
                 <q-item-section avatar>
                   <q-avatar>
                     <img :src="contact.avatar">
@@ -227,7 +239,12 @@
               </q-item-label>
               <q-item-label header class="text-center">{{favorites_list.length}} Favorites</q-item-label>
 
-              <q-item clickable v-ripple v-for="favorite in favorites_list">
+              <q-item
+                v-for="(favorite, index) in favorites_list"
+                :key="index"
+                clickable
+                v-ripple 
+              >
                 <q-item-section avatar>
                   <q-avatar>
                     <img :src="favorite.avatar">

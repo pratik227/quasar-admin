@@ -257,7 +257,10 @@
             <q-tab-panel name="contact" class="q-pa-sm">
               <q-list class="rounded-borders" separator>
 
-                <q-item clickable v-ripple v-for="contact in contacts">
+                <q-item
+                  v-for="(contact, index) in contacts"
+                  :key="index"
+                >
                   <q-item-section avatar>
                     <q-avatar>
                       <img :src="contact.avatar">
