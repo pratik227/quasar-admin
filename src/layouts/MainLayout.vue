@@ -118,6 +118,14 @@
                 <q-item-label>User Profile</q-item-label>
               </q-item-section>
             </q-item>
+            <q-item to="/Maintenance" active-class="q-item-no-link-highlighting">
+              <q-item-section avatar>
+                <q-icon name="settings"/>
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>Maintenance</q-item-label>
+              </q-item-section>
+            </q-item>
           </q-list>
         </q-expansion-item>
         <q-expansion-item
@@ -230,6 +238,14 @@
           </q-item-section>
           <q-item-section>
             <q-item-label>Pagination</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item to="/Ecommerce" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="shopping_cart"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Product Catalogues</q-item-label>
           </q-item-section>
         </q-item>
         <q-expansion-item

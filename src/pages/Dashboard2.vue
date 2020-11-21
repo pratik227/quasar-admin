@@ -77,7 +77,7 @@
             <div class="col-lg-3 col-md-3 col-xs-6 col-sm-6">
               <q-item>
                 <q-item-section top avatar>
-                  <q-avatar color="blue" text-color="white" class="q-pl-sm" icon="bluetooth"/>
+                  <q-avatar color="blue" text-color="white" icon="bluetooth"/>
                 </q-item-section>
                 <q-item-section>
                   <q-item-label class="text-h6 text-blue text-bold">4321</q-item-label>
@@ -88,7 +88,7 @@
             <div class="col-lg-3 col-md-3 col-xs-6 col-sm-6">
               <q-item>
                 <q-item-section top avatar>
-                  <q-avatar color="grey-8" text-color="white" class="q-pl-sm" icon="bluetooth"/>
+                  <q-avatar color="grey-8" text-color="white" icon="bluetooth"/>
                 </q-item-section>
                 <q-item-section>
                   <q-item-label class="text-h6 text-grey-8 text-bold">9876</q-item-label>
@@ -99,7 +99,7 @@
             <div class="col-lg-3 col-md-3 col-xs-6 col-sm-6">
               <q-item>
                 <q-item-section top avatar>
-                  <q-avatar color="green-6" text-color="white" class="q-pl-sm" icon="bluetooth"/>
+                  <q-avatar color="green-6" text-color="white" icon="bluetooth"/>
                 </q-item-section>
                 <q-item-section>
                   <q-item-label class="text-h6 text-green-6 text-bold">345</q-item-label>
@@ -110,7 +110,7 @@
             <div class="col-lg-3 col-md-3 col-xs-6 col-sm-6">
               <q-item>
                 <q-item-section top avatar>
-                  <q-avatar color="orange-8" text-color="white" class="q-pl-sm" icon="bluetooth"/>
+                  <q-avatar color="orange-8" text-color="white" icon="bluetooth"/>
                 </q-item-section>
                 <q-item-section>
                   <q-item-label class="text-h6 text-orange-8 text-bold">1021</q-item-label>

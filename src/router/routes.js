@@ -18,11 +18,16 @@ const routes = [
       {path: '/Calendar', component: () => import('pages/Calendar.vue')},
       {path: '/Pagination', component: () => import('pages/Pagination.vue')},
       {path: '/Taskboard', component: () => import('pages/TaskBoard.vue')},
+      {path: '/Ecommerce', component: () => import('pages/ProductCatalogues.vue')},
     ]
   },
   {
     path: '/Lock',
     component: () => import('pages/LockScreen.vue')
+  },
+  {
+    path: '/Maintenance',
+    component: () => import('pages/Maintenance.vue')
   },
   {
     path: '/Pricing',
