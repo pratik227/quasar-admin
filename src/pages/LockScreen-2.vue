@@ -6,7 +6,7 @@
           <q-item>
             <q-item-section avatar>
               <q-avatar size="130px" class=" shadow-10">
-                <img src="../statics/profile.svg">
+                <img src="profile.svg">
               </q-avatar>
             </q-item-section>
 
@@ -35,7 +35,7 @@
         <q-card v-if="$q.screen.lt.sm" class="bg-transparent no-border no-shadow">
           <q-card-section class="text-center">
             <q-avatar size="130px" class="shadow-10">
-              <img src="../statics/profile.svg">
+              <img src="profile.svg">
             </q-avatar>
           </q-card-section>
           <q-card-section class="text-center">
