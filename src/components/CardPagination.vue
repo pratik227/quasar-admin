@@ -1,6 +1,5 @@
 <template>
   <q-page>
-
     <q-card class="bg-transparent no-shadow no-border">
       <q-card-section class="row">
         <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
