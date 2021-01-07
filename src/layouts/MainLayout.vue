@@ -10,14 +10,10 @@
           icon="menu"
           aria-label="Menu"
         />
-
         <q-toolbar-title>
           Quasar App
         </q-toolbar-title>
-
-
         <q-space/>
-
         <div class="q-gutter-sm row items-center no-wrap">
           <q-btn round dense flat color="white" :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'"
                  @click="$q.fullscreen.toggle()"
