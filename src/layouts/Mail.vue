@@ -7,7 +7,7 @@
           flat
           dense
           round
-          @click="miniState = !miniState"
+          @click="$q.screen.gt.sm?miniState = !miniState:leftDrawerOpen=!leftDrawerOpen"
           aria-label="Menu"
           icon="menu"
           class="q-mr-sm"

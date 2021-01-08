@@ -17,7 +17,7 @@
         data() {
             return {
                 ins: null,
-                line_chart: null,
+                line_chart: {},
                 bar: {}
             }
         },
