@@ -1,7 +1,7 @@
 <template>
   <q-page class="q-pa-sm">
 
-    <card-social />
+    <card-social icon_position="left" />
 
     <card-charts />
 
