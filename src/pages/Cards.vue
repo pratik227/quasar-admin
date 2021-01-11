@@ -28,180 +28,27 @@
 
         <basic-card class="q-mt-lg"></basic-card>
 
-        <q-card class="q-mt-lg">
-          <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg"/>
-
-          <q-card-section class="absolute absolute-center text-center">
-            <q-avatar size="100px" class="shadow-10">
-              <img src="https://cdn.quasar.dev/img/avatar6.jpg">
-            </q-avatar>
-          </q-card-section>
-
-          <q-card-section class="q-pt-none q-mt-xl">
-            <div class="text-subtitle1">
-              $・Italian, Cafe
-            </div>
-            <div class="text-caption text-grey">
-              Small plates, salads & sandwiches in an intimate setting.
-            </div>
-          </q-card-section>
-
-          <q-separator/>
-
-          <q-card-actions>
-            <q-btn flat round icon="event"/>
-            <q-btn flat color="primary">
-              Reserve
-            </q-btn>
-          </q-card-actions>
-        </q-card>
+        <card-cafe class="q-mt-lg"></card-cafe>
       </div>
       <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
 
         <basic-card></basic-card>
 
-        <q-card class="q-mt-lg">
-          <q-item>
-            <q-item-section avatar>
-              <q-avatar size="70px">
-                <img src="https://cdn.quasar.dev/img/boy-avatar.png">
-              </q-avatar>
-            </q-item-section>
+        <card-item class="q-mt-lg" :name="profile_card_data.name" :des="profile_card_data.des" :avatar="profile_card_data.avatar"></card-item>
 
-            <q-item-section>
-              <q-item-label>Pratik Patel</q-item-label>
-              <q-item-label caption>
-                Solution developer
-              </q-item-label>
-            </q-item-section>
+        <card-profile class="q-mt-lg" :name="profile_card_data.name" :des="profile_card_data.des" :avatar="profile_card_data.avatar"></card-profile>
 
-            <q-item-section side>
-              <q-btn label="add" size="sm" class="bg-indigo-8 text-capitalize text-white"></q-btn>
-            </q-item-section>
-          </q-item>
-
-          <q-separator/>
-        </q-card>
-
-        <q-card class="q-mt-lg">
-          <q-card-section class="text-center">
-            <q-avatar size="100px" class="shadow-10">
-              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
-            </q-avatar>
-          </q-card-section>
-
-          <q-card-section class="q-pt-none text-center ">
-            <div class="text-h6  text-grey-8">
-              Pratik Patel
-            </div>
-            <div class="text-caption text-grey-8">
-              Solutions Developer
-            </div>
-          </q-card-section>
-
-          <q-card-actions align="center">
-            <q-btn flat round icon="fab fa-facebook" class="bg-indigo-7 text-white"/>
-            <q-btn flat round icon="fab fa-twitter" class="bg-info text-white"/>
-            <q-btn flat round icon="fab fa-instagram" class="bg-indigo-8 text-white"/>
-          </q-card-actions>
-        </q-card>
-
-        <q-card class="q-mt-lg text-white" style="background-color: #181c4d">
-          <q-card-section>
-            <div class="text-h6 q-pa-sm">
-              Pratik Patel
-            </div>
-            <div class="q-pa-sm">
-              {{text}}
-            </div>
-            <div class="q-pa-sm text-red-6">
-              --- Solution Developer, Pune
-            </div>
-          </q-card-section>
-        </q-card>
+        <card-profile-dark class="q-mt-lg" :name="profile_data.name" :des="profile_data.des" :text="profile_data.text"></card-profile-dark>
       </div>
       <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
-        <q-card class="text-white"
-                style="background:linear-gradient(87deg, rgb(45, 206, 137), rgb(45, 206, 204)) !important;">
-          <q-card-section>
-            <div class="text-h6 text-center">
-              Extended
-            </div>
-          </q-card-section>
-          <q-separator/>
-          <q-card-section>
-            <div class="text-h3 text-weight-bolder text-center">
-              <q-icon name="apartment"></q-icon>
-            </div>
-          </q-card-section>
-          <q-card-section class="q-pa-none">
-            <div class="text-h4 text-weight-bolder text-center">
-              $250
-            </div>
-          </q-card-section>
-          <q-card-section>
-            <div class="text-h6 text-weight-bolder text-center">
-              This is good if your company size is between 2 and 10 Persons.
-            </div>
-          </q-card-section>
-          <q-card-actions vertical align="center">
-            <q-btn class="text-capitalize bg-indigo-8" color="">Start Free Trail</q-btn>
-          </q-card-actions>
-          <q-separator/>
-          <q-card-section class="text-center">
-            Request Demo
-          </q-card-section>
-        </q-card>
 
+        <card-company class="q-mt-lg" :background_image="background_img2"></card-company>
 
         <basic-card class="q-mt-lg"></basic-card>
 
-        <q-card class="text-white q-mt-lg"
+        <card-company class="q-mt-lg" :background_image="background_img1"></card-company>
 
-                style="background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);">
-          <q-card-section>
-            <div class="text-h6 text-center">
-              Extended
-            </div>
-          </q-card-section>
-          <q-separator/>
-          <q-card-section>
-            <div class="text-h3 text-weight-bolder text-center">
-              <q-icon name="apartment"></q-icon>
-            </div>
-          </q-card-section>
-          <q-card-section class="q-pa-none">
-            <div class="text-h4 text-weight-bolder text-center">
-              $250
-            </div>
-          </q-card-section>
-          <q-card-section>
-            <div class="text-h6 text-weight-bolder text-center">
-              This is good if your company size is between 2 and 10 Persons.
-            </div>
-          </q-card-section>
-          <q-card-actions vertical align="center">
-            <q-btn class="text-capitalize bg-indigo-8" color="">Start Free Trail</q-btn>
-          </q-card-actions>
-          <q-separator/>
-          <q-card-section class="text-center">
-            Request Demo
-          </q-card-section>
-        </q-card>
-
-         <q-card class="q-mt-lg text-white" style="background-color: #181c4d">
-          <q-card-section>
-            <div class="text-h6 q-pa-sm">
-              Pratik Patel
-            </div>
-            <div class="q-pa-sm">
-              {{text}}
-            </div>
-            <div class="q-pa-sm text-red-6">
-              --- Solution Developer, Pune
-            </div>
-          </q-card-section>
-        </q-card>
+        <card-profile-dark class="q-mt-lg" :name="profile_data.name" :des="profile_data.des" :text="profile_data.text"></card-profile-dark>
       </div>
     </div>
   </q-page>
@@ -209,13 +56,32 @@
 
 <script>
     import BasicCard from "../layouts/BasicCard";
+    import CardProfile from "components/cards/CardProfile";
+    import CardProfileDark from "components/cards/CardProfileDark";
+    import CardCompany from "components/cards/CardCompany";
+    import CardCafe from "components/cards/CardCafe";
+    import CardItem from "components/cards/CardItem";
     export default {
         name: "Cards",
-        components: {BasicCard},
+        components: {CardItem, CardCafe, CardCompany, CardProfileDark, CardProfile, BasicCard},
         data() {
             return {
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                profile_card_data:{
+                  name:'Pratik Patel',
+                  des:'Solutions Developer',
+                  avatar:'https://cdn.quasar.dev/img/boy-avatar.png'
+                },
+                profile_data:{
+                  name:'Pratik Patel',
+                  des:'--- Solution Developer, Pune'
+                },
+              background_img1:'linear-gradient(to top, #30cfd0 0%, #330867 100%)',
+              background_img2:'linear-gradient(87deg, rgb(45, 206, 137), rgb(45, 206, 204)) !important'
             }
+        },
+        created() {
+          this.profile_data.text=this.text
         }
     }
 </script>

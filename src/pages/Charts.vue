@@ -19,10 +19,10 @@
 
 <script>
     import IEcharts from 'vue-echarts-v3/src/full.js'
-    import BarChart from "../components/BarChart";
-    import LineChart from "../components/LineChart";
-    import ScatterPlot from "../components/ScatterPlot";
-    import PieChart from "../components/PieChart";
+    import BarChart from "components/charts/BarChart";
+    import LineChart from "components/charts/LineChart";
+    import ScatterPlot from "components/charts/ScatterPlot";
+    import PieChart from "components/charts/PieChart";
 
 
     export default {
