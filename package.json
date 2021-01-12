@@ -9,7 +9,7 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.9.12",
+    "@quasar/extras": "^1.9.13",
     "apexcharts": "^3.16.0",
     "axios": "^0.21.1",
     "core-js": "^3.0.0",
