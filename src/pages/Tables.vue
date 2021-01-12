@@ -15,15 +15,15 @@
 </template>
 
 <script>
-import TablesBasic from "components/tables/TableBasic";
-import TableActions from "components/tables/TableActions";
-import TableDarkMode from "components/tables/TableDarkMode";
-import TableCustomGrid from "components/tables/TableCustomGrid";
-import TableProgress from "components/tables/TableProgress";
-
 export default {
   name: "Tables",
-  components: {TableProgress, TableCustomGrid, TableDarkMode, TableActions, TablesBasic},
+  components: {
+    TableProgress: () => import('components/tables/TableProgress'),
+    TableCustomGrid: () => import('components/tables/TableCustomGrid'),
+    TableDarkMode: () => import('components/tables/TableDarkMode'),
+    TableActions: () => import('components/tables/TableActions'),
+    TablesBasic: () => import('components/tables/TableBasic')
+  },
 }
 </script>
 

@@ -55,15 +55,16 @@
 </template>
 
 <script>
-    import BasicCard from "../layouts/BasicCard";
-    import CardProfile from "components/cards/CardProfile";
-    import CardProfileDark from "components/cards/CardProfileDark";
-    import CardCompany from "components/cards/CardCompany";
-    import CardCafe from "components/cards/CardCafe";
-    import CardItem from "components/cards/CardItem";
     export default {
         name: "Cards",
-        components: {CardItem, CardCafe, CardCompany, CardProfileDark, CardProfile, BasicCard},
+        components: {
+          CardItem: () => import('components/cards/CardItem'),
+          CardCafe: () => import('components/cards/CardCafe'),
+          CardCompany: () => import('components/cards/CardCompany'),
+          CardProfileDark: () => import('components/cards/CardProfileDark'),
+          CardProfile: () => import('components/cards/CardProfile'),
+          BasicCard: () => import('../layouts/BasicCard')
+        },
         data() {
             return {
                 text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',

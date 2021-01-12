@@ -3,7 +3,7 @@
     <q-card class="bg-transparent no-shadow no-border">
       <q-card-section class="row">
         <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
-          <div class="text-h6 float-left q-ml-md q-mt-sm">Pagination With Filters</div>
+<!--          <div class="text-h6 float-left q-ml-md q-mt-sm">Pagination With Filters</div>-->
           <q-space/>
           <q-select dense outlined style="min-width: 200px" v-model="type" :options="['All','Free','Paid']"
                     class="float-right" label="Category"/>
