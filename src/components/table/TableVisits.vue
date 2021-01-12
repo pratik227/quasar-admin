@@ -76,6 +76,7 @@ export default {
   data () {
     return {
       filter: '',
+      mode:'list',
       columns: [
         {name: 'id', align: 'left', label: 'User ID', field: 'id', sortable: true},
         {name: 'user_name', align: 'left', label: 'User Name', field: 'user_name', sortable: true},
