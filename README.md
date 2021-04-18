@@ -43,9 +43,9 @@ quasar build
 
 ![Alt text](src/assets/Dashboard.png?raw=true "Screenshot")
 
-**CRM Dashboard**
+[comment]: <> (**CRM Dashboard**)
 
-![Alt text](src/assets/CRMDashboard.png?raw=true "Screenshot")
+[comment]: <> (![Alt text]&#40;src/assets/CRMDashboard.png?raw=true "Screenshot"&#41;)
 
 **Mail**
 
