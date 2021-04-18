@@ -23,7 +23,7 @@
             :side="timeline.side"
           >
             <div>
-              {{timeline.desc}}
+              {{ timeline.desc }}
             </div>
           </q-timeline-entry>
         </q-timeline>
@@ -33,36 +33,39 @@
 </template>
 
 <script>
-export default {
+import {defineComponent} from 'vue'
+
+
+export default defineComponent({
   name: 'CardTimeLine',
-  data () {
+  setup() {
     return {
       timeline_list: [
         {
-            title: 'Pratik Likes your product ',
-            side: 'left',
-            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore\n' +
-                '                  et dolore magna aliqua.',
-            color: "red",
-            icon: "thumb_up"
+          title: 'Pratik Likes your product ',
+          side: 'left',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore\n' +
+            '                  et dolore magna aliqua.',
+          color: "red",
+          icon: "thumb_up"
         },
         {
-            title: 'Product Update',
-            side: 'left',
-            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore\n' +
-                '                  et dolore magna aliqua.',
-            color: "orange",
-            icon: "done_all"
+          title: 'Product Update',
+          side: 'left',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore\n' +
+            '                  et dolore magna aliqua.',
+          color: "orange",
+          icon: "done_all"
         }, {
-            title: 'Jeff Likes your product ',
-            side: 'left',
-            desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore\n' +
-                '                  et dolore magna aliqua.',
-            color: "blue",
-            icon: "thumb_up"
+          title: 'Jeff Likes your product ',
+          side: 'left',
+          desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore\n' +
+            '                  et dolore magna aliqua.',
+          color: "blue",
+          icon: "thumb_up"
         }
       ],
     }
   }
-}
+})
 </script>

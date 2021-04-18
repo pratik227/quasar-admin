@@ -26,18 +26,20 @@
 </template>
 
 <script>
-    export default {
-        name: "Maintenance"
-    }
+import {defineComponent} from 'vue'
+
+export default defineComponent({
+  name: "Maintenance"
+})
 </script>
 
 
 <style>
-  .bg-image {
-    background-image: linear-gradient(135deg, #7028e4 0%, #e5b2ca 100%);
-  }
+.bg-image {
+  background-image: linear-gradient(135deg, #7028e4 0%, #e5b2ca 100%);
+}
 
-  [v-cloak] {
-    display: none !important;
-  }
+[v-cloak] {
+  display: none !important;
+}
 </style>

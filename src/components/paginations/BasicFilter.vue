@@ -39,65 +39,70 @@
 </template>
 
 <script>
-export default {
+import {defineComponent} from 'vue';
+import {ref} from 'vue';
+
+
+const cards_data = [
+  {
+    img: 'https://placeimg.com/500/300/nature?t=' + Math.random(),
+    type: 'free',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    title: 'Title 1'
+  },
+  {
+    img: 'https://placeimg.com/500/300/nature?t=' + Math.random(),
+    type: 'paid',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    title: 'Title 2'
+  },
+  {
+    img: 'https://placeimg.com/500/300/nature?t=' + Math.random(),
+    type: 'free',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    title: 'Title 3'
+  },
+  {
+    img: 'https://placeimg.com/500/300/nature?t=' + Math.random(),
+    type: 'free',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    title: 'Title 4'
+  },
+  {
+    img: 'https://placeimg.com/500/300/nature?t=' + Math.random(),
+    type: 'paid',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    title: 'Title 5'
+  },
+  {
+    img: 'https://placeimg.com/500/300/nature?t=' + Math.random(),
+    type: 'free',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    title: 'Title 6'
+  },
+];
+export default defineComponent({
   name: "BasicFilter",
-  data() {
+  setup() {
     return {
-      type: 'All',
-      cards_data: [
-        {
-          img: 'https://placeimg.com/500/300/nature?t=' + Math.random(),
-          type: 'free',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          title: 'Title 1'
-        },
-        {
-          img: 'https://placeimg.com/500/300/nature?t=' + Math.random(),
-          type: 'paid',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          title: 'Title 2'
-        },
-        {
-          img: 'https://placeimg.com/500/300/nature?t=' + Math.random(),
-          type: 'free',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          title: 'Title 3'
-        },
-        {
-          img: 'https://placeimg.com/500/300/nature?t=' + Math.random(),
-          type: 'free',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          title: 'Title 4'
-        },
-        {
-          img: 'https://placeimg.com/500/300/nature?t=' + Math.random(),
-          type: 'paid',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          title: 'Title 5'
-        },
-        {
-          img: 'https://placeimg.com/500/300/nature?t=' + Math.random(),
-          type: 'free',
-          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-          title: 'Title 6'
-        },
-      ],
+      type: ref('All'),
+      cards_data,
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     }
   },
   computed: {
     getData() {
       if (this.type == 'All') {
-        return this.cards_data
+        return cards_data
       } else {
         let self = this;
-        return this.cards_data.filter(function (item) {
+        return cards_data.filter(function (item) {
           return item.type.toLowerCase() == self.type.toLowerCase()
         })
       }
     },
   }
-}
+})
 </script>
 
 <style scoped>

@@ -7,7 +7,7 @@
           flat
           dense
           round
-          @click="$q.screen.gt.sm?miniState = !miniState:leftDrawerOpen=!leftDrawerOpen"
+          @click="$q.screen.gt.sm?toogleMiniState():toggleLeftDrawer()"
           aria-label="Menu"
           icon="menu"
           class="q-mr-sm"
@@ -65,7 +65,7 @@
       show-if-above
       bordered
       :mini="miniState"
-      content-class="bg-white"
+      class="bg-white"
       :width="280"
     >
       <q-scroll-area class="fit">
@@ -114,15 +114,15 @@
             </q-item-section>
 
             <q-item-section>
-              <q-item-label>{{mail.name}}</q-item-label>
-              <q-item-label caption>{{mail.date}}</q-item-label>
+              <q-item-label>{{ mail.name }}</q-item-label>
+              <q-item-label caption>{{ mail.date }}</q-item-label>
             </q-item-section>
           </template>
 
           <q-separator/>
           <q-card>
             <q-card-section>
-              {{mail.msg}}
+              {{ mail.msg }}
             </q-card-section>
           </q-card>
         </q-expansion-item>
@@ -142,135 +142,157 @@
 </template>
 
 <script>
-    import {fasGlobeAmericas, fasFlask} from '@quasar/extras/fontawesome-v5'
+import {fasGlobeAmericas, fasFlask} from '@quasar/extras/fontawesome-v5'
 
-    export default {
-        name: 'Mail',
-        data() {
-            return {
-                leftDrawerOpen: false,
-                miniState: false,
-                search: '',
-                showAdvanced: false,
-                showDateOptions: false,
-                exactPhrase: '',
-                hasWords: '',
-                excludeWords: '',
-                byWebsite: '',
-                byDate: 'Any time',
-                links1: [
-                    {icon: 'move_to_inbox', text: 'Inbox'},
-                    {icon: 'star', text: 'Stared'},
-                    {icon: 'send', text: 'Sent'},
-                    {icon: 'error', text: 'Spam'}
-                ],
-                links2: [
-                    {icon: 'flag', text: 'Updates', color: 'text-orange'},
-                    {icon: 'group', text: 'Social', color: 'text-red'},
-                    {icon: 'label', text: 'Promos', color: 'text-indigo-8'},
-                    {icon: 'forum', text: 'Forums', color: 'text-teal'}
-                ],
-                mail_data: [
-                    {
-                        name: 'Pratik Patel',
-                        avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
-                        date: 'March 12, 2019',
-                    },
-                    {
-                        name: 'Pratik Patel',
-                        avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
-                        date: 'March 22, 2019',
-                    },
-                    {
-                        name: 'Pratik Patel',
-                        avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
-                        date: 'March 12, 2019',
-                    },
-                    {
-                        name: 'Winfield Stapforth',
-                        avatar: 'https://cdn.quasar.dev/img/avatar6.jpg',
-                        date: 'March 22, 2019',
-                    },
-                    {
-                        name: 'Jeff Galbraith',
-                        avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
-                        date: 'March 12, 2019',
-                    },
-                    {
-                        name: 'Jeff Galbraith',
-                        avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
-                        date: 'March 22, 2019',
-                    },
-                    {
-                        name: 'Razvan Stoenescu',
-                        avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
-                        date: 'March 12, 2019',
-                    },
-                    {
-                        name: 'Razvan Stoenescu',
-                        avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
-                        date: 'March 22, 2019',
-                    },
-                    {
-                        name: 'John Doe',
-                        avatar: 'https://cdn.quasar.dev/img/boy-avatar.png',
-                        date: 'March 12, 2019',
-                    },
-                    {
-                        name: 'Pratik Patel',
-                        avatar: 'https://cdn.quasar.dev/img/boy-avatar.png',
-                        date: 'March 22, 2019',
-                    },
-                ]
-            }
+import {defineComponent} from 'vue'
+import {ref} from 'vue'
+import {useQuasar} from "quasar";
+
+
+const links1 = [
+  {icon: 'move_to_inbox', text: 'Inbox'},
+  {icon: 'star', text: 'Stared'},
+  {icon: 'send', text: 'Sent'},
+  {icon: 'error', text: 'Spam'}
+];
+const links2 = [
+  {icon: 'flag', text: 'Updates', color: 'text-orange'},
+  {icon: 'group', text: 'Social', color: 'text-red'},
+  {icon: 'label', text: 'Promos', color: 'text-indigo-8'},
+  {icon: 'forum', text: 'Forums', color: 'text-teal'}
+];
+
+export default defineComponent({
+  name: 'Mail',
+  setup() {
+
+    const $q = useQuasar()
+
+    // $q.screen.setSizes({ sm: 300, md: 500, lg: 1000, xl: 2000 })
+
+    const leftDrawerOpen = ref(false)
+    const miniState = ref(false)
+
+    return {
+      leftDrawerOpen,
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value
+      },
+      miniState,
+      toogleMiniState() {
+        miniState.value = !miniState.value
+      },
+      search: '',
+      showAdvanced: ref(false),
+      showDateOptions: ref(false),
+      exactPhrase: '',
+      hasWords: '',
+      excludeWords: '',
+      byWebsite: '',
+      byDate: 'Any time',
+      links1,
+      links2,
+      mail_data: [
+        {
+          name: 'Pratik Patel',
+          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+          date: 'March 12, 2019',
         },
-        mounted() {
-            this.mail_data = this.mail_data.map(function (item) {
-                item['msg'] = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti\n' +
-                    '              commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste\n' +
-                    '              eveniet doloribus ullam aliquid.';
-                return item;
-            })
-        }
-
+        {
+          name: 'Pratik Patel',
+          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+          date: 'March 22, 2019',
+        },
+        {
+          name: 'Pratik Patel',
+          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+          date: 'March 12, 2019',
+        },
+        {
+          name: 'Winfield Stapforth',
+          avatar: 'https://cdn.quasar.dev/img/avatar6.jpg',
+          date: 'March 22, 2019',
+        },
+        {
+          name: 'Jeff Galbraith',
+          avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
+          date: 'March 12, 2019',
+        },
+        {
+          name: 'Jeff Galbraith',
+          avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
+          date: 'March 22, 2019',
+        },
+        {
+          name: 'Razvan Stoenescu',
+          avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
+          date: 'March 12, 2019',
+        },
+        {
+          name: 'Razvan Stoenescu',
+          avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
+          date: 'March 22, 2019',
+        },
+        {
+          name: 'John Doe',
+          avatar: 'https://cdn.quasar.dev/img/boy-avatar.png',
+          date: 'March 12, 2019',
+        },
+        {
+          name: 'Pratik Patel',
+          avatar: 'https://cdn.quasar.dev/img/boy-avatar.png',
+          date: 'March 22, 2019',
+        },
+      ]
     }
+  },
+  mounted() {
+    this.mail_data = this.mail_data.map(function (item) {
+      item['msg'] = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti\n' +
+        '              commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste\n' +
+        '              eveniet doloribus ullam aliquid.';
+      return item;
+    })
+  }
+
+})
 </script>
 
 <style>
-  .GNL__toolbar {
-    height: 64px;
-  }
+.GNL__toolbar {
+  height: 64px;
+}
 
-  .GNL__toolbar-input {
-    width: 55%;
-  }
+.GNL__toolbar-input {
+  width: 55%;
+}
 
-  .GNL__drawer-item {
-    line-height: 24px;
-    border-radius: 0 24px 24px 0;
-    margin-right: 12px;
-  }
+.GNL__drawer-item {
+  line-height: 24px;
+  border-radius: 0 24px 24px 0;
+  margin-right: 12px;
+}
 
-  .GNL__drawer-item .q-item__section--avatar .q-icon {
-    color: #5f6368;
-  }
+.GNL__drawer-item .q-item__section--avatar .q-icon {
+  color: #5f6368;
+}
 
-  .GNL__drawer-item .q-item__label {
-    color: #3c4043;
-    letter-spacing: .01785714em;
-    font-size: .875rem;
-    font-weight: 500;
-    line-height: 1.25rem;
-  }
+.GNL__drawer-item .q-item__label {
+  color: #3c4043;
+  letter-spacing: .01785714em;
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+}
 
-  .GNL__drawer-footer-link {
-    color: inherit;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: .75rem;
-  }
+.GNL__drawer-footer-link {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: .75rem;
+}
 
-  .GNL__drawer-footer-link:hover {
-    color: #000;
-  }
+.GNL__drawer-footer-link:hover {
+  color: #000;
+}
 </style>

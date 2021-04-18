@@ -7,7 +7,7 @@
     </q-card-section>
     <q-separator/>
     <q-card-section>
-      {{text}}
+      {{ text }}
     </q-card-section>
     <q-card-actions align="left">
       <q-btn label="Go Somewhere" class="text-capitalize q-ma-sm" color="indigo-7"/>
@@ -16,14 +16,16 @@
 </template>
 
 <script>
-    export default {
-        name: "BasicCard",
-        data() {
-            return {
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-            }
-        }
+import {defineComponent} from 'vue';
+
+export default defineComponent({
+  name: "BasicCard",
+  setup() {
+    return {
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
     }
+  }
+})
 </script>
 
 <style scoped>

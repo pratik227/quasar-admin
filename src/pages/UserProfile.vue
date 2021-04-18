@@ -16,7 +16,8 @@
                   </q-avatar>
                 </q-item-section>
                 <q-item-section>
-                  <q-btn label="Add Photo" class="text-capitalize" rounded color="info" style="max-width: 120px"></q-btn>
+                  <q-btn label="Add Photo" class="text-capitalize" rounded color="info"
+                         style="max-width: 120px"></q-btn>
                 </q-item-section>
               </q-item>
 
@@ -100,7 +101,8 @@
             </q-item>
             <q-item class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
               <q-item-section>
-                <q-input type="password" dark dense outlined color="white" round v-model="password_dict.current_password"
+                <q-input type="password" dark dense outlined color="white" round
+                         v-model="password_dict.current_password"
                          label="Current Password"/>
               </q-item-section>
             </q-item>
@@ -122,7 +124,8 @@
             </q-item>
             <q-item class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
               <q-item-section>
-                <q-input type="password" dark dense outlined round color="white" v-model="password_dict.confirm_new_password"
+                <q-input type="password" dark dense outlined round color="white"
+                         v-model="password_dict.confirm_new_password"
                          label="Confirm New Password"/>
               </q-item-section>
             </q-item>
@@ -138,20 +141,22 @@
 </template>
 
 <script>
-    export default {
-        name: "UserProfile",
-        data() {
-            return {
-                user_details: {},
-                password_dict: {}
-            }
-        }
+import {defineComponent} from 'vue'
+
+export default defineComponent({
+  name: "UserProfile",
+  setup() {
+    return {
+      user_details: {},
+      password_dict: {}
     }
+  }
+})
 </script>
 
 <style scoped>
 
-  .card-bg {
-    background-color: #162b4d;
-  }
+.card-bg {
+  background-color: #162b4d;
+}
 </style>

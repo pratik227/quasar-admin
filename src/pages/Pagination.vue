@@ -13,15 +13,16 @@
 </template>
 
 <script>
+import {defineComponent, defineAsyncComponent} from 'vue';
 
-export default {
+export default defineComponent({
   name: "Pagination",
   components: {
-    BasicFilter: () => import('components/paginations/BasicFilter'),
-    ListPagination: () => import('components/paginations/ListPagination'),
-    CardPagination: () => import('components/paginations/CardPagination')
+    BasicFilter: defineAsyncComponent(() => import('components/paginations/BasicFilter')),
+    ListPagination: defineAsyncComponent(() => import('components/paginations/ListPagination')),
+    CardPagination: defineAsyncComponent(() => import('components/paginations/CardPagination'))
   },
-}
+})
 </script>
 
 <style scoped>

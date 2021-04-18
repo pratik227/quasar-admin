@@ -15,10 +15,12 @@
 </template>
 
 <script>
-export default {
+import {defineComponent} from 'vue'
+
+export default defineComponent({
   name: "CardProfileDark",
   props:['name','des','text']
-}
+})
 </script>
 
 <style scoped>

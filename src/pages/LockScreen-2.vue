@@ -60,23 +60,27 @@
 </template>
 
 <script>
-    export default {
-        name: "LockScreen",
-        data() {
-            return {
-                password: '',
-                isPwd: 'password'
-            }
-        }
+import {defineComponent} from 'vue'
+import {ref} from 'vue'
+
+export default defineComponent({
+  name: "LockScreen",
+
+  setup() {
+    return {
+      password: ref(''),
+      isPwd: ref('password')
     }
+  }
+})
 </script>
 
 <style>
-  .bg-image {
-    background-image: linear-gradient(135deg, #7028e4 0%, #e5b2ca 100%);
-  }
+.bg-image {
+  background-image: linear-gradient(135deg, #7028e4 0%, #e5b2ca 100%);
+}
 
-  [v-cloak] {
-    display: none !important;
-  }
+[v-cloak] {
+  display: none !important;
+}
 </style>

@@ -10,7 +10,6 @@
         <template>
           <template v-for="(computedEvent, index) in getWeekEvents(week, weekdays)">
             <q-badge
-              :key="index"
               class="q-row-event"
               :class="badgeClasses(computedEvent, 'day')"
               :style="badgeStyles(computedEvent, 'day', week.length)"
@@ -29,6 +28,7 @@
 
 <script>// normally you would not import "all" of QCalendar, but is needed for this example to work with UMD (codepen)
 import QCalendar from '@quasar/quasar-ui-qcalendar' // ui is aliased from '@quasar/quasar-ui-qcalendar'
+import {defineComponent,} from 'vue';
 
 const CURRENT_DAY = new Date()
 
@@ -39,9 +39,9 @@ function getCurrentDay(day) {
     return tm.date
 }
 
-export default {
+export default defineComponent({
     name: 'Calendar',
-    data() {
+    setup() {
         return {
             selectedDate: '',
             events: [
@@ -231,7 +231,7 @@ export default {
             )
         }
     }
-}
+})
 </script>
 
 <style scoped>

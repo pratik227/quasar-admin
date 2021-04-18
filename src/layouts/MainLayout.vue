@@ -6,7 +6,7 @@
           flat
           dense
           round
-          @click="leftDrawerOpen = !leftDrawerOpen"
+          @click="toggleLeftDrawer"
           icon="menu"
           aria-label="Menu"
         />
@@ -51,7 +51,7 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      content-class="bg-primary text-white"
+      class="bg-primary text-white"
     >
       <q-list>
         <q-item to="/" active-class="q-item-no-link-highlighting">
@@ -166,14 +166,15 @@
             <q-item-label>Mail</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item to="/TreeTable" active-class="q-item-no-link-highlighting">
-          <q-item-section avatar>
-            <q-icon name="list"/>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>TreeTable</q-item-label>
-          </q-item-section>
-        </q-item>
+        <!--        not completed-->
+<!--        <q-item to="/TreeTable" active-class="q-item-no-link-highlighting">-->
+<!--          <q-item-section avatar>-->
+<!--            <q-icon name="list"/>-->
+<!--          </q-item-section>-->
+<!--          <q-item-section>-->
+<!--            <q-item-label>TreeTable</q-item-label>-->
+<!--          </q-item-section>-->
+<!--        </q-item>-->
         <q-item to="/Charts" active-class="q-item-no-link-highlighting">
           <q-item-section avatar>
             <q-icon name="insert_chart"/>
@@ -214,22 +215,27 @@
             <q-item-label>Checkout</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item to="/Calendar" active-class="q-item-no-link-highlighting">
-          <q-item-section avatar>
-            <q-icon name="date_range"/>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Calendar</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item to="/Taskboard" active-class="q-item-no-link-highlighting">
-          <q-item-section avatar>
-            <q-icon name="done"/>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Taskboard</q-item-label>
-          </q-item-section>
-        </q-item>
+
+        <!--        not completed-->
+<!--        <q-item to="/Calendar" active-class="q-item-no-link-highlighting">-->
+<!--          <q-item-section avatar>-->
+<!--            <q-icon name="date_range"/>-->
+<!--          </q-item-section>-->
+<!--          <q-item-section>-->
+<!--            <q-item-label>Calendar</q-item-label>-->
+<!--          </q-item-section>-->
+<!--        </q-item>-->
+
+<!--        not completed-->
+<!--        <q-item to="/Taskboard" active-class="q-item-no-link-highlighting">-->
+<!--          <q-item-section avatar>-->
+<!--            <q-icon name="done"/>-->
+<!--          </q-item-section>-->
+<!--          <q-item-section>-->
+<!--            <q-item-label>Taskboard</q-item-label>-->
+<!--          </q-item-section>-->
+<!--        </q-item>-->
+
         <q-item to="/Pagination" active-class="q-item-no-link-highlighting">
           <q-item-section avatar>
             <q-icon name="date_range"/>
@@ -285,27 +291,33 @@
     </q-drawer>
 
     <q-page-container class="bg-grey-2">
-      <router-view/>
+      <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
-    import EssentialLink from 'components/EssentialLink'
-    import Messages from "./Messages";
+import EssentialLink from 'components/EssentialLink.vue'
+import Messages from "./Messages";
 
-    export default {
-        name: 'MainLayout',
+import { defineComponent, ref } from 'vue'
 
-        components: {
-            Messages,
-            EssentialLink
-        },
+export default defineComponent({
+  name: 'MainLayout',
 
-        data() {
-            return {
-                leftDrawerOpen: false,
-            }
-        }
+  components: {
+    EssentialLink
+  },
+
+  setup () {
+    const leftDrawerOpen = ref(false)
+
+    return {
+      leftDrawerOpen,
+      toggleLeftDrawer () {
+        leftDrawerOpen.value = !leftDrawerOpen.value
+      }
     }
+  }
+})
 </script>

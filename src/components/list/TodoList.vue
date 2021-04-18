@@ -21,16 +21,18 @@
 </template>
 
 <script>
-export default {
+import {defineComponent,defineAsyncComponent} from 'vue'
+
+export default defineComponent({
   name: 'ToDoList',
   components: {
-    Todo: () =>  import('components/Todo'),
+    Todo: defineAsyncComponent(() =>  import('components/Todo')),
   },
-  data () {
+  setup () {
     return {
       layout: 'dense',
       side: 'right'
     }
   }
-}
+})
 </script>

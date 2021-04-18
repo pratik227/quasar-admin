@@ -24,10 +24,12 @@
 </template>
 
 <script>
-export default {
+import {defineComponent} from 'vue'
+
+export default defineComponent({
   name: "CardProfile",
   props: ['avatar', 'name', 'des']
-}
+})
 </script>
 
 <style scoped>

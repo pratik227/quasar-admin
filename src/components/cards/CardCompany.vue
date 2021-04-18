@@ -32,10 +32,13 @@
 </template>
 
 <script>
-export default {
+import {defineComponent} from 'vue'
+
+export default defineComponent({
   name: "CardCompany",
+
   props:['background_image']
-}
+})
 </script>
 
 <style scoped>

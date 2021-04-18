@@ -6,34 +6,37 @@
 </template>
 
 <script>
-    export default {
-        name: "StreetView",
-        data() {
-            return {
-                mapData: ''
-            }
-        },
-        mounted() {
-            this.initMap();
-        },
-        methods: {
-            initMap() {
-                this.mapData = new google.maps.Map(document.getElementById('myMap'), {
-                    center: {lat: 42.345573, lng: -71.098326},
-                    zoom: 7
-                })
 
-                let pano = new google.maps.StreetViewPanorama(
-                    document.getElementById('pano'), {
-                        position: {lat: 42.345573, lng: -71.098326},
-                        pov: {
-                            heading: 34,
-                            pitch: 10
-                        }
-                    });
+import {defineComponent} from 'vue'
+import {ref} from 'vue'
+
+export default defineComponent({
+  name: "StreetView",
+  data() {
+    return {
+      mapData: ref(''),
+
+      initMap() {
+        this.mapData = new google.maps.Map(document.getElementById('myMap'), {
+          center: {lat: 42.345573, lng: -71.098326},
+          zoom: 7
+        })
+
+        let pano = new google.maps.StreetViewPanorama(
+          document.getElementById('pano'), {
+            position: {lat: 42.345573, lng: -71.098326},
+            pov: {
+              heading: 34,
+              pitch: 10
             }
-        }
+          });
+      }
     }
+  },
+  mounted() {
+    this.initMap();
+  },
+})
 </script>
 
 <style scoped>

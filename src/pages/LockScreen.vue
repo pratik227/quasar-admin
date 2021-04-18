@@ -32,25 +32,31 @@
 </template>
 
 <script>
-    export default {
-        name: "LockScreen",
-        data() {
-            return {
-                password: '',
-                isPwd: 'password'
-            }
-        }
+
+import {defineComponent} from 'vue'
+import {ref} from 'vue'
+
+export default defineComponent({
+  name: "LockScreen",
+
+  setup() {
+    return {
+      password: ref(''),
+      isPwd: ref('password')
     }
+  }
+
+})
 </script>
 
 <style>
-  .bg-image {
-    background-image: url("~assets/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+.bg-image {
+  background-image: url("~assets/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-  [v-cloak] {
-    display: none !important;
-  }
+[v-cloak] {
+  display: none !important;
+}
 </style>

@@ -16,10 +16,12 @@
 </template>
 
 <script>
-export default {
+import {defineComponent} from 'vue';
+
+export default defineComponent({
   name: "ContactItem",
   props: ['avatar', 'name', 'position']
-}
+})
 </script>
 
 <style scoped>

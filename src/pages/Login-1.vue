@@ -47,19 +47,22 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                username: 'Pratik',
-                password: '12345'
-            }
-        },
+import {defineComponent} from 'vue'
+import {ref} from 'vue'
+
+export default defineComponent({
+  setup() {
+    return {
+      username: ref('Pratik'),
+      password: ref('12345')
     }
+  },
+})
 </script>
 
 <style>
 
-  .bg-image {
-   background-image: linear-gradient(135deg, #7028e4 0%, #e5b2ca 100%);
-  }
+.bg-image {
+  background-image: linear-gradient(135deg, #7028e4 0%, #e5b2ca 100%);
+}
 </style>

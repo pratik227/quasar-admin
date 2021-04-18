@@ -18,7 +18,7 @@
           <q-card-section>
             <div class="text-h5 q-mt-sm q-mb-xs text-grey-8">Title</div>
             <div>
-              {{text}}
+              {{ text }}
             </div>
           </q-card-section>
           <q-card-actions>
@@ -34,11 +34,14 @@
 
         <basic-card></basic-card>
 
-        <card-item class="q-mt-lg" :name="profile_card_data.name" :des="profile_card_data.des" :avatar="profile_card_data.avatar"></card-item>
+        <card-item class="q-mt-lg" :name="profile_card_data.name" :des="profile_card_data.des"
+                   :avatar="profile_card_data.avatar"></card-item>
 
-        <card-profile class="q-mt-lg" :name="profile_card_data.name" :des="profile_card_data.des" :avatar="profile_card_data.avatar"></card-profile>
+        <card-profile class="q-mt-lg" :name="profile_card_data.name" :des="profile_card_data.des"
+                      :avatar="profile_card_data.avatar"></card-profile>
 
-        <card-profile-dark class="q-mt-lg" :name="profile_data.name" :des="profile_data.des" :text="profile_data.text"></card-profile-dark>
+        <card-profile-dark class="q-mt-lg" :name="profile_data.name" :des="profile_data.des"
+                           :text="profile_data.text"></card-profile-dark>
       </div>
       <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
 
@@ -48,43 +51,45 @@
 
         <card-company class="q-mt-lg" :background_image="background_img1"></card-company>
 
-        <card-profile-dark class="q-mt-lg" :name="profile_data.name" :des="profile_data.des" :text="profile_data.text"></card-profile-dark>
+        <card-profile-dark class="q-mt-lg" :name="profile_data.name" :des="profile_data.des"
+                           :text="profile_data.text"></card-profile-dark>
       </div>
     </div>
   </q-page>
 </template>
 
 <script>
-    export default {
-        name: "Cards",
-        components: {
-          CardItem: () => import('components/cards/CardItem'),
-          CardCafe: () => import('components/cards/CardCafe'),
-          CardCompany: () => import('components/cards/CardCompany'),
-          CardProfileDark: () => import('components/cards/CardProfileDark'),
-          CardProfile: () => import('components/cards/CardProfile'),
-          BasicCard: () => import('../layouts/BasicCard')
-        },
-        data() {
-            return {
-                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                profile_card_data:{
-                  name:'Pratik Patel',
-                  des:'Solutions Developer',
-                  avatar:'https://cdn.quasar.dev/img/boy-avatar.png'
-                },
-                profile_data:{
-                  name:'Pratik Patel',
-                  des:'--- Solution Developer, Pune'
-                },
-              background_img1:'linear-gradient(to top, #30cfd0 0%, #330867 100%)',
-              background_img2:'linear-gradient(87deg, rgb(45, 206, 137), rgb(45, 206, 204)) !important'
-            }
-        },
-        created() {
-          this.profile_data.text=this.text
-        }
+import {defineComponent, defineAsyncComponent} from 'vue'
+
+export default defineComponent({
+  name: "Cards",
+  components: {
+    CardItem: defineAsyncComponent(() => import('components/cards/CardItem')),
+    CardCafe: defineAsyncComponent(() => import('components/cards/CardCafe')),
+    CardCompany: defineAsyncComponent(() => import('components/cards/CardCompany')),
+    CardProfileDark: defineAsyncComponent(() => import('components/cards/CardProfileDark')),
+    CardProfile: defineAsyncComponent(() => import('components/cards/CardProfile')),
+    BasicCard: defineAsyncComponent(() => import('components/cards/CardBasic'))
+  },
+  setup() {
+    const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
+    return {
+      text,
+      profile_card_data: {
+        name: 'Pratik Patel',
+        des: 'Solutions Developer',
+        avatar: 'https://cdn.quasar.dev/img/boy-avatar.png',
+      },
+      profile_data: {
+        name: 'Pratik Patel',
+        des: '--- Solution Developer, Pune',
+        text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      },
+      background_img1: 'linear-gradient(to top, #30cfd0 0%, #330867 100%)',
+      background_img2: 'linear-gradient(87deg, rgb(45, 206, 137), rgb(45, 206, 204)) !important'
     }
+  },
+})
 </script>
 
 <style scoped>

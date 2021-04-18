@@ -115,7 +115,7 @@
             <q-stepper-navigation>
               <q-btn rounded @click="() => { done2 = true; step = 3 }" class="float-right q-mr-md q-mb-md" color="blue"
                      label="Next"/>
-              <q-btn flat @click="step = 1" color="primary" flat rounded label="Back" class="q-mr-sm float-right"/>
+              <q-btn flat @click="step = 1" color="primary" rounded label="Back" class="q-mr-sm float-right"/>
             </q-stepper-navigation>
           </q-step>
 
@@ -200,9 +200,9 @@
                 </q-card-section>
                 <q-card-section class="col-7 q-pt-xs">
                   <div class="text-h6 text-center">Payment details</div>
-                  <div class="text-subtitle1 q-mb-xs">Card type  - Visa</div>
-                  <div class="text-subtitle1 q-mb-xs">Card holder  - P***ik Patel</div>
-                  <div class="text-subtitle1 q-mb-xs">Card Number  - xxxx-xxxx-xxxx-1234</div>
+                  <div class="text-subtitle1 q-mb-xs">Card type - Visa</div>
+                  <div class="text-subtitle1 q-mb-xs">Card holder - P***ik Patel</div>
+                  <div class="text-subtitle1 q-mb-xs">Card Number - xxxx-xxxx-xxxx-1234</div>
                   <div class="text-subtitle1 q-mb-xs">Expiry date - 04/2012</div>
                 </q-card-section>
 
@@ -214,7 +214,7 @@
 
               <q-btn rounded @click="done3 = true" class="float-right q-mr-md q-mb-md" color="blue"
                      label="Place Order"/>
-              <q-btn flat @click="step = 2" color="primary" flat rounded label="Back" class="q-mr-sm float-right"/>
+              <q-btn flat @click="step = 2" color="primary" rounded label="Back" class="q-mr-sm float-right"/>
             </q-stepper-navigation>
           </q-step>
         </q-stepper>
@@ -249,7 +249,8 @@
               <div class="text-subtitle2 q-mt-md">Product 2</div>
               <div class="text-subtitle2  q-mb-xs">$19.99</div>
             </q-card-section>
-          </q-card-section><q-separator/>
+          </q-card-section>
+          <q-separator/>
           <q-card-section horizontal class="q-pa-none">
             <q-card-section class="col-5 flex flex-center">
               <q-img height="80px"
@@ -261,7 +262,8 @@
               <div class="text-subtitle2 q-mt-md">Product 3</div>
               <div class="text-subtitle2 q-mb-xs">$78.99</div>
             </q-card-section>
-          </q-card-section><q-separator/>
+          </q-card-section>
+          <q-separator/>
           <q-card-section horizontal class="q-pa-none">
             <q-card-section class="col-5 flex flex-center">
               <q-img height="80px"
@@ -293,16 +295,19 @@
 </template>
 
 <script>
-    export default {
-        name: "Checkout",
-        data() {
-            return {
-                step: 1,
-                address_detail: {},
-                card_detail: {}
-            }
-        }
+import {defineComponent} from 'vue';
+import {ref} from 'vue';
+
+export default defineComponent({
+  name: "Checkout",
+  setup() {
+    return {
+      step: ref(1),
+      address_detail: ref({}),
+      card_detail: ref({})
     }
+  }
+})
 </script>
 
 <style scoped>

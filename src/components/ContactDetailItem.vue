@@ -13,10 +13,12 @@
 </template>
 
 <script>
-export default {
+import {defineComponent} from 'vue';
+
+export default defineComponent({
   name: "ContactDetailItem",
-  props:['icon','text_color','value','label']
-}
+  props: ['icon', 'text_color', 'value', 'label']
+})
 </script>
 
 <style scoped>

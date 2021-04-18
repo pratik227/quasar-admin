@@ -50,8 +50,8 @@
               >
                 <q-card-section class="row q-pa-sm">
                   <div class="col-12">
-                    <span class="text-weight-bold text-h6 q-ml-sm">{{item.title}}</span>
-                    <span class="float-right text-grey-8 q-mt-sm">{{item.label}}
+                    <span class="text-weight-bold text-h6 q-ml-sm">{{ item.title }}</span>
+                    <span class="float-right text-grey-8 q-mt-sm">{{ item.label }}
                     <q-icon
                       filled
                       size="xs"
@@ -65,11 +65,11 @@
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
                   <q-chip dense v-for="(tag, index) in item.tags" :key="index" :color="tag.color" text-color="white">
-                    {{tag.name}}
+                    {{ tag.name }}
                   </q-chip>
                 </q-card-section>
                 <q-card-section class="q-pa-sm text-grey-8">
-                  {{item.description}}
+                  {{ item.description }}
                 </q-card-section>
               </q-card>
             </draggable>
@@ -144,8 +144,8 @@
               >
                 <q-card-section class="row q-pa-sm">
                   <div class="col-12">
-                    <span class="text-weight-bold text-h6 q-ml-sm">{{item.title}}</span>
-                    <span class="float-right text-grey-8 q-mt-sm">{{item.label}}
+                    <span class="text-weight-bold text-h6 q-ml-sm">{{ item.title }}</span>
+                    <span class="float-right text-grey-8 q-mt-sm">{{ item.label }}
                     <q-icon
                       filled
                       size="xs"
@@ -159,11 +159,11 @@
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
                   <q-chip dense v-for="(tag, index) in item.tags" :key="index" :color="tag.color" text-color="white">
-                    {{tag.name}}
+                    {{ tag.name }}
                   </q-chip>
                 </q-card-section>
                 <q-card-section class="q-pa-sm text-grey-8">
-                  {{item.description}}
+                  {{ item.description }}
                 </q-card-section>
               </q-card>
             </draggable>
@@ -239,8 +239,8 @@
               >
                 <q-card-section class="row q-pa-sm">
                   <div class="col-12">
-                    <span class="text-weight-bold text-h6 q-ml-sm">{{item.title}}</span>
-                    <span class="float-right text-grey-8 q-mt-sm">{{item.label}}
+                    <span class="text-weight-bold text-h6 q-ml-sm">{{ item.title }}</span>
+                    <span class="float-right text-grey-8 q-mt-sm">{{ item.label }}
 
                     <q-icon
                       filled
@@ -255,11 +255,11 @@
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
                   <q-chip dense v-for="(tag, index) in item.tags" :key="index" :color="tag.color" text-color="white">
-                    {{tag.name}}
+                    {{ tag.name }}
                   </q-chip>
                 </q-card-section>
                 <q-card-section class="q-pa-sm text-grey-8">
-                  {{item.description}}
+                  {{ item.description }}
                 </q-card-section>
               </q-card>
             </draggable>
@@ -334,8 +334,8 @@
               >
                 <q-card-section class="row q-pa-sm">
                   <div class="col-12">
-                    <span class="text-weight-bold text-h6 q-ml-sm">{{item.title}}</span>
-                    <span class="float-right text-grey-8 q-mt-sm">{{item.label}}
+                    <span class="text-weight-bold text-h6 q-ml-sm">{{ item.title }}</span>
+                    <span class="float-right text-grey-8 q-mt-sm">{{ item.label }}
                     <q-icon
                       filled
                       size="xs"
@@ -349,11 +349,11 @@
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
                   <q-chip dense v-for="(tag, index) in item.tags" :key="index" :color="tag.color" text-color="white">
-                    {{tag.name}}
+                    {{ tag.name }}
                   </q-chip>
                 </q-card-section>
                 <q-card-section class="q-pa-sm text-grey-8">
-                  {{item.description}}
+                  {{ item.description }}
                 </q-card-section>
               </q-card>
             </draggable>
@@ -387,181 +387,193 @@
 </template>
 
 <script>
-    import Vue from "vue";
-    import draggable from "vuedraggable";
+import Vue from "vue";
+import draggable from "vuedraggable";
+import {ref} from 'vue'
+
+import {defineComponent} from 'vue'
 
 
-    Vue.component("draggable", draggable);
-    export default {
-        name: "TaskBoard",
-        data() {
-            return {
-                task_selected_index:{
-                    blocked: null,
-                    completed: null,
-                    planned: null,
-                    wip: null
-                },
-                thumbStyle: {
-                    right: '4px',
-                    borderRadius: '5px',
-                    backgroundColor: '#027be3',
-                    width: '5px',
-                    opacity: 0.75
-                },
-                add_model: {
-                    blocked: false,
-                    completed: false,
-                    planned: false,
-                    wip: false
-                },
-                add_data: {
-                    blocked: {},
-                    completed: {},
-                    planned: {},
-                    wip: {}
-                },
-                size: {},
-                barStyle: {
-                    right: '2px',
-                    borderRadius: '9px',
-                    backgroundColor: '#027be3',
-                    width: '9px',
-                    opacity: 0.2
-                },
-                planned_task: [
-                    {
-                        title: 'Buy milk',
-                        label: '15 mins',
-                        tags: [{name: 'Error', color: 'negative'}, {name: 'Warning', color: 'warning'}],
-                        description: '2 Gallons of milk at the Deli store'
-                    },
-                    {
-                        title: 'Dispose Garbage',
-                        label: '10 mins',
-                        tags: [{name: 'Info', color: 'info'}, {name: 'Success', color: 'positive'}],
-                        description: 'Sort out recyclable and waste as needed'
-                    },
-                    {
-                        title: 'Write Blog',
-                        label: '10 mins',
-                        tags: [{name: 'Warning', color: 'warning'}],
-                        description: 'Can AI make memes?'
-                    },
-                    {
-                        title: 'Pay Rent',
-                        label: '5 mins',
-                        tags: [{name: 'Error', color: 'negative'}, {name: 'Warning', color: 'warning'}, {
-                            name: 'Info',
-                            color: 'info'
-                        }],
-                        description: 'Transfer to bank account'
-                    }
-                ],
-                wip_task: [
-                    {
-                        title: 'Clean House',
-                        label: '30 mins',
-                        tags: [{name: 'Error', color: 'negative'}, {name: 'Success', color: 'positive'}],
-                        description: 'Soap wash and polish floor. Polish windows and doors. Scrap all broken glasses'
-                    },
-                    {
-                        title: 'Go Trekking',
-                        label: '30 mins',
-                        tags: [{name: 'Info', color: 'info'}, {name: 'Success', color: 'positive'}, {
-                            name: 'Info',
-                            color: 'info'
-                        }, {name: 'Success', color: 'positive'}, {name: 'Info', color: 'info'}, {
-                            name: 'Success',
-                            color: 'positive'
-                        }],
-                        description: 'Completed 10km on cycle'
-                    },
-                ],
-                blocked_task: [
-                    {
-                        title: 'Morning Jog',
-                        label: '30 mins',
-                        tags: [{name: 'Error', color: 'negative'}],
-                        description: 'Track using fitbit'
-                    },
-                ],
-                completed_task: [
-                    {
-                        title: 'Practice Meditation',
-                        label: '15 mins',
-                        tags: [],
-                        description: 'Use Headspace app'
-                    },
-                    {
-                        title: 'Maintain Daily Journal',
-                        label: '15 mins',
-                        tags: [],
-                        description: 'Use Spreadsheet for now'
-                    },
-                    {
-                        title: 'Go Trekking',
-                        label: '15 mins',
-                        tags: [{name: 'Info', color: 'info'}, {name: 'Success', color: 'positive'}],
-                        description: 'Completed 10km on cycle'
-                    },
-                ],
+let planned_task = [
+  {
+    title: 'Buy milk',
+    label: '15 mins',
+    tags: [{name: 'Error', color: 'negative'}, {name: 'Warning', color: 'warning'}],
+    description: '2 Gallons of milk at the Deli store'
+  },
+  {
+    title: 'Dispose Garbage',
+    label: '10 mins',
+    tags: [{name: 'Info', color: 'info'}, {name: 'Success', color: 'positive'}],
+    description: 'Sort out recyclable and waste as needed'
+  },
+  {
+    title: 'Write Blog',
+    label: '10 mins',
+    tags: [{name: 'Warning', color: 'warning'}],
+    description: 'Can AI make memes?'
+  },
+  {
+    title: 'Pay Rent',
+    label: '5 mins',
+    tags: [{name: 'Error', color: 'negative'}, {name: 'Warning', color: 'warning'}, {
+      name: 'Info',
+      color: 'info'
+    }],
+    description: 'Transfer to bank account'
+  }
+];
+let wip_task = [
+  {
+    title: 'Clean House',
+    label: '30 mins',
+    tags: [{name: 'Error', color: 'negative'}, {name: 'Success', color: 'positive'}],
+    description: 'Soap wash and polish floor. Polish windows and doors. Scrap all broken glasses'
+  },
+  {
+    title: 'Go Trekking',
+    label: '30 mins',
+    tags: [{name: 'Info', color: 'info'}, {name: 'Success', color: 'positive'}, {
+      name: 'Info',
+      color: 'info'
+    }, {name: 'Success', color: 'positive'}, {name: 'Info', color: 'info'}, {
+      name: 'Success',
+      color: 'positive'
+    }],
+    description: 'Completed 10km on cycle'
+  },
+];
+let blocked_task = [
+  {
+    title: 'Morning Jog',
+    label: '30 mins',
+    tags: [{name: 'Error', color: 'negative'}],
+    description: 'Track using fitbit'
+  },
+];
+let completed_task = [
+  {
+    title: 'Practice Meditation',
+    label: '15 mins',
+    tags: [],
+    description: 'Use Headspace app'
+  },
+  {
+    title: 'Maintain Daily Journal',
+    label: '15 mins',
+    tags: [],
+    description: 'Use Spreadsheet for now'
+  },
+  {
+    title: 'Go Trekking',
+    label: '15 mins',
+    tags: [{name: 'Info', color: 'info'}, {name: 'Success', color: 'positive'}],
+    description: 'Completed 10km on cycle'
+  },
+];
 
-            };
-        },
-        computed: {
-            dragOptions() {
-                return {
-                    animation: 200,
-                    group: "description",
-                    disabled: false,
-                    ghostClass: "ghost"
-                };
-            },
-            getHeight() {
-                return this.size.height - 90 + 'px'
-            }
-        },
-        methods: {
-            onResize(size) {
-                this.size = size
-            },
-            deleteTask(name,index){
-              if(name=='panned'){
-                  this.planned_task.splice(index, 1)
-              }
-              if(name=='wip'){
-                  this.wip_task.splice(index, 1)
-              }
-              if(name=='completed'){
-                  this.completed_task.splice(index, 1)
-              }
-              if(name=='blocked'){
-                  this.blocked_task.splice(index, 1)
-              }
-            }
+export default defineComponent({
+  name: "TaskBoard",
+  component:{
+    draggable
+  },
+  setup() {
+    const size = ref({width: '200px', height: '200px'});
+
+
+    return {
+      task_selected_index: {
+        blocked: ref(null),
+        completed: ref(null),
+        planned: ref(null),
+        wip: ref(null)
+      },
+      thumbStyle: {
+        right: ref('4px'),
+        borderRadius: ref('5px'),
+        backgroundColor: ref('#027be3'),
+        width: ref('5px'),
+        opacity: ref(0.75)
+      },
+      add_model: {
+        blocked: ref(false),
+        completed: ref(false),
+        planned: ref(false),
+        wip: ref(false)
+      },
+      add_data: {
+        blocked: ref({}),
+        completed: ref({}),
+        planned: ref({}),
+        wip: ref({})
+      },
+      size,
+      barStyle: {
+        right: ref('2px'),
+        borderRadius: ref('9px'),
+        backgroundColor: ref('#027be3'),
+        width: ref('9px'),
+        opacity: ref(0.2)
+      },
+      planned_task,
+      wip_task,
+      blocked_task,
+      completed_task,
+
+      deleteTask(name, index) {
+        if (name == 'panned') {
+          this.planned_task.splice(index, 1)
         }
+        if (name == 'wip') {
+          this.wip_task.splice(index, 1)
+        }
+        if (name == 'completed') {
+          this.completed_task.splice(index, 1)
+        }
+        if (name == 'blocked') {
+          this.blocked_task.splice(index, 1)
+        }
+      },
+
+      onResize(size_dynamic) {
+        size.value = size_dynamic;
+      },
     };
+  },
+  computed: {
+    dragOptions() {
+      return {
+        animation: 200,
+        group: "description",
+        disabled: false,
+        ghostClass: "ghost"
+      };
+    },
+    getHeight() {
+      return this.size.height - 90 + 'px'
+    }
+  }
+})
 </script>
 
 <style scoped>
-  .custom_bg {
-    background-image: linear-gradient(to bottom, #a18cd1 0%, #fbc2eb 100%);
-  }
+.custom_bg {
+  background-image: linear-gradient(to bottom, #a18cd1 0%, #fbc2eb 100%);
+}
 
-  .custom_bg2 {
-    background-image: linear-gradient(to bottom , #4facfe 0%, #00f2fe 100%);
-  }
+.custom_bg2 {
+  background-image: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%);
+}
 
-  .custom_bg3 {
-    background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
-  }
+.custom_bg3 {
+  background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+}
 
-  .custom_bg4 {
-    background-image: linear-gradient(to bottom, #a18cd1 0%, #fbc2eb 100%);
-  }
+.custom_bg4 {
+  background-image: linear-gradient(to bottom, #a18cd1 0%, #fbc2eb 100%);
+}
 
-  .text-color {
-    color: white
-  }
+.text-color {
+  color: white
+}
 </style>

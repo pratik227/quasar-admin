@@ -54,48 +54,50 @@
 </template>
 
 <script>
+import {defineComponent, defineAsyncComponent} from 'vue'
 
-export default {
+const pricing_data = [
+  {
+    title: 'Basic',
+    price: '$0',
+    icon: 'home_work',
+    background_image: 'linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%)',
+    text: 'This is good if your company size is between 2 and 10 Persons.'
+  },
+  {
+    title: 'Small Company',
+    price: '$25',
+    icon: 'home',
+    background_image: 'linear-gradient(-225deg, #5D9FFF 0%, #6BBBFF 100%)',
+    text: 'This is good if your company size is between 2 and 10 Persons.'
+  },
+  {
+    title: 'Extended',
+    price: '$250',
+    icon: 'apartment',
+    background_image: 'linear-gradient(to right, #2B86C5 0%, #2B86C5 100%)',
+    text: 'This is good if your company size is between 2 and 10 Persons.'
+  },
+  {
+    title: 'Extra Pack',
+    price: '$750',
+    icon: 'business_center',
+    background_image: 'linear-gradient(87deg, rgb(17, 205, 239), rgb(17, 113, 239)) !important',
+    text: 'This is good if your company size is between 2 and 10 Persons.'
+  },
+]
+export default defineComponent({
   name: "Pricing",
   components: {
-    CardPricing : () => import('components/cards/CardPricing')
+    CardPricing: defineAsyncComponent(() => import('components/cards/CardPricing'))
   },
-  data() {
+  setup() {
     return {
       year: (new Date()).getFullYear(),
-      pricing_data: [
-        {
-          title: 'Basic',
-          price: '$0',
-          icon: 'home_work',
-          background_image: 'linear-gradient(to right, #ed6ea0 0%, #ec8c69 100%)',
-          text: 'This is good if your company size is between 2 and 10 Persons.'
-        },
-        {
-          title: 'Small Company',
-          price: '$25',
-          icon: 'home',
-          background_image: 'linear-gradient(-225deg, #5D9FFF 0%, #6BBBFF 100%)',
-          text: 'This is good if your company size is between 2 and 10 Persons.'
-        },
-        {
-          title: 'Extended',
-          price: '$250',
-          icon: 'apartment',
-          background_image: 'linear-gradient(to right, #2B86C5 0%, #2B86C5 100%)',
-          text: 'This is good if your company size is between 2 and 10 Persons.'
-        },
-        {
-          title: 'Extra Pack',
-          price: '$750',
-          icon: 'business_center',
-          background_image: 'linear-gradient(87deg, rgb(17, 205, 239), rgb(17, 113, 239)) !important',
-          text: 'This is good if your company size is between 2 and 10 Persons.'
-        },
-      ]
+      pricing_data
     }
   }
-}
+})
 </script>
 
 <style scoped>

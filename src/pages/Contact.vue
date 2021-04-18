@@ -8,7 +8,6 @@
           <q-tab-panels v-model="tab" animated class="bg-white">
             <q-tab-panel name="all" class="q-pa-none full-height" :style="{'height':size['height']-80+'px !important'}">
               <q-list class="">
-
                 <q-item-label class="text-center q-pa-sm">
                   <q-input dense rounded outlined v-model="search">
                     <template v-slot:append>
@@ -199,163 +198,176 @@
 </template>
 
 <script>
+import {defineComponent, defineAsyncComponent} from 'vue';
+import {useQuasar} from "quasar";
+import {ref} from 'vue';
 
-export default {
+const detail_list = [
+  {
+    icon: 'phone',
+    label: 'Phone',
+    field: 'phone',
+    text_color: 'blue'
+  },
+  {
+    icon: 'phone_iphone',
+    label: 'Secondary Phone',
+    field: 'secondary_phone',
+    text_color: 'orange'
+  },
+  {
+    icon: 'mail',
+    label: 'Personal Email',
+    field: 'email',
+    text_color: 'grey-8'
+  },
+  {
+    icon: 'business_center',
+    label: 'Company Email',
+    field: 'company_email',
+    text_color: 'grey-8'
+  },
+  {
+    icon: 'location_on',
+    label: 'Address',
+    field: 'address',
+    text_color: 'grey-8'
+  },
+  {
+    icon: 'home_work',
+    label: 'Website',
+    field: 'website',
+    text_color: 'grey-8'
+  },
+];
+
+const contacts_list = [
+  {
+    name: 'Pratik Patel',
+    position: 'Developer',
+    avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+    email: 'pratikpatelpp802@gmail.com',
+    company_email: 'pratikpatelpp802@gmail.com',
+    website: 'www.test.com',
+    phone: '+9910101010',
+    secondary_phone: '+9910101010',
+    address: 'BB 101 Om Sai Residency Palsana'
+  },
+  {
+    name: 'Razvan Stoenescu',
+    position: 'Developer',
+    avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
+    email: 'mailto:razvan@quasar.dev',
+    company_email: 'mailto:razvan@quasar.dev',
+    website: 'https://github.com/rstoenescu',
+    phone: '+1-004-658-0042',
+    secondary_phone: '(331) 009-4655 x3147',
+    address: '92290 Lisa Cove'
+  },
+  {
+    name: 'Jeff Galbraith',
+    position: 'Developer',
+    avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
+    email: 'mailto:jeff@quasar.dev',
+    company_email: 'mailto:jeff@quasar.dev',
+    website: 'http://jeffgalbraith.dev/',
+    phone: '175.718.4633 x878',
+    secondary_phone: '175.718.4633 x878',
+    address: 'Calgary, Canada'
+  },
+  {
+    name: 'Brunhilde Panswick',
+    position: 'Administrator',
+    avatar: 'https://cdn.quasar.dev/img/avatar2.jpg',
+    email: 'test.@quasar.dev',
+    company_email: 'test.@quasar.dev',
+    website: 'http://test1.dev/',
+    phone: '175.718.4633 x878',
+    secondary_phone: '175.718.4633 x878',
+    address: 'Calgary, Canada'
+  },
+  {
+    name: 'Winfield Stapforth',
+    position: 'Administrator',
+    avatar: 'https://cdn.quasar.dev/img/avatar6.jpg',
+    email: 'test2.@quasar.dev',
+    company_email: 'test.@quasar.dev',
+    website: 'http://test2.dev/',
+    phone: '175.718.4633 x878',
+    secondary_phone: '175.718.4633 x878',
+    address: 'Calgary, Canada'
+  },
+
+];
+
+const favorites_list = [
+  {
+    name: 'Pratik Patel',
+    position: 'Developer',
+    avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+    email: 'pratikpatelpp802@gmail.com',
+    company_email: 'pratikpatelpp802@gmail.com',
+    website: 'www.test.com',
+    phone: '+9910101010',
+    secondary_phone: '+9910101010',
+    address: 'BB 101 Om Sai Residency Palsana'
+  },
+  {
+    name: 'Razvan Stoenescu',
+    position: 'Developer',
+    avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
+    email: 'mailto:razvan@quasar.dev',
+    company_email: 'mailto:razvan@quasar.dev',
+    website: 'https://github.com/rstoenescu',
+    phone: '+1-004-658-0042',
+    secondary_phone: '(331) 009-4655 x3147',
+    address: '92290 Lisa Cove'
+  },
+  {
+    name: 'Jeff Galbraith',
+    position: 'Developer',
+    avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
+    email: 'mailto:jeff@quasar.dev',
+    company_email: 'mailto:jeff@quasar.dev',
+    website: 'http://jeffgalbraith.dev/',
+    phone: '175.718.4633 x878',
+    secondary_phone: '175.718.4633 x878',
+    address: 'Calgary, Canada'
+  },
+];
+
+export default defineComponent({
   name: "Contact",
   components: {
-    ContactDetailItem: () => import('components/ContactDetailItem'),
-    ContactItem: () => import('components/ContactItem')
+    ContactDetailItem: defineAsyncComponent(() => import('components/ContactDetailItem')),
+    ContactItem: defineAsyncComponent(() => import('components/ContactItem'))
   },
-  data() {
-    return {
-      tab: 'all',
-      size: {},
-      search: '',
-      contacts_list: [
-        {
-          name: 'Pratik Patel',
-          position: 'Developer',
-          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
-          email: 'pratikpatelpp802@gmail.com',
-          company_email: 'pratikpatelpp802@gmail.com',
-          website: 'www.test.com',
-          phone: '+9910101010',
-          secondary_phone: '+9910101010',
-          address: 'BB 101 Om Sai Residency Palsana'
-        },
-        {
-          name: 'Razvan Stoenescu',
-          position: 'Developer',
-          avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
-          email: 'mailto:razvan@quasar.dev',
-          company_email: 'mailto:razvan@quasar.dev',
-          website: 'https://github.com/rstoenescu',
-          phone: '+1-004-658-0042',
-          secondary_phone: '(331) 009-4655 x3147',
-          address: '92290 Lisa Cove'
-        },
-        {
-          name: 'Jeff Galbraith',
-          position: 'Developer',
-          avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
-          email: 'mailto:jeff@quasar.dev',
-          company_email: 'mailto:jeff@quasar.dev',
-          website: 'http://jeffgalbraith.dev/',
-          phone: '175.718.4633 x878',
-          secondary_phone: '175.718.4633 x878',
-          address: 'Calgary, Canada'
-        },
-        {
-          name: 'Brunhilde Panswick',
-          position: 'Administrator',
-          avatar: 'https://cdn.quasar.dev/img/avatar2.jpg',
-          email: 'test.@quasar.dev',
-          company_email: 'test.@quasar.dev',
-          website: 'http://test1.dev/',
-          phone: '175.718.4633 x878',
-          secondary_phone: '175.718.4633 x878',
-          address: 'Calgary, Canada'
-        },
-        {
-          name: 'Winfield Stapforth',
-          position: 'Administrator',
-          avatar: 'https://cdn.quasar.dev/img/avatar6.jpg',
-          email: 'test2.@quasar.dev',
-          company_email: 'test.@quasar.dev',
-          website: 'http://test2.dev/',
-          phone: '175.718.4633 x878',
-          secondary_phone: '175.718.4633 x878',
-          address: 'Calgary, Canada'
-        },
+  setup() {
 
-      ],
-      favorites_list: [
-        {
-          name: 'Pratik Patel',
-          position: 'Developer',
-          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
-          email: 'pratikpatelpp802@gmail.com',
-          company_email: 'pratikpatelpp802@gmail.com',
-          website: 'www.test.com',
-          phone: '+9910101010',
-          secondary_phone: '+9910101010',
-          address: 'BB 101 Om Sai Residency Palsana'
-        },
-        {
-          name: 'Razvan Stoenescu',
-          position: 'Developer',
-          avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
-          email: 'mailto:razvan@quasar.dev',
-          company_email: 'mailto:razvan@quasar.dev',
-          website: 'https://github.com/rstoenescu',
-          phone: '+1-004-658-0042',
-          secondary_phone: '(331) 009-4655 x3147',
-          address: '92290 Lisa Cove'
-        },
-        {
-          name: 'Jeff Galbraith',
-          position: 'Developer',
-          avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
-          email: 'mailto:jeff@quasar.dev',
-          company_email: 'mailto:jeff@quasar.dev',
-          website: 'http://jeffgalbraith.dev/',
-          phone: '175.718.4633 x878',
-          secondary_phone: '175.718.4633 x878',
-          address: 'Calgary, Canada'
-        },
-      ],
-      selected_contact: {},
-      detail_list: [
-        {
-          icon: 'phone',
-          label: 'Phone',
-          field: 'phone',
-          text_color: 'blue'
-        },
-        {
-          icon: 'phone_iphone',
-          label: 'Secondary Phone',
-          field: 'secondary_phone',
-          text_color: 'orange'
-        },
-        {
-          icon: 'mail',
-          label: 'Personal Email',
-          field: 'email',
-          text_color: 'grey-8'
-        },
-        {
-          icon: 'business_center',
-          label: 'Company Email',
-          field: 'company_email',
-          text_color: 'grey-8'
-        },
-        {
-          icon: 'location_on',
-          label: 'Address',
-          field: 'address',
-          text_color: 'grey-8'
-        },
-        {
-          icon: 'home_work',
-          label: 'Website',
-          field: 'website',
-          text_color: 'grey-8'
-        },
-      ]
+    const $q = useQuasar()
+    const size = ref({ width: '200px', height: '200px' });
+
+    return {
+      tab: ref('all'),
+      search: ref(''),
+      size,
+      contacts_list,
+      favorites_list,
+      selected_contact: ref({}),
+      detail_list,
+
+      onResize(size_dynamic) {
+        size.value = size_dynamic;
+      },
+
     }
   },
-  methods: {
-    onResize(size) {
-      this.size = size
-    },
-  },
-  created() {
+  mounted() {
     if (!this.$q.screen.lt.sm) {
       this.selected_contact = this.contacts_list[0];
     }
   }
-}
+})
 </script>
 
 <style scoped>
