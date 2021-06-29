@@ -217,14 +217,14 @@
         </q-item>
 
         <!--        not completed-->
-<!--        <q-item to="/Calendar" active-class="q-item-no-link-highlighting">-->
-<!--          <q-item-section avatar>-->
-<!--            <q-icon name="date_range"/>-->
-<!--          </q-item-section>-->
-<!--          <q-item-section>-->
-<!--            <q-item-label>Calendar</q-item-label>-->
-<!--          </q-item-section>-->
-<!--        </q-item>-->
+        <q-item to="/Calendar" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="date_range"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Calendar</q-item-label>
+          </q-item-section>
+        </q-item>
 
 <!--        not completed-->
 <!--        <q-item to="/Taskboard" active-class="q-item-no-link-highlighting">-->
