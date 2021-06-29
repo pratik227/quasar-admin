@@ -1,239 +1,303 @@
 <template>
   <q-page class="q-pa-sm bg-white">
-    <q-calendar
+    <q-calendar-month
+      ref="calendar"
       v-model="selectedDate"
-      view="month"
-      locale="en-us"
-      :day-height="100"
+      animated
+      bordered
+      focusable
+      hoverable
+      no-active-date
+      :day-min-height="90"
+      :day-height="10"
+      @change="onChange"
+      @moved="onMoved"
+      @click-date="onClickDate"
+      @click-day="onClickDay"
+      @click-workweek="onClickWorkweek"
+      @click-head-workweek="onClickHeadWorkweek"
+      @click-head-day="onClickHeadDay"
     >
-      <template #week="{ week, weekdays, miniMode }">
-        <template>
-          <template v-for="(computedEvent, index) in getWeekEvents(week, weekdays)">
-            <q-badge
-              class="q-row-event"
-              :class="badgeClasses(computedEvent, 'day')"
-              :style="badgeStyles(computedEvent, 'day', week.length)"
+      <template #day="{ scope: { timestamp } }">
+        <template
+          v-for="event in eventsMap[timestamp.date]"
+          :key="event.id"
+        >
+          <div
+            :class="badgeClasses(event, 'day')"
+            :style="badgeStyles(event, 'day')"
+            class="my-event"
+          >
+            <abbr
+              :title="event.details"
+              class="tooltip"
             >
-              <template v-if="computedEvent.event">
-                <q-icon :name="computedEvent.event.icon" class="q-mr-xs"></q-icon>
-                <span class="ellipsis">{{ computedEvent.event.title }}</span>
-              </template>
-            </q-badge>
-          </template>
+              <span class="title q-calendar__ellipsis">{{ event.title + (event.time ? ' - ' + event.time : '') }}</span>
+            </abbr>
+          </div>
         </template>
       </template>
-    </q-calendar>
+    </q-calendar-month>
   </q-page>
 </template>
 
-<script>// normally you would not import "all" of QCalendar, but is needed for this example to work with UMD (codepen)
-import QCalendar from '@quasar/quasar-ui-qcalendar' // ui is aliased from '@quasar/quasar-ui-qcalendar'
-import {defineComponent,} from 'vue';
-
+<script>import {
+  QCalendarMonth,
+  addToDate,
+  parseDate,
+  parseTimestamp,
+  today
+} from '@quasar/quasar-ui-qcalendar'
+import '@quasar/quasar-ui-qcalendar/src/QCalendarVariables.sass'
+import '@quasar/quasar-ui-qcalendar/src/QCalendarTransitions.sass'
+import '@quasar/quasar-ui-qcalendar/src/QCalendarMonth.sass'
+import {defineComponent} from 'vue'
+// The function below is used to set up our demo data
 const CURRENT_DAY = new Date()
 
 function getCurrentDay(day) {
-    const newDay = new Date(CURRENT_DAY)
-    newDay.setDate(day)
-    const tm = QCalendar.parseDate(newDay)
-    return tm.date
+  const newDay = new Date(CURRENT_DAY)
+  newDay.setDate(day)
+  const tm = parseDate(newDay)
+  return tm.date
 }
 
 export default defineComponent({
-    name: 'Calendar',
-    setup() {
-        return {
-            selectedDate: '',
-            events: [
-                {
-                    title: '1st of the Month',
-                    color: 'orange',
-                    start: getCurrentDay(1),
-                    end: getCurrentDay(1)
-                },
-                {
-                    title: 'Sisters Birthday',
-                    color: 'green',
-                    start: getCurrentDay(4),
-                    end: getCurrentDay(4),
-                    icon: 'cake'
-                },
-                {
-                    title: 'Meeting',
-                    color: 'red',
-                    start: getCurrentDay(8),
-                    end: getCurrentDay(8),
-                    icon: 'group'
-                },
-                {
-                    title: 'Lunch',
-                    color: 'teal',
-                    start: getCurrentDay(8),
-                    end: getCurrentDay(8),
-                    icon: 'free_breakfast'
-                },
-                {
-                    title: 'Visit Mom',
-                    color: 'blue-grey',
-                    start: getCurrentDay(20),
-                    end: getCurrentDay(20),
-                    icon: 'card_giftcard'
-                },
-                {
-                    title: 'Conference',
-                    color: 'blue',
-                    start: getCurrentDay(22),
-                    end: getCurrentDay(22),
-                    icon: 'ondemand_video'
-                },
-                {
-                    title: 'Girlfriend',
-                    color: 'teal',
-                    start: getCurrentDay(22),
-                    end: getCurrentDay(22),
-                    icon: 'fastfood'
-                },
-                {
-                    title: 'Rowing',
-                    color: 'purple',
-                    start: getCurrentDay(27),
-                    end: getCurrentDay(28),
-                    icon: 'rowing'
-                },
-                {
-                    title: 'Vacation',
-                    color: 'purple',
-                    start: getCurrentDay(22),
-                    end: getCurrentDay(29),
-                    icon: 'flight'
-                }
-            ]
+  name: 'Calendar',
+  components: {
+    QCalendarMonth
+  },
+  data() {
+    return {
+      selectedDate: today(),
+      events: [
+        {
+          id: 1,
+          title: '1st of the Month',
+          details: 'Everything is funny as long as it is happening to someone else',
+          date: getCurrentDay(1),
+          bgcolor: 'orange'
+        },
+        {
+          id: 2,
+          title: 'Sisters Birthday',
+          details: 'Buy a nice present',
+          date: getCurrentDay(4),
+          bgcolor: 'green',
+          icon: 'fas fa-birthday-cake'
+        },
+        {
+          id: 3,
+          title: 'Meeting',
+          details: 'Time to pitch my idea to the company',
+          date: getCurrentDay(10),
+          time: '10:00',
+          duration: 120,
+          bgcolor: 'red',
+          icon: 'fas fa-handshake'
+        },
+        {
+          id: 4,
+          title: 'Lunch',
+          details: 'Company is paying!',
+          date: getCurrentDay(10),
+          time: '11:30',
+          duration: 90,
+          bgcolor: 'teal',
+          icon: 'fas fa-hamburger'
+        },
+        {
+          id: 5,
+          title: 'Visit mom',
+          details: 'Always a nice chat with mom',
+          date: getCurrentDay(20),
+          time: '17:00',
+          duration: 90,
+          bgcolor: 'grey',
+          icon: 'fas fa-car'
+        },
+        {
+          id: 6,
+          title: 'Conference',
+          details: 'Teaching Javascript 101',
+          date: getCurrentDay(22),
+          time: '08:00',
+          duration: 540,
+          bgcolor: 'blue',
+          icon: 'fas fa-chalkboard-teacher'
+        },
+        {
+          id: 7,
+          title: 'Girlfriend',
+          details: 'Meet GF for dinner at Swanky Restaurant',
+          date: getCurrentDay(22),
+          time: '19:00',
+          duration: 180,
+          bgcolor: 'teal',
+          icon: 'fas fa-utensils'
+        },
+        {
+          id: 8,
+          title: 'Rowing',
+          details: 'Stay in shape!',
+          date: getCurrentDay(27),
+          bgcolor: 'purple',
+          icon: 'rowing',
+          days: 2
+        },
+        {
+          id: 9,
+          title: 'Fishing',
+          details: 'Time for some weekend R&R',
+          date: getCurrentDay(27),
+          bgcolor: 'purple',
+          icon: 'fas fa-fish',
+          days: 2
+        },
+        {
+          id: 10,
+          title: 'Vacation',
+          details: 'Trails and hikes, going camping! Don\'t forget to bring bear spray!',
+          date: getCurrentDay(29),
+          bgcolor: 'purple',
+          icon: 'fas fa-plane',
+          days: 5
         }
-    },
-    methods: {
-        isCssColor(color) {
-            return !!color && !!color.match(/^(#|(rgb|hsl)a?\()/)
-        },
-
-        badgeClasses(infoEvent, type) {
-            const color = infoEvent.event !== void 0 ? infoEvent.event.color : 'transparent'
-            const cssColor = this.isCssColor(color)
-            const isHeader = type === 'header'
-
-            return {
-                [`text-white bg-${color}`]: !cssColor,
-                'full-width': !isHeader && (!infoEvent.side || infoEvent.side === 'full'),
-                'left-side': !isHeader && infoEvent.side === 'left',
-                'right-side': !isHeader && infoEvent.side === 'right',
-                'cursor-pointer': infoEvent.event !== void 0,
-                'event-void': infoEvent.event === void 0 // height: 0, padding: 0
-            }
-        },
-
-        badgeStyles(infoEvent, type, weekLength, timeStartPos, timeDurationHeight) {
-            const s = {}
-            if (timeStartPos) {
-                s.top = timeStartPos(infoEvent.event.time) + 'px'
-            }
-            if (timeDurationHeight) {
-                s.height = timeDurationHeight(infoEvent.event.duration) + 'px'
-            }
-            if (infoEvent.size !== void 0) {
-                s.width = ((100 / weekLength) * infoEvent.size) + '% !important'
-            }
-            // s['align-items'] = 'flex-start'
-            return s
-        },
-
-        getWeekEvents(week, weekdays) {
-            const tsFirstDay = QCalendar.parsed(week[0].date + ' 00:00')
-            const tsLastDay = QCalendar.parsed(week[week.length - 1].date + ' 23:59')
-            const firstDay = QCalendar.getDayIdentifier(tsFirstDay)
-            const lastDay = QCalendar.getDayIdentifier(tsLastDay)
-
-            const eventsWeek = []
-            this.events.forEach((event, id) => {
-                const tsStartDate = QCalendar.parsed(event.start + ' 00:00')
-                const tsEndDate = QCalendar.parsed(event.end + ' 23:59')
-                const startDate = QCalendar.getDayIdentifier(tsStartDate)
-                const endDate = QCalendar.getDayIdentifier(tsEndDate)
-
-                if (this.isBetweenDatesWeek(startDate, endDate, firstDay, lastDay)) {
-                    const left = QCalendar.daysBetween(tsFirstDay, tsStartDate, true)
-                    const right = QCalendar.daysBetween(tsEndDate, tsLastDay, true)
-
-                    eventsWeek.push({
-                        id, // index event
-                        left, // Position initial day [0-6]
-                        right, // Number days available
-                        size: week.length - (left + right), // Size current event (in days)
-                        event // Info
-                    })
-                }
-            })
-
-            const events = []
-            if (eventsWeek.length > 0) {
-                const infoWeek = eventsWeek.sort((a, b) => a.left - b.left)
-                infoWeek.forEach((event, i) => {
-                    this.insertEvent(events, week.length, infoWeek, i, 0, 0)
-                })
-            }
-
-            return events
-        },
-
-        insertEvent(events, weekLength, infoWeek, index, availableDays, level) {
-            const iEvent = infoWeek[index]
-            if (iEvent !== void 0 && iEvent.left >= availableDays) {
-                // If you have space available, more events are placed
-                if (iEvent.left - availableDays) {
-                    // It is filled with empty events
-                    events.push({size: iEvent.left - availableDays})
-                }
-                // The event is built
-                events.push({size: iEvent.size, event: iEvent.event})
-
-                if (level !== 0) {
-                    // If it goes into recursion, then the item is deleted
-                    infoWeek.splice(index, 1)
-                }
-
-                const currentAvailableDays = iEvent.left + iEvent.size
-
-                if (currentAvailableDays < weekLength) {
-                    const indexNextEvent = QCalendar.indexOf(infoWeek, e => e.id !== iEvent.id && e.left >= currentAvailableDays)
-
-                    this.insertEvent(
-                        events,
-                        weekLength,
-                        infoWeek,
-                        indexNextEvent !== -1 ? indexNextEvent : index,
-                        currentAvailableDays,
-                        level + 1
-                    )
-                } // else: There are no more days available, end of iteration
-            } else {
-                events.push({size: weekLength - availableDays})
-                // end of iteration
-            }
-        },
-
-        isBetweenDates(date, start, end) {
-            return date >= start && date <= end
-        },
-
-        isBetweenDatesWeek(dateStart, dateEnd, weekStart, weekEnd) {
-            return (
-                (dateEnd < weekEnd && dateEnd >= weekStart) ||
-                dateEnd === weekEnd ||
-                (dateEnd > weekEnd && dateStart <= weekEnd)
-            )
-        }
+      ]
     }
+  },
+  computed: {
+    eventsMap() {
+      const map = {}
+      if (this.events.length > 0) {
+        this.events.forEach(event => {
+          (map[event.date] = (map[event.date] || [])).push(event)
+          if (event.days !== undefined) {
+            let timestamp = parseTimestamp(event.date)
+            let days = event.days
+            // add a new event for each day
+            // skip 1st one which would have been done above
+            do {
+              timestamp = addToDate(timestamp, {day: 1})
+              if (!map[timestamp.date]) {
+                map[timestamp.date] = []
+              }
+              map[timestamp.date].push(event)
+              // already accounted for 1st day
+            } while (--days > 1)
+          }
+        })
+      }
+      console.log(map)
+      return map
+    }
+  },
+  methods: {
+    badgeClasses(event, type) {
+      return {
+        [`text-white bg-${event.bgcolor}`]: true,
+        'rounded-border': true
+      }
+    },
+    badgeStyles(day, event) {
+      const s = {}
+      // s.left = day.weekday === 0 ? 0 : (day.weekday * this.parsedCellWidth) + '%'
+      // s.top = 0
+      // s.bottom = 0
+      // s.width = (event.days * this.parsedCellWidth) + '%'
+      return s
+    },
+    onToday() {
+      this.$refs.calendar.moveToToday()
+    },
+    onPrev() {
+      this.$refs.calendar.prev()
+    },
+    onNext() {
+      this.$refs.calendar.next()
+    },
+    onMoved(data) {
+      console.log('onMoved', data)
+    },
+    onChange(data) {
+      console.log('onChange', data)
+    },
+    onClickDate(data) {
+      console.log('onClickDate', data)
+    },
+    onClickDay(data) {
+      console.log('onClickDay', data)
+    },
+    onClickWorkweek(data) {
+      console.log('onClickWorkweek', data)
+    },
+    onClickHeadDay(data) {
+      console.log('onClickHeadDay', data)
+    },
+    onClickHeadWorkweek(data) {
+      console.log('onClickHeadWorkweek', data)
+    }
+  }
 })
 </script>
 
-<style scoped>
+<style>
+.my-event {
+  position: relative;
+  font-size: 12px;
+  width: 100%;
+  margin: 1px 0 0 0;
+  justify-content: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
+}
 
+.title {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.text-white {
+  color: white
+}
+
+.bg-blue {
+  background: blue
+}
+
+.bg-green {
+  background: green
+}
+
+.bg-orange {
+  background: orange
+}
+
+.bg-red {
+  background: red
+}
+
+.bg-teal {
+  background: teal
+}
+
+.bg-grey {
+  background: grey
+}
+
+.bg-purple {
+  background: purple
+}
+
+.rounded-border {
+  border-radius: 2px
+}
+
+abbr.tooltip {
+  text-decoration: none
+}
 </style>

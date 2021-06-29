@@ -15,9 +15,9 @@ const routes = [
       {path: '/Ecommerce', component: () => import('pages/ProductCatalogues.vue')},
       {path: '/Pagination', component: () => import('pages/Pagination.vue')},
       {path: '/Charts', component: () => import('pages/Charts.vue')},
+      {path: '/Calendar', component: () => import('pages/Calendar.vue')},
 
       // Not completed yet
-      // {path: '/Calendar', component: () => import('pages/Calendar.vue')},
       // {path: '/Taskboard', component: () => import('pages/TaskBoard.vue')},
     ]
   },
