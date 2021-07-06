@@ -1,7 +1,7 @@
 <template>
-  <div class="row q-col-gutter-sm  q-py-sm">
+  <div class="row q-col-gutter-sm  q-pt-sm">
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <q-card class="q-ma-xs" style="background-color: #38b1c5">
+      <q-card class="" style="background-color: #38b1c5">
         <q-card-section class="text-h6 text-white">
           Today's View
         </q-card-section>
@@ -11,7 +11,7 @@
       </q-card>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <q-card class="q-ma-xs" style="background-color: #ea4b64">
+      <q-card class="" style="background-color: #ea4b64">
         <q-card-section class="text-h6 text-white">
           Daily Sales
         </q-card-section>
@@ -21,7 +21,7 @@
       </q-card>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <q-card class="q-ma-xs" style="background-color: #1e88e5">
+      <q-card class="" style="background-color: #1e88e5">
         <q-card-section class="text-h6 text-white">
           Today's User Visit
         </q-card-section>
