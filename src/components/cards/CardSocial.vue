@@ -3,7 +3,7 @@
     <q-card-section class="q-pa-none">
       <div class="row q-col-gutter-sm ">
         <div v-for="(item, index) in items" :key="index" class="col-md-3 col-sm-12 col-xs-12">
-          <q-item :style="`background-color: ${item.color1}`" class="q-pa-none q-ml-xs">
+          <q-item :style="`background-color: ${item.color1}`" class="q-pa-none">
             <q-item-section v-if="icon_position === 'left'" side :style="`background-color: ${item.color2}`"
                             class=" q-pa-lg q-mr-none text-white">
               <q-icon :name="item.icon" color="white" size="24px"></q-icon>

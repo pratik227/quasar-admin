@@ -10,7 +10,7 @@
       <card-with-image/>
     </div>
 
-    <div class="row q-col-gutter-sm  q-py-sm">
+    <div class="row q-col-gutter-sm  q-pb-sm">
       <todo-list/>
 
       <card-time-line/>
