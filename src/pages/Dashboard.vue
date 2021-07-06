@@ -4,13 +4,13 @@
     <card-social icon_position="left" />
 
     <card-charts />
-    
+
     <div class="row q-col-gutter-sm  q-py-sm">
       <tab-social />
       <card-with-image />
     </div>
 
-    <div class="row q-col-gutter-sm  q-py-sm">
+    <div class="row q-col-gutter-sm  q-pb-sm">
       <todo-list />
 
       <card-time-line />
