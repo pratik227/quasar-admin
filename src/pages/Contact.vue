@@ -16,25 +16,14 @@
                     </template>
                   </q-input>
                 </q-item-label>
-                <q-item-label header class="text-center">{{contacts_list.length}} CONTACTS</q-item-label>
+                <q-item-label header class="text-center">{{ contacts_list.length }} CONTACTS</q-item-label>
 
-                <q-item
-                  v-for="(contact, index) in contacts_list" 
-                  :key="index"
-                  @click="selected_contact=contact">
-                  <q-item-section avatar>
-                    <q-avatar>
-                      <img :src="contact.avatar">
-                    </q-avatar>
-                  </q-item-section>
 
-                  <q-item-section>
-                    <q-item-label lines="1">{{contact.name}}</q-item-label>
-                    <q-item-label caption lines="2">
-                      <span class="text-weight-bold">{{contact.position}}</span>
-                    </q-item-label>
-                  </q-item-section>
-                </q-item>
+                <span v-for="(contact, index) in contacts_list" :key="index" @click="selected_contact=contact">
+                  <contact-item
+                    :avatar="contact.avatar" :name="contact.name" :position="contact.position"></contact-item>
+                </span>
+
               </q-list>
             </q-tab-panel>
 
@@ -48,27 +37,13 @@
                     </template>
                   </q-input>
                 </q-item-label>
-                <q-item-label header class="text-center">{{favorites_list.length}} Favorites</q-item-label>
+                <q-item-label header class="text-center">{{ favorites_list.length }} Favorites</q-item-label>
 
-                <q-item
-                  v-for="(favorite, index) in favorites_list"
-                  :key="index"
-                  clickable
-                  v-ripple
-                >
-                  <q-item-section avatar>
-                    <q-avatar>
-                      <img :src="favorite.avatar">
-                    </q-avatar>
-                  </q-item-section>
+                <span v-for="(favorite, index) in favorites_list" :key="index" @click="selected_contact=favorite">
+                  <contact-item
+                    :avatar="favorite.avatar" :name="favorite.name" :position="favorite.position"></contact-item>
+                </span>
 
-                  <q-item-section>
-                    <q-item-label lines="1">{{favorite.name}}</q-item-label>
-                    <q-item-label caption lines="2">
-                      <span class="text-weight-bold">{{favorite.position}}</span>
-                    </q-item-label>
-                  </q-item-section>
-                </q-item>
               </q-list>
             </q-tab-panel>
 
@@ -96,9 +71,9 @@
 
             <q-item class="q-subtitle-1 q-pl-md">
               <q-item-section>
-                <q-item-label lines="1">{{selected_contact.name}}</q-item-label>
+                <q-item-label lines="1">{{ selected_contact.name }}</q-item-label>
                 <q-item-label caption lines="2">
-                  <span class="text-weight-bold">{{selected_contact.position}}</span>
+                  <span class="text-weight-bold">{{ selected_contact.position }}</span>
                 </q-item-label>
               </q-item-section>
             </q-item>
@@ -111,82 +86,15 @@
 
           </q-toolbar>
           <q-separator></q-separator>
-          <q-item clickable v-ripple>
-            <q-item-section avatar top>
-              <q-avatar icon="phone" color="grey-2" text-color="blue"/>
-            </q-item-section>
 
-            <q-item-section>
-              <q-item-label lines="1">{{selected_contact.phone}}</q-item-label>
-              <q-item-label caption class="text-grey-8">Phone</q-item-label>
-            </q-item-section>
+          <div v-for="detail, detail_index in detail_list">
 
-          </q-item>
-          <q-separator inset="item"></q-separator>
+            <contact-detail-item :icon="detail.icon" :text_color="detail.text_color"
+                                 :value="selected_contact[detail['field']]" :label="detail.label"></contact-detail-item>
 
-          <q-item clickable v-ripple>
-            <q-item-section avatar top>
-              <q-avatar icon="phone_iphone" color="grey-2" text-color="orange"/>
-            </q-item-section>
+            <q-separator inset="item" v-if="detail_index!=detail_list.length-1"></q-separator>
+          </div>
 
-            <q-item-section>
-              <q-item-label lines="1">{{selected_contact.secondary_phone}}</q-item-label>
-              <q-item-label caption class="text-grey-8">Secondary Phone</q-item-label>
-            </q-item-section>
-
-          </q-item>
-          <q-separator inset="item"></q-separator>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar top>
-              <q-avatar icon="mail" color="grey-2" text-color="grey-8"/>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label lines="1">{{selected_contact.email}}</q-item-label>
-              <q-item-label caption class="text-grey-8">Personal Email</q-item-label>
-            </q-item-section>
-
-          </q-item>
-          <q-separator inset="item"></q-separator>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar top>
-              <q-avatar icon="business_center" color="grey-2" text-color="grey-8"/>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label lines="1">{{selected_contact.company_email}}</q-item-label>
-              <q-item-label caption class="text-grey-8">Company Email</q-item-label>
-            </q-item-section>
-
-          </q-item>
-          <q-separator inset="item"></q-separator>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar top>
-              <q-avatar icon="location_on" color="grey-2" text-color="grey-8"/>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label lines="1">{{selected_contact.address}}</q-item-label>
-              <q-item-label caption class="text-grey-8">Address</q-item-label>
-            </q-item-section>
-
-          </q-item>
-          <q-separator inset="item"></q-separator>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar top>
-              <q-avatar icon="home_work" color="grey-2" text-color="grey-8"/>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label lines="1">{{selected_contact.website}}</q-item-label>
-              <q-item-label caption class="text-grey-8">Website</q-item-label>
-            </q-item-section>
-
-          </q-item>
         </q-card>
       </div>
     </div>
@@ -204,26 +112,13 @@
                   </template>
                 </q-input>
               </q-item-label>
-              <q-item-label header class="text-center">{{contacts_list.length}} CONTACTS</q-item-label>
+              <q-item-label header class="text-center">{{ contacts_list.length }} CONTACTS</q-item-label>
 
-              <q-item
-                v-for="(contact, index) in contacts_list"
-                :key="index"
-                @click="selected_contact=contact"
-              >
-                <q-item-section avatar>
-                  <q-avatar>
-                    <img :src="contact.avatar">
-                  </q-avatar>
-                </q-item-section>
+              <span v-for="(contact, index) in contacts_list" :key="index" @click="selected_contact=contact">
+                <contact-item
+                  :avatar="contact.avatar" :name="contact.name" :position="contact.position"></contact-item>
+              </span>
 
-                <q-item-section>
-                  <q-item-label lines="1">{{contact.name}}</q-item-label>
-                  <q-item-label caption lines="2">
-                    <span class="text-weight-bold">{{contact.position}}</span>
-                  </q-item-label>
-                </q-item-section>
-              </q-item>
             </q-list>
           </q-tab-panel>
 
@@ -237,27 +132,13 @@
                   </template>
                 </q-input>
               </q-item-label>
-              <q-item-label header class="text-center">{{favorites_list.length}} Favorites</q-item-label>
+              <q-item-label header class="text-center">{{ favorites_list.length }} Favorites</q-item-label>
 
-              <q-item
-                v-for="(favorite, index) in favorites_list"
-                :key="index"
-                clickable
-                v-ripple 
-              >
-                <q-item-section avatar>
-                  <q-avatar>
-                    <img :src="favorite.avatar">
-                  </q-avatar>
-                </q-item-section>
+              <span v-for="(favorite, index) in favorites_list" :key="index" @click="selected_contact=favorite">
+                <contact-item
+                  :avatar="favorite.avatar" :name="favorite.name" :position="favorite.position"></contact-item>
+              </span>
 
-                <q-item-section>
-                  <q-item-label lines="1">{{favorite.name}}</q-item-label>
-                  <q-item-label caption lines="2">
-                    <span class="text-weight-bold">{{favorite.position}}</span>
-                  </q-item-label>
-                </q-item-section>
-              </q-item>
             </q-list>
           </q-tab-panel>
 
@@ -287,9 +168,9 @@
 
             <q-item class="q-subtitle-1 q-pl-md">
               <q-item-section>
-                <q-item-label lines="1">{{selected_contact.name}}</q-item-label>
+                <q-item-label lines="1">{{ selected_contact.name }}</q-item-label>
                 <q-item-label caption lines="2">
-                  <span class="text-weight-bold">{{selected_contact.position}}</span>
+                  <span class="text-weight-bold">{{ selected_contact.position }}</span>
                 </q-item-label>
               </q-item-section>
             </q-item>
@@ -303,82 +184,14 @@
 
           </q-toolbar>
           <q-separator></q-separator>
-          <q-item clickable v-ripple>
-            <q-item-section avatar top>
-              <q-avatar icon="phone" color="grey-2" text-color="blue"/>
-            </q-item-section>
 
-            <q-item-section>
-              <q-item-label lines="1">{{selected_contact.phone}}</q-item-label>
-              <q-item-label caption class="text-grey-8">Phone</q-item-label>
-            </q-item-section>
+          <div v-for="detail, detail_index in detail_list">
+            <contact-detail-item :icon="detail.icon" :text_color="detail.text_color"
+                                 :value="selected_contact[detail['field']]" :label="detail.label"></contact-detail-item>
 
-          </q-item>
-          <q-separator inset="item"></q-separator>
+            <q-separator inset="item" v-if="detail_index!=detail_list.length-1"></q-separator>
+          </div>
 
-          <q-item clickable v-ripple>
-            <q-item-section avatar top>
-              <q-avatar icon="phone_iphone" color="grey-2" text-color="orange"/>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label lines="1">{{selected_contact.secondary_phone}}</q-item-label>
-              <q-item-label caption class="text-grey-8">Secondary Phone</q-item-label>
-            </q-item-section>
-
-          </q-item>
-          <q-separator inset="item"></q-separator>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar top>
-              <q-avatar icon="mail" color="grey-2" text-color="grey-8"/>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label lines="1">{{selected_contact.email}}</q-item-label>
-              <q-item-label caption class="text-grey-8">Personal Email</q-item-label>
-            </q-item-section>
-
-          </q-item>
-          <q-separator inset="item"></q-separator>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar top>
-              <q-avatar icon="business_center" color="grey-2" text-color="grey-8"/>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label lines="1">{{selected_contact.company_email}}</q-item-label>
-              <q-item-label caption class="text-grey-8">Company Email</q-item-label>
-            </q-item-section>
-
-          </q-item>
-          <q-separator inset="item"></q-separator>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar top>
-              <q-avatar icon="location_on" color="grey-2" text-color="grey-8"/>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label lines="1">{{selected_contact.address}}</q-item-label>
-              <q-item-label caption class="text-grey-8">Address</q-item-label>
-            </q-item-section>
-
-          </q-item>
-          <q-separator inset="item"></q-separator>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar top>
-              <q-avatar icon="home_work" color="grey-2" text-color="grey-8"/>
-            </q-item-section>
-
-            <q-item-section>
-              <q-item-label lines="1">{{selected_contact.website}}</q-item-label>
-              <q-item-label caption class="text-grey-8">Website</q-item-label>
-            </q-item-section>
-
-          </q-item>
         </q-card>
       </transition>
     </div>
@@ -387,102 +200,162 @@
 
 <script>
 
-    export default {
-        name: "Contact",
-        data() {
-            return {
-                tab: 'all',
-                size: {},
-                search: '',
-                contacts_list: [
-                    {
-                        name: 'Pratik Patel',
-                        position: 'Developer',
-                        avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
-                        email: 'pratikpatelpp802@gmail.com',
-                        company_email: 'pratikpatelpp802@gmail.com',
-                        website: 'www.test.com',
-                        phone: '+9910101010',
-                        secondary_phone: '+9910101010',
-                        address: 'BB 101 Om Sai Residency Palsana'
-                    },
-                    {
-                        name: 'Razvan Stoenescu',
-                        position: 'Developer',
-                        avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
-                        email: 'mailto:razvan@quasar.dev',
-                        company_email: 'mailto:razvan@quasar.dev',
-                        website: 'https://github.com/rstoenescu',
-                        phone: '+1-004-658-0042',
-                        secondary_phone: '(331) 009-4655 x3147',
-                        address: '92290 Lisa Cove'
-                    },
-                    {
-                        name: 'Jeff Galbraith',
-                        position: 'Developer',
-                        avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
-                        email: 'mailto:jeff@quasar.dev',
-                        company_email: 'mailto:jeff@quasar.dev',
-                        website: 'http://jeffgalbraith.dev/',
-                        phone: '175.718.4633 x878',
-                        secondary_phone: '175.718.4633 x878',
-                        address: 'Calgary, Canada'
-                    },
-                    {
-                        name: 'Brunhilde Panswick',
-                        position: 'Administrator',
-                        avatar: 'https://cdn.quasar.dev/img/avatar2.jpg',
-                        email: 'test.@quasar.dev',
-                        company_email: 'test.@quasar.dev',
-                        website: 'http://test1.dev/',
-                        phone: '175.718.4633 x878',
-                        secondary_phone: '175.718.4633 x878',
-                        address: 'Calgary, Canada'
-                    },
-                    {
-                        name: 'Winfield Stapforth',
-                        position: 'Administrator',
-                        avatar: 'https://cdn.quasar.dev/img/avatar6.jpg',
-                        email: 'test2.@quasar.dev',
-                        company_email: 'test.@quasar.dev',
-                        website: 'http://test2.dev/',
-                        phone: '175.718.4633 x878',
-                        secondary_phone: '175.718.4633 x878',
-                        address: 'Calgary, Canada'
-                    },
+export default {
+  name: "Contact",
+  components: {
+    ContactDetailItem: () => import('components/ContactDetailItem'),
+    ContactItem: () => import('components/ContactItem')
+  },
+  data() {
+    return {
+      tab: 'all',
+      size: {},
+      search: '',
+      contacts_list: [
+        {
+          name: 'Pratik Patel',
+          position: 'Developer',
+          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+          email: 'pratikpatelpp802@gmail.com',
+          company_email: 'pratikpatelpp802@gmail.com',
+          website: 'www.test.com',
+          phone: '+9910101010',
+          secondary_phone: '+9910101010',
+          address: 'BB 101 Om Sai Residency Palsana'
+        },
+        {
+          name: 'Razvan Stoenescu',
+          position: 'Developer',
+          avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
+          email: 'mailto:razvan@quasar.dev',
+          company_email: 'mailto:razvan@quasar.dev',
+          website: 'https://github.com/rstoenescu',
+          phone: '+1-004-658-0042',
+          secondary_phone: '(331) 009-4655 x3147',
+          address: '92290 Lisa Cove'
+        },
+        {
+          name: 'Jeff Galbraith',
+          position: 'Developer',
+          avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
+          email: 'mailto:jeff@quasar.dev',
+          company_email: 'mailto:jeff@quasar.dev',
+          website: 'http://jeffgalbraith.dev/',
+          phone: '175.718.4633 x878',
+          secondary_phone: '175.718.4633 x878',
+          address: 'Calgary, Canada'
+        },
+        {
+          name: 'Brunhilde Panswick',
+          position: 'Administrator',
+          avatar: 'https://cdn.quasar.dev/img/avatar2.jpg',
+          email: 'test.@quasar.dev',
+          company_email: 'test.@quasar.dev',
+          website: 'http://test1.dev/',
+          phone: '175.718.4633 x878',
+          secondary_phone: '175.718.4633 x878',
+          address: 'Calgary, Canada'
+        },
+        {
+          name: 'Winfield Stapforth',
+          position: 'Administrator',
+          avatar: 'https://cdn.quasar.dev/img/avatar6.jpg',
+          email: 'test2.@quasar.dev',
+          company_email: 'test.@quasar.dev',
+          website: 'http://test2.dev/',
+          phone: '175.718.4633 x878',
+          secondary_phone: '175.718.4633 x878',
+          address: 'Calgary, Canada'
+        },
 
-                ],
-                favorites_list: [
-                    {
-                        name: 'Pratik Patel',
-                        position: 'Developer',
-                        avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4'
-                    },
-                    {
-                        name: 'Razvan Stoenescu',
-                        position: 'Developer',
-                        avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg'
-                    },
-                    {
-                        name: 'Jeff Galbraith',
-                        position: 'Developer',
-                        avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg'
-                    },
-                ],
-                selected_contact: {}
-            }
+      ],
+      favorites_list: [
+        {
+          name: 'Pratik Patel',
+          position: 'Developer',
+          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+          email: 'pratikpatelpp802@gmail.com',
+          company_email: 'pratikpatelpp802@gmail.com',
+          website: 'www.test.com',
+          phone: '+9910101010',
+          secondary_phone: '+9910101010',
+          address: 'BB 101 Om Sai Residency Palsana'
         },
-        methods: {
-            onResize(size) {
-                this.size = size
-            },
+        {
+          name: 'Razvan Stoenescu',
+          position: 'Developer',
+          avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
+          email: 'mailto:razvan@quasar.dev',
+          company_email: 'mailto:razvan@quasar.dev',
+          website: 'https://github.com/rstoenescu',
+          phone: '+1-004-658-0042',
+          secondary_phone: '(331) 009-4655 x3147',
+          address: '92290 Lisa Cove'
         },
-        created() {
-            if (!this.$q.screen.lt.sm) {
-                this.selected_contact = this.contacts_list[0];
-            }
-        }
+        {
+          name: 'Jeff Galbraith',
+          position: 'Developer',
+          avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
+          email: 'mailto:jeff@quasar.dev',
+          company_email: 'mailto:jeff@quasar.dev',
+          website: 'http://jeffgalbraith.dev/',
+          phone: '175.718.4633 x878',
+          secondary_phone: '175.718.4633 x878',
+          address: 'Calgary, Canada'
+        },
+      ],
+      selected_contact: {},
+      detail_list: [
+        {
+          icon: 'phone',
+          label: 'Phone',
+          field: 'phone',
+          text_color: 'blue'
+        },
+        {
+          icon: 'phone_iphone',
+          label: 'Secondary Phone',
+          field: 'secondary_phone',
+          text_color: 'orange'
+        },
+        {
+          icon: 'mail',
+          label: 'Personal Email',
+          field: 'email',
+          text_color: 'grey-8'
+        },
+        {
+          icon: 'business_center',
+          label: 'Company Email',
+          field: 'company_email',
+          text_color: 'grey-8'
+        },
+        {
+          icon: 'location_on',
+          label: 'Address',
+          field: 'address',
+          text_color: 'grey-8'
+        },
+        {
+          icon: 'home_work',
+          label: 'Website',
+          field: 'website',
+          text_color: 'grey-8'
+        },
+      ]
     }
+  },
+  methods: {
+    onResize(size) {
+      this.size = size
+    },
+  },
+  created() {
+    if (!this.$q.screen.lt.sm) {
+      this.selected_contact = this.contacts_list[0];
+    }
+  }
+}
 </script>
 
 <style scoped>

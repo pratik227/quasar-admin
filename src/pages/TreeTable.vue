@@ -35,12 +35,13 @@
 </template>
 
 <script>
-    import CustomHierarchy from "../components/CustomHierarchy";
-    import SimpleHierarchy from "../components/SimpleHierarchy";
 
     export default {
         name: "TreeTable",
-        components: {SimpleHierarchy, CustomHierarchy}
+        components: {
+          SimpleHierarchy: () => import('components/tree-table/SimpleHierarchy'),
+          CustomHierarchy: () => import('components/tree-table/CustomHierarchy')
+        }
     }
 </script>
 

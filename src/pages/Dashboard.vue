@@ -30,7 +30,7 @@
         CardWithImage: () =>  import('components/cards/CardWithImage'),
         CardTimeLine: () =>  import('components/cards/CardTimeLine'),
         TodoList: () =>  import('components/list/TodoList'),
-        TableVisits: () =>  import('components/table/TableVisits'),
+        TableVisits: () =>  import('components/tables/TableVisits'),
     },
     data() {
       return {
