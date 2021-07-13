@@ -3,7 +3,7 @@
 
     <card-social icon_position="left"/>
 
-<!--    <card-charts/>-->
+    <card-charts/>
 
     <div class="row q-col-gutter-sm  q-py-sm">
       <tab-social/>
@@ -27,6 +27,7 @@ export default defineComponent({
   name: 'PageIndex',
   components: {
     CardSocial: defineAsyncComponent(() => import('components/cards/CardSocial')),
+    CardCharts: defineAsyncComponent(() => import('components/cards/CardCharts')),
     // CardCharts: () => import('components/cards/CardCharts'),
     TabSocial: defineAsyncComponent(() => import('components/tabs/TabSocial')),
     CardWithImage: defineAsyncComponent(() => import('components/cards/CardWithImage')),

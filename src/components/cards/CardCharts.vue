@@ -6,7 +6,7 @@
           Today's View
         </q-card-section>
         <q-card-section class="q-pa-none">
-          <IEcharts style="height: 250px" :option="LineChart2" :resizable="true"/>
+          <div ref="linechart" id="linechart" style="height: 250px;"></div>
         </q-card-section>
       </q-card>
     </div>
@@ -16,7 +16,7 @@
           Daily Sales
         </q-card-section>
         <q-card-section class="q-pa-none">
-          <IEcharts style="height: 250px" :option="BarChart" :resizable="true"/>
+          <div ref="barchart" id="barchart" style="height: 250px;"></div>
         </q-card-section>
       </q-card>
     </div>
@@ -26,21 +26,21 @@
           Today's User Visit
         </q-card-section>
         <q-card-section class="q-pa-none">
-          <IEcharts style="height: 250px" :option="LineChart" :resizable="true"/>
+          <div ref="linechart2" id="linechart2" style="height: 250px;"></div>
         </q-card-section>
       </q-card>
     </div>
+
+    <q-resize-observer @resize="onResize"/>
   </div>
 </template>
 
 <script>
-import IEcharts from 'vue-echarts-v3/src/full.js'
-export default {
+import {defineComponent, defineAsyncComponent} from 'vue';
+
+export default defineComponent({
   name: 'CardCharts',
-  components: {
-    IEcharts
-  },
-  data () {
+  setup () {
     return {
       BarChart: {
         "tooltip": {"show": true},
@@ -114,7 +114,7 @@ export default {
             }, {"label": "18D", "max": 500, "sales": 125}, {"label": "19D", "max": 500, "sales": 220}]
         }
     },
-    LineChart: {
+      LineChart: {
         "tooltip": {"show": true},
         "title": {"show": true, "textStyle": {"color": "rgba(0, 0, 0 , .87)", "fontFamily": "sans-serif"}},
         "grid": {"containLabel": true, "left": "0", "bottom": "0", "right": "0"},
@@ -171,7 +171,7 @@ export default {
         },
         "color": ["#2196f3"]
     },
-    LineChart2: {
+      LineChart2: {
         "tooltip": {"show": true},
         "title": {"show": true, "textStyle": {"color": "rgba(0, 0, 0 , .87)", "fontFamily": "sans-serif"}},
         "grid": {"containLabel": true, "left": "0", "bottom": "0", "right": "0"},
@@ -228,7 +228,44 @@ export default {
         },
         "color": ["#45c2c5"]
     },
+      line_chart: null,
+      line_chart_2: null,
+      bar_chart: null
+    }
+  },
+  mounted() {
+    this.init();
+  },
+  methods: {
+    init() {
+      let lineChart = document.getElementById('linechart');
+      echarts.dispose(lineChart);
+      let theme = this.model ? 'dark' : 'light';
+      this.line_chart = echarts.init(lineChart, theme);
+      this.line_chart.setOption(this.LineChart2);
+
+
+      let barchart = document.getElementById('barchart');
+      echarts.dispose(barchart);
+      this.bar_chart = echarts.init(barchart, theme);
+      this.bar_chart.setOption(this.BarChart)
+
+      let linechart = document.getElementById('linechart2');
+      echarts.dispose(linechart);
+      this.line_chart_2 = echarts.init(linechart, theme);
+      this.line_chart_2.setOption(this.LineChart)
+    },
+    onResize() {
+      if (this.line_chart) {
+        this.line_chart.resize();
+      }
+      if (this.bar_chart) {
+        this.bar_chart.resize();
+      }
+      if (this.line_chart_2) {
+        this.line_chart_2.resize();
+      }
     }
   }
-}
+})
 </script>
