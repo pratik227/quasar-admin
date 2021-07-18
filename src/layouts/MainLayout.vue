@@ -62,14 +62,14 @@
             <q-item-label>Dashboard</q-item-label>
           </q-item-section>
         </q-item>
-<!--        <q-item to="/Dashboard2" active-class="q-item-no-link-highlighting">-->
-<!--          <q-item-section avatar>-->
-<!--            <q-icon name="dashboard"/>-->
-<!--          </q-item-section>-->
-<!--          <q-item-section>-->
-<!--            <q-item-label>CRM Dashboard</q-item-label>-->
-<!--          </q-item-section>-->
-<!--        </q-item>-->
+        <q-item to="/Dashboard2" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="dashboard"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>CRM Dashboard</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-expansion-item
           icon="pages"
           label="Pages"
@@ -166,15 +166,14 @@
             <q-item-label>Mail</q-item-label>
           </q-item-section>
         </q-item>
-        <!--        not completed-->
-<!--        <q-item to="/TreeTable" active-class="q-item-no-link-highlighting">-->
-<!--          <q-item-section avatar>-->
-<!--            <q-icon name="list"/>-->
-<!--          </q-item-section>-->
-<!--          <q-item-section>-->
-<!--            <q-item-label>TreeTable</q-item-label>-->
-<!--          </q-item-section>-->
-<!--        </q-item>-->
+        <q-item to="/TreeTable" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="list"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>TreeTable</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-item to="/Charts" active-class="q-item-no-link-highlighting">
           <q-item-section avatar>
             <q-icon name="insert_chart"/>

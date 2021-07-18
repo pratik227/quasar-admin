@@ -19,7 +19,8 @@
   },
   "devDependencies": {
     "@quasar/app": "^3.0.0",
-    "@quasar/quasar-app-extension-qcalendar": "^4.0.0-beta.2"
+    "@quasar/quasar-app-extension-qcalendar": "^4.0.0-beta.2",
+    "quasar-app-extension-qhierarchy": "^1.0.0-alpha.1"
   },
   "browserslist": [
     "last 10 Chrome versions",
