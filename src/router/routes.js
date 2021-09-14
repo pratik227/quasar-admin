@@ -18,6 +18,7 @@ const routes = [
       {path: '/Pagination', component: () => import('pages/Pagination.vue')},
       {path: '/Charts', component: () => import('pages/Charts.vue')},
       {path: '/Calendar', component: () => import('pages/Calendar.vue')},
+      {path: '/Directory', component: () => import('pages/Directory.vue')},
 
       // Not completed yet
       // {path: '/Taskboard', component: () => import('pages/TaskBoard.vue')},

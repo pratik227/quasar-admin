@@ -166,6 +166,16 @@
             <q-item-label>Mail</q-item-label>
           </q-item-section>
         </q-item>
+
+        <q-item to="/directory" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="card_giftcard"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Directory</q-item-label>
+          </q-item-section>
+        </q-item>
+
         <q-item to="/TreeTable" active-class="q-item-no-link-highlighting">
           <q-item-section avatar>
             <q-icon name="list"/>
