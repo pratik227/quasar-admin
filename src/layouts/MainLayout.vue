@@ -192,6 +192,22 @@
             <q-item-label>Charts</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item to="/Footer" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="info"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Footer</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item to="/CardHeader" active-class="q-item-no-link-highlighting">
+          <q-item-section avatar>
+            <q-icon name="card_giftcard"/>
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Card Header</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-item to="/Cards" active-class="q-item-no-link-highlighting">
           <q-item-section avatar>
             <q-icon name="card_giftcard"/>
