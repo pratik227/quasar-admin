@@ -4,6 +4,8 @@
 
 Free Quasar Admin Template based on Vue.js and used Quasar Framework.
 
+If you want to buy new dashboards NFT then hurry up - https://opensea.io/collection/dashboards
+
 ## Site: [https://next-quasar-admin.netlify.app/](https://next-quasar-admin.netlify.app/)
 
 # Support
