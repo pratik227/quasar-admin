@@ -28,7 +28,7 @@ import {defineComponent, defineAsyncComponent} from 'vue'
 
 export default defineComponent({
   name: "Charts",
-  components: {
+  components: { 
     PieChart: defineAsyncComponent(() => import('components/charts/PieChart')),
     ScatterPlot: defineAsyncComponent(() => import('components/charts/ScatterPlot')),
     LineChart: defineAsyncComponent(() => import('components/charts/LineChart')),
