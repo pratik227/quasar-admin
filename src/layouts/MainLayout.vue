@@ -331,7 +331,8 @@ export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLink
+    EssentialLink,
+    Messages
   },
 
   setup () {
