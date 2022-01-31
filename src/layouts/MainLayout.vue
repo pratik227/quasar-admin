@@ -48,6 +48,7 @@
     </q-header>
 
     <q-drawer
+      style="background-color : #eeeeee; "
       v-model="leftDrawerOpen"
       show-if-above
       bordered
@@ -61,7 +62,7 @@
           <q-item-section>
             <q-item-label>Dashboard</q-item-label>
           </q-item-section>
-        </q-item>
+        </q-item> 
         <q-item to="/Dashboard2" active-class="q-item-no-link-highlighting">
           <q-item-section avatar>
             <q-icon name="dashboard"/>
