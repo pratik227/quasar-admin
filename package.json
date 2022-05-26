@@ -9,17 +9,17 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "vue-i18n": "^9.0.0-beta.0",
-    "vuedraggable": "^4.0.1",
     "@quasar/extras": "^1.0.0",
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "quasar": "^2.0.0",
+    "vue-i18n": "^9.0.0-beta.0",
+    "vuedraggable": "^4.0.1",
     "vuex": "^4.0.1"
   },
   "devDependencies": {
-    "@quasar/app": "^3.0.0",
-    "@quasar/quasar-app-extension-qcalendar": "^4.0.0-beta.2",
+    "@quasar/app-webpack": "^3.5.3",
+    "@quasar/quasar-app-extension-qcalendar": "^4.0.0-beta.15",
     "quasar-app-extension-qhierarchy": "^1.0.0-alpha.1"
   },
   "browserslist": [
