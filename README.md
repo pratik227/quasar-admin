@@ -1,3 +1,11 @@
+
+
+## Quasar Admin Premium Demo: [https://quasar-admin-premium.netlify.app/](https://quasar-admin-premium.netlify.app/)
+
+
+# Looking for beautiful premium Quasar admin template for Vue 3? Please drop me an [email](mailto:pratikpatelpp802@gmail.com). Buy only at <b>$69</b>!
+
+
 # Quasar Admin Template
 
 [![MadeWithVueJs.com shield](https://madewithvuejs.com/storage/repo-shields/2604-shield.svg)](https://madewithvuejs.com/p/quasar-admin/shield-link)
