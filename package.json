@@ -1,8 +1,8 @@
 {
-  "name": "quasar-admin2",
+  "name": "Quasar Admin",
   "version": "0.0.1",
-  "description": "A Quasar Project",
-  "productName": "Quasar App",
+  "description": "Quasar Admin",
+  "productName": "Quasar Admin",
   "author": "pratikpatelpp802@gmail.com",
   "private": true,
   "scripts": {
