@@ -1,6 +1,6 @@
 <template>
   <span>
-    <q-list bordered class="bg-white text-black">
+    <q-list bordered class="bg-white no-shadow rounded-borders text-black">
       <q-item v-for="todo in todos" :key="todo.id">
         <q-item-section avatar>
           <q-checkbox
@@ -27,7 +27,7 @@
 import {defineComponent} from 'vue'
 import {ref} from 'vue'
 
-const todos = [
+const todos = ref([
   {
     id: 1,
     completed: false,
@@ -70,7 +70,7 @@ const todos = [
     todo: 'Task Item 7',
     todo_desc: 'Task Item 7 Desc'
   }
-]
+])
 export default defineComponent({
   name: "Todo",
   setup() {

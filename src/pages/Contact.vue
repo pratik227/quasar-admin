@@ -4,7 +4,7 @@
 
     <div class="row" v-if="!$q.screen.lt.sm">
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <q-card class="no-border no-border">
+        <q-card class="no-shadow" bordered>
           <q-tab-panels v-model="tab" animated class="bg-white">
             <q-tab-panel name="all" class="q-pa-none full-height" :style="{'height':size['height']-80+'px !important'}">
               <q-list class="">
@@ -60,7 +60,7 @@
         </q-card>
       </div>
       <div class="col-lg-8 q-pl-xs col-md-8 col-sm-12 col-xs-12">
-        <q-card class="no-border no-border" :style="{'height':size['height']-24+'px !important'}">
+        <q-card class="no-shadow" bordered :style="{'height':size['height']-24+'px !important'}">
           <q-toolbar class="text-black ">
             <q-btn round flat class="q-pa-sm">
               <q-avatar size="80px">
@@ -339,8 +339,8 @@ const favorites_list = [
 export default defineComponent({
   name: "Contact",
   components: {
-    ContactDetailItem: defineAsyncComponent(() => import('components/ContactDetailItem')),
-    ContactItem: defineAsyncComponent(() => import('components/ContactItem'))
+    ContactDetailItem: defineAsyncComponent(() => import('components/ContactDetailItem.vue')),
+    ContactItem: defineAsyncComponent(() => import('components/ContactItem.vue'))
   },
   setup() {
 

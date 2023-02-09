@@ -1,5 +1,5 @@
 <template>
-  <q-card class="bg-transparent no-shadow no-border">
+  <q-card class="bg-transparent no-shadow no-border" bordered>
     <q-card-section class="q-pa-none">
       <div class="row q-col-gutter-sm ">
         <div v-for="(item, index) in items" :key="index" class="col-md-3 col-sm-12 col-xs-12">

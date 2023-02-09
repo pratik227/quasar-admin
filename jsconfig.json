@@ -23,6 +23,9 @@
       "boot/*": [
         "src/boot/*"
       ],
+      "stores/*": [
+        "src/stores/*"
+      ],
       "vue$": [
         "node_modules/vue/dist/vue.runtime.esm-bundler.js"
       ]

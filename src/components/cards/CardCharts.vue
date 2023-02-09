@@ -1,45 +1,61 @@
 <template>
   <div class="row q-col-gutter-sm  q-py-sm">
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <q-card class="q-ma-xs" style="background-color: #38b1c5">
+      <q-card class="q-ma-xs no-shadow" bordered style="background-color: #38b1c5">
         <q-card-section class="text-h6 text-white">
           Today's View
         </q-card-section>
         <q-card-section class="q-pa-none">
-          <div ref="linechart" id="linechart" style="height: 250px;"></div>
+          <ECharts :option="LineChart2"
+                   class="q-mt-md"
+                   :resizable="true"
+                   autoresize style="height: 250px;"
+          />
         </q-card-section>
       </q-card>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <q-card class="q-ma-xs" style="background-color: #ea4b64">
+      <q-card class="q-ma-xs no-shadow" bordered style="background-color: #ea4b64">
         <q-card-section class="text-h6 text-white">
           Daily Sales
         </q-card-section>
         <q-card-section class="q-pa-none">
-          <div ref="barchart" id="barchart" style="height: 250px;"></div>
+          <ECharts :option="BarChart"
+                   class="q-mt-md"
+                   :resizable="true"
+                   autoresize style="height: 250px;"
+          />
         </q-card-section>
       </q-card>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <q-card class="q-ma-xs" style="background-color: #1e88e5">
+      <q-card class="q-ma-xs no-shadow" bordered style="background-color: #1e88e5">
         <q-card-section class="text-h6 text-white">
           Today's User Visit
         </q-card-section>
         <q-card-section class="q-pa-none">
-          <div ref="linechart2" id="linechart2" style="height: 250px;"></div>
+          <ECharts :option="LineChart"
+                   class="q-mt-md"
+                   :resizable="true"
+                   autoresize style="height: 250px;"
+          />
         </q-card-section>
       </q-card>
     </div>
 
-    <q-resize-observer @resize="onResize"/>
   </div>
 </template>
 
 <script>
 import {defineComponent, defineAsyncComponent} from 'vue';
+import * as echarts from 'echarts';
+import ECharts from "vue-echarts";
 
 export default defineComponent({
   name: 'CardCharts',
+  components:{
+    ECharts
+  },
   setup () {
     return {
       BarChart: {
@@ -228,44 +244,7 @@ export default defineComponent({
         },
         "color": ["#45c2c5"]
     },
-      line_chart: null,
-      line_chart_2: null,
-      bar_chart: null
     }
   },
-  mounted() {
-    this.init();
-  },
-  methods: {
-    init() {
-      let lineChart = document.getElementById('linechart');
-      echarts.dispose(lineChart);
-      let theme = this.model ? 'dark' : 'light';
-      this.line_chart = echarts.init(lineChart, theme);
-      this.line_chart.setOption(this.LineChart2);
-
-
-      let barchart = document.getElementById('barchart');
-      echarts.dispose(barchart);
-      this.bar_chart = echarts.init(barchart, theme);
-      this.bar_chart.setOption(this.BarChart)
-
-      let linechart = document.getElementById('linechart2');
-      echarts.dispose(linechart);
-      this.line_chart_2 = echarts.init(linechart, theme);
-      this.line_chart_2.setOption(this.LineChart)
-    },
-    onResize() {
-      if (this.line_chart) {
-        this.line_chart.resize();
-      }
-      if (this.bar_chart) {
-        this.bar_chart.resize();
-      }
-      if (this.line_chart_2) {
-        this.line_chart_2.resize();
-      }
-    }
-  }
 })
 </script>

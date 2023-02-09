@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-sm">
-    <q-card>
+    <q-card class="no-shadow" bordered>
       <q-card-section>
         <div class="text-h6 text-indigo-8">
           Tree Table
@@ -16,7 +16,7 @@
       </q-card-section>
     </q-card>
 
-    <q-card class="q-mt-sm">
+    <q-card class="q-mt-sm no-shadow" bordered>
       <q-card-section>
         <div class="text-h6 text-indigo-8">
           Custom Icon with Chip
@@ -40,8 +40,8 @@ import {defineComponent, defineAsyncComponent} from 'vue'
 export default defineComponent({
   name: "TreeTable",
   components: {
-    SimpleHierarchy: defineAsyncComponent(() => import('components/tree-table/SimpleHierarchy')),
-    CustomHierarchy: defineAsyncComponent(() => import('components/tree-table/CustomHierarchy'))
+    SimpleHierarchy: defineAsyncComponent(() => import('components/tree-table/SimpleHierarchy.vue')),
+    CustomHierarchy: defineAsyncComponent(() => import('components/tree-table/CustomHierarchy.vue'))
   }
 })
 </script>

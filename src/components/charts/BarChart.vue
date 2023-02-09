@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-card>
+    <q-card class="no-shadow" bordered>
       <q-card-section class="text-h6">
         Bar Chart
         <q-btn icon="fa fa-download" class="float-right" @click="SaveImage" flat dense>
@@ -8,22 +8,25 @@
         </q-btn>
       </q-card-section>
       <q-card-section>
-        <div ref="barchart" id="barChart" style="height: 300px;"></div>
+        <ECharts ref="barchart"  :option="options"
+                 class="q-mt-md"
+                 :resizable="true"
+                 autoresize style="height: 300px;"
+        />
       </q-card-section>
     </q-card>
-    <q-resize-observer @resize="onResize"/>
   </div>
 </template>
 
 <script>
 import {defineComponent} from 'vue';
-import {ref} from 'vue';
+import ECharts from 'vue-echarts';
+import "echarts";
 
 export default defineComponent({
   name: "BarChart",
   setup() {
     return {
-      model: ref(false),
       options: {
         legend: {
           bottom: 10,
@@ -55,15 +58,14 @@ export default defineComponent({
           {type: 'bar'}
         ]
       },
-      bar_chart: ref(null),
     }
   },
-  mounted() {
-    this.init();
+  components:{
+    ECharts
   },
   methods: {
     SaveImage() {
-      const linkSource = this.bar_chart.getDataURL();
+      const linkSource = this.$refs.barchart.getDataURL();
       const downloadLink = document.createElement('a');
       document.body.appendChild(downloadLink);
       downloadLink.href = linkSource;
@@ -71,16 +73,6 @@ export default defineComponent({
       downloadLink.download = 'BarChart.png';
       downloadLink.click();
     },
-    init() {
-      let barChart = document.getElementById('barChart');
-      this.bar_chart = echarts.init(barChart,'light');
-      this.bar_chart.setOption(this.options)
-    },
-    onResize() {
-      if (this.bar_chart) {
-        this.bar_chart.resize();
-      }
-    }
   }
 })
 </script>

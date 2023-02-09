@@ -1,7 +1,7 @@
 <template>
   <div class="row q-col-gutter-sm">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <q-card class="text-grey-8">
+      <q-card class="text-grey-8 no-shadow" bordered>
         <q-card-section class="q-pa-none">
           <q-table class="no-shadow"
                    :rows="rows"

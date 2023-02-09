@@ -1,6 +1,6 @@
 <template>
   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-    <q-card class="fit">
+    <q-card class="fit no-shadow" bordered>
       <q-card-section class="text-h6 q-pb-none">
         <q-item>
           <q-item-section avatar class="">

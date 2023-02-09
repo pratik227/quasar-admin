@@ -1,5 +1,5 @@
 <template>
-  <q-card>
+  <q-card class="no-shadow" bordered>
     <q-card-section>
       <div class="text-h6 text-grey-8">
         Our Changing Planet

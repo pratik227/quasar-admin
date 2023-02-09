@@ -1,23 +1,31 @@
 <template>
   <div>
-    <q-card>
+    <q-card class="no-shadow" bordered>
       <q-card-section class="text-h6">
         Line Chart
       </q-card-section>
       <q-card-section>
-        <div ref="linechart" id="lineChart" style="height: 300px;"></div>
+        <ECharts :option="options"
+                 class="q-mt-md"
+                 :resizable="true"
+                 autoresize style="height: 300px;"
+        />
       </q-card-section>
-      <q-resize-observer @resize="onResize"/>
     </q-card>
   </div>
 </template>
 
 <script>
-export default {
+import * as echarts from 'echarts'
+import ECharts from "vue-echarts";
+import {defineComponent} from "vue";
+export default defineComponent({
   name: "LineChart",
+  components:{
+    ECharts
+  },
   data() {
     return {
-      model: false,
       options: {
         color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
         tooltip: {
@@ -178,33 +186,10 @@ export default {
             data: [220, 302, 181, 234, 210, 290, 150]
           }
         ]
-      },
-      line_chart: null
-    }
-  },
-  mounted() {
-    this.init();
-  },
-  watch: {
-    '$q.dark.isActive': function () {
-      this.init();
-    }
-  },
-  methods: {
-    init() {
-      let lineChart = document.getElementById('lineChart');
-      echarts.dispose(lineChart);
-      let theme = this.model ? 'dark' : 'light';
-      this.line_chart = echarts.init(lineChart, theme);
-      this.line_chart.setOption(this.options)
-    },
-    onResize() {
-      if (this.line_chart) {
-        this.line_chart.resize();
       }
     }
   }
-}
+})
 </script>
 
 <style scoped>
