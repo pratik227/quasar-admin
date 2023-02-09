@@ -286,7 +286,7 @@
           <q-carousel-slide :name="1" class="q-pa-none">
             <q-scroll-area class="fit">
               <q-card class="my-card">
-                <img src="src/assets/coding.jpeg"/>
+                <img src="../assets/coding.jpeg"/>
 
                 <q-card-section>
                   <div class="text-h6">Work with something that you like, like…</div>
@@ -303,7 +303,7 @@
           <q-carousel-slide :name="2" class="q-pa-none">
             <q-scroll-area class="fit">
               <q-card class="my-card">
-                <img src="src/assets/lookgood.jpeg"/>
+                <img src="../assets/lookgood.jpeg"/>
 
                 <q-card-section>
                   <div class="text-h6">Keep your schedule in the right time</div>
@@ -322,7 +322,7 @@
           <q-carousel-slide :name="3" class="q-pa-none">
             <q-scroll-area class="fit">
               <q-card class="my-card">
-                <img src="src/assets/trawel.jpeg"/>
+                <img src="../assets/trawel.jpeg"/>
 
                 <q-card-section>
                   <div class="text-h6">Travel everytime that you have a chance</div>
