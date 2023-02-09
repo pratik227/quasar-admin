@@ -1,12 +1,13 @@
 <template>
-  <q-card>
+  <q-card class="no-shadow" bordered>
     <q-card-section>
       <div class="text-h6 text-grey-8">
         Basic
       </div>
     </q-card-section>
+    <q-separator></q-separator>
     <q-card-section class="q-pa-none">
-      <q-table
+      <q-table square class="no-shadow"
         title="Treats"
         :rows="data"
         :columns="columns"

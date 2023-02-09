@@ -1,5 +1,5 @@
 <template>
-  <q-card class="text-white" style="background-color: #181c4d">
+  <q-card class="text-white no-shadow" bordered style="background-color: #181c4d">
     <q-card-section>
       <div class="text-h6 q-pa-sm">
         {{ name }}

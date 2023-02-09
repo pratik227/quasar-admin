@@ -2,7 +2,7 @@
   <q-page class="q-pa-sm">
     <card-social icon_position="right"/>
 
-    <q-card class="q-mt-sm">
+    <q-card class="q-mt-sm no-shadow" bordered>
       <q-card-section class="text-h6 q-pb-none">
         <q-item>
           <q-item-section avatar class="">
@@ -63,8 +63,11 @@
             </div>
           </div>
           <div>
-            <div ref="saleschart" id="saleschart" style="height: 250px;"></div>
-            <!--            <IEcharts style="height: 250px" :option="getSalesOptions" :resizable="true" />-->
+            <ECharts :option="sales_options"
+                     class="q-mt-md"
+                     :resizable="true"
+                     autoresize style="height: 250px;"
+            />
           </div>
         </div>
         <div class="col-lg-5 col-sm-12 col-xs-12 col-md-5">
@@ -78,13 +81,16 @@
             </q-item-section>
           </q-item>
           <div>
-            <div ref="piechart" id="piechart" style="height: 250px;"></div>
-            <!--            <IEcharts style="height: 250px" :option="getPieOptions" :resizable="true" />-->
+            <ECharts :option="pie_options"
+                     class="q-mt-md"
+                     :resizable="true"
+                     autoresize style="height: 250px;"
+            />
           </div>
         </div>
       </q-card-section>
     </q-card>
-    <q-card class="q-mt-sm">
+    <q-card class="q-mt-sm no-shadow" bordered>
       <q-card-section class="text-h6 q-pb-none">
         <q-item>
           <q-item-section avatar class="">
@@ -175,7 +181,7 @@
 
     <div class="row q-col-gutter-sm  q-py-sm">
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <q-card>
+        <q-card class="no-shadow" bordered>
           <q-tabs v-model="tab" dense class="text-grey" active-color="primary" indicator-color="primary"
                   align="justify">
             <q-tab name="contact" :class="tab == 'contact' ? 'text-blue' : ''" icon="contacts" label="Contact"/>
@@ -280,7 +286,7 @@
           <q-carousel-slide :name="1" class="q-pa-none">
             <q-scroll-area class="fit">
               <q-card class="my-card">
-                <img :src="require('src/assets/coding.jpeg')"/>
+                <img src="src/assets/coding.jpeg"/>
 
                 <q-card-section>
                   <div class="text-h6">Work with something that you like, like…</div>
@@ -297,7 +303,7 @@
           <q-carousel-slide :name="2" class="q-pa-none">
             <q-scroll-area class="fit">
               <q-card class="my-card">
-                <img :src="require('src/assets/lookgood.jpeg')"/>
+                <img src="src/assets/lookgood.jpeg"/>
 
                 <q-card-section>
                   <div class="text-h6">Keep your schedule in the right time</div>
@@ -316,7 +322,7 @@
           <q-carousel-slide :name="3" class="q-pa-none">
             <q-scroll-area class="fit">
               <q-card class="my-card">
-                <img :src="require('src/assets/trawel.jpeg')"/>
+                <img src="src/assets/trawel.jpeg"/>
 
                 <q-card-section>
                   <div class="text-h6">Travel everytime that you have a chance</div>
@@ -332,12 +338,14 @@
           </q-carousel-slide>
         </q-carousel>
       </div>
-    </div><q-resize-observer @resize="onResize"/>
+    </div>
   </q-page>
 </template>
 
 <script>
-import {defineComponent, defineAsyncComponent, ref} from 'vue'
+import {defineComponent, defineAsyncComponent, ref} from 'vue';
+import * as echarts from 'echarts';
+import ECharts from "vue-echarts";
 
 const messages = [
   {
@@ -414,7 +422,7 @@ const sales_data = [
     product_name: "Woman Bag",
     total: "$300,00",
     code: "QWE123",
-    prod_img: require("src/assets/bag.jpg")
+    prod_img: new URL("../assets/bag.jpg", import.meta.url).href
   },
   {
     name: "Mayank Patel",
@@ -426,7 +434,7 @@ const sales_data = [
     product_name: "Laptop",
     total: "$230,00",
     code: "ABC890",
-    prod_img: require("src/assets/laptop.jpg")
+    prod_img: new URL("../assets/laptop.jpg", import.meta.url).href
   },
   {
     name: "Mayur Patel",
@@ -438,7 +446,7 @@ const sales_data = [
     total: "$34,00",
     date: "19 Sept 2020",
     code: "GHI556",
-    prod_img: require("src/assets/jam.jpg")
+    prod_img: new URL("../assets/jam.jpg", import.meta.url).href
   },
   {
     name: "Jeff Galbraith",
@@ -450,7 +458,7 @@ const sales_data = [
     total: "$208,00",
     date: "19 Sept 2020",
     code: "JKL345",
-    prod_img: require("src/assets/action.jpg")
+    prod_img: new URL("../assets/action.jpg", import.meta.url).href
   }
 ];
 const sales_column = [
@@ -484,11 +492,12 @@ const sales_column = [
 export default defineComponent({
   name: "Dashboard2",
   components: {
-    CardSocial: defineAsyncComponent(() => import("components/cards/CardSocial"))
+    CardSocial: defineAsyncComponent(() => import("components/cards/CardSocial.vue")),
+    ECharts
   },
   setup() {
     return {
-      slide: 1,
+      slide: ref(1),
       tab: ref("contact"),
       messages,
       contacts,
@@ -639,32 +648,6 @@ export default defineComponent({
       }
     }
   },
-  mounted() {
-    this.init();
-  },
-  methods: {
-    init() {
-      let salesChart = document.getElementById('saleschart');
-      echarts.dispose(salesChart);
-      this.sales_chart = echarts.init(salesChart, 'light');
-      this.sales_chart.setOption(this.sales_options);
-
-
-      let piechart = document.getElementById('piechart');
-      echarts.dispose(piechart);
-      this.pie_chart = echarts.init(piechart, 'light');
-      this.pie_chart.setOption(this.pie_options)
-
-    },
-    onResize() {
-      if (this.sales_chart) {
-        this.sales_chart.resize();
-      }
-      if (this.pie_chart) {
-        this.pie_chart.resize();
-      }
-    }
-  }
 })
 </script>
 

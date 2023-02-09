@@ -2,7 +2,7 @@
   <q-page class="q-pa-sm">
     <div class="row q-col-gutter-lg">
       <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
-        <q-card>
+        <q-card class="no-shadow" bordered>
           <q-img
             src="https://cdn.quasar.dev/img/parallax1.jpg"
           />
@@ -64,12 +64,12 @@ import {defineComponent, defineAsyncComponent} from 'vue'
 export default defineComponent({
   name: "Cards",
   components: {
-    CardItem: defineAsyncComponent(() => import('components/cards/CardItem')),
-    CardCafe: defineAsyncComponent(() => import('components/cards/CardCafe')),
-    CardCompany: defineAsyncComponent(() => import('components/cards/CardCompany')),
-    CardProfileDark: defineAsyncComponent(() => import('components/cards/CardProfileDark')),
-    CardProfile: defineAsyncComponent(() => import('components/cards/CardProfile')),
-    BasicCard: defineAsyncComponent(() => import('components/cards/CardBasic'))
+    CardItem: defineAsyncComponent(() => import('components/cards/CardItem.vue')),
+    CardCafe: defineAsyncComponent(() => import('components/cards/CardCafe.vue')),
+    CardCompany: defineAsyncComponent(() => import('components/cards/CardCompany.vue')),
+    CardProfileDark: defineAsyncComponent(() => import('components/cards/CardProfileDark.vue')),
+    CardProfile: defineAsyncComponent(() => import('components/cards/CardProfile.vue')),
+    BasicCard: defineAsyncComponent(() => import('components/cards/CardBasic.vue'))
   },
   setup() {
     const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';

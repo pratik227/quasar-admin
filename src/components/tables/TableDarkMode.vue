@@ -1,5 +1,5 @@
 <template>
-  <q-card class="table-bg">
+  <q-card class="table-bg no-shadow" bordered>
     <q-card-section>
       <div class="text-h6 text-white">
         Dark Mode

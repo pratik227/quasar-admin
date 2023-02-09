@@ -1,6 +1,6 @@
 <template>
     <span>
-      <q-hierarchy :columns="columns" :data="data"></q-hierarchy>
+      <q-hierarchy :columns="columns" classes="no-shadow" :data="data"></q-hierarchy>
     </span>
 </template>
 

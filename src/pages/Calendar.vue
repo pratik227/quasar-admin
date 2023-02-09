@@ -8,7 +8,7 @@
       focusable
       hoverable
       no-active-date
-      :day-min-height="90"
+      :day-min-height="140"
       :day-height="10"
       @change="onChange"
       @moved="onMoved"

@@ -1,8 +1,6 @@
 <template>
   <q-page class="q-pa-sm">
-
-
-    <q-card>
+    <q-card class="no-shadow" bordered>
       <q-card-section class="row">
         <div class="text-h6 text-weight-bolder text-grey-8">
           Friends
@@ -51,7 +49,7 @@
       </q-list>
     </q-card>
 
-    <q-card class="q-mt-sm">
+    <q-card class="q-mt-sm no-shadow" bordered>
       <q-card-section class="row">
         <div class="text-h6 text-weight-bolder text-grey-8">
           Friends
@@ -102,7 +100,7 @@
       </q-list>
     </q-card>
 
-    <q-card class="q-mt-sm">
+    <q-card class="q-mt-sm no-shadow" bordered>
       <q-card-section class="row q-pa-sm">
         <q-item class="full-width">
           <q-item-section>

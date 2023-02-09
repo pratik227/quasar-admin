@@ -1,40 +1,35 @@
 {
-  "name": "test",
+  "name": "quasar-admin2",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
+  "description": "A Quasar Project",
   "productName": "Quasar App",
-  "author": "",
+  "author": "pratikpatelpp802@gmail.com",
   "private": true,
   "scripts": {
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "@quasar/quasar-ui-qcalendar": "^4.0.0-beta.15",
     "axios": "^0.21.1",
-    "core-js": "^3.6.5",
-    "quasar": "^2.0.0",
-    "vue-i18n": "^9.0.0-beta.0",
-    "vuedraggable": "^4.0.1",
-    "vuex": "^4.0.1"
+    "echarts": "^5.4.1",
+    "pinia": "^2.0.11",
+    "quasar": "^2.6.0",
+    "vue": "^3.0.0",
+    "vue-echarts": "^6.5.4",
+    "vue-i18n": "^9.0.0",
+    "vue-router": "^4.0.0",
+    "vuedraggable": "^2.24.3"
   },
   "devDependencies": {
-    "@quasar/app-webpack": "^3.5.3",
-    "@quasar/quasar-app-extension-qcalendar": "^4.0.0-beta.15",
-    "quasar-app-extension-qhierarchy": "^1.0.0-alpha.1"
+    "@intlify/vite-plugin-vue-i18n": "^3.3.1",
+    "@quasar/app-vite": "^1.0.0",
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.14",
+    "quasar-app-extension-qhierarchy": "^1.0.9"
   },
-  "browserslist": [
-    "last 10 Chrome versions",
-    "last 10 Firefox versions",
-    "last 4 Edge versions",
-    "last 7 Safari versions",
-    "last 8 Android versions",
-    "last 8 ChromeAndroid versions",
-    "last 8 FirefoxAndroid versions",
-    "last 10 iOS versions",
-    "last 5 Opera versions"
-  ],
   "engines": {
-    "node": ">= 10.18.1",
+    "node": "^18 || ^16 || ^14.19",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
   }

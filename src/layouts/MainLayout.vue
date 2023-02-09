@@ -15,13 +15,16 @@
         </q-toolbar-title>
         <q-space/>
         <div class="q-gutter-sm row items-center no-wrap">
-          <q-btn round dense flat color="white" :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'"
-                 @click="$q.fullscreen.toggle()"
-                 v-if="$q.screen.gt.sm">
+                    <q-btn round dense flat color="white" :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'"
+                           @click="$q.fullscreen.toggle()"
+                           v-if="$q.screen.gt.sm">
+                    </q-btn>
+          <q-btn round dense flat color="white" icon="fab fa-github" type="a"
+                 href="https://github.com/pratik227/quasar-admin" target="_blank">
           </q-btn>
-          <q-btn round dense flat color="white" icon="fab fa-github" type="a" href="https://github.com/pratik227/quasar-admin" target="_blank">
-          </q-btn>
-          <q-btn round dense flat icon="fas fa-heart" style="color:#9d4182 !important;" type="a" href="https://github.com/sponsors/pratik227" target="_blank">
+          <q-btn round dense flat style="color:red !important;" type="a" href="https://github.com/sponsors/pratik227"
+                 target="_blank">
+            <i class="fa fa-heart fa-2x fa-beat"></i>
           </q-btn>
           <q-btn round dense flat color="white" icon="notifications">
             <q-badge color="red" text-color="white" floating>
@@ -251,15 +254,15 @@
           </q-item-section>
         </q-item>
 
-<!--        not completed-->
-<!--        <q-item to="/Taskboard" active-class="q-item-no-link-highlighting">-->
-<!--          <q-item-section avatar>-->
-<!--            <q-icon name="done"/>-->
-<!--          </q-item-section>-->
-<!--          <q-item-section>-->
-<!--            <q-item-label>Taskboard</q-item-label>-->
-<!--          </q-item-section>-->
-<!--        </q-item>-->
+        <!--        not completed-->
+        <!--        <q-item to="/Taskboard" active-class="q-item-no-link-highlighting">-->
+        <!--          <q-item-section avatar>-->
+        <!--            <q-icon name="done"/>-->
+        <!--          </q-item-section>-->
+        <!--          <q-item-section>-->
+        <!--            <q-item-label>Taskboard</q-item-label>-->
+        <!--          </q-item-section>-->
+        <!--        </q-item>-->
 
         <q-item to="/Pagination" active-class="q-item-no-link-highlighting">
           <q-item-section avatar>
@@ -316,16 +319,17 @@
     </q-drawer>
 
     <q-page-container class="bg-grey-2">
-      <router-view />
+      <router-view/>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
-import Messages from "./Messages";
+import Messages from "./Messages.vue";
 
-import { defineComponent, ref } from 'vue'
+import {defineComponent, ref} from 'vue'
+import {useQuasar} from "quasar";
 
 export default defineComponent({
   name: 'MainLayout',
@@ -335,15 +339,53 @@ export default defineComponent({
     Messages
   },
 
-  setup () {
+  setup() {
     const leftDrawerOpen = ref(false)
+    const $q = useQuasar()
 
     return {
+      $q,
       leftDrawerOpen,
-      toggleLeftDrawer () {
+      toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value
       }
     }
   }
 })
 </script>
+
+<style>
+
+/* FONT AWESOME GENERIC BEAT */
+.fa-beat {
+  animation: fa-beat 5s ease infinite;
+}
+
+@keyframes fa-beat {
+  0% {
+    transform: scale(1);
+  }
+  5% {
+    transform: scale(1.25);
+  }
+  20% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.25);
+  }
+  50% {
+    transform: scale(1);
+  }
+  55% {
+    transform: scale(1.25);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+</style>

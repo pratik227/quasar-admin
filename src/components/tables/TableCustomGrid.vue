@@ -1,5 +1,5 @@
 <template>
-  <q-card>
+  <q-card class="no-shadow" bordered>
     <q-card-section>
       <div class="text-h6 text-grey-8">
         Custom Grid View
@@ -21,7 +21,7 @@
 <script>
 import {defineComponent} from 'vue'
 
-import CardProfile from "components/cards/CardProfile";
+import CardProfile from "components/cards/CardProfile.vue";
 
 
 const columns = [

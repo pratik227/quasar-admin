@@ -1,6 +1,6 @@
 <template>
   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-    <q-card class="my-card">
+    <q-card class="my-card no-shadow" bordered>
       <q-img
         src="https://cdn.quasar.dev/img/parallax1.jpg"
         basic

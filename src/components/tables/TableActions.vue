@@ -1,13 +1,14 @@
 <template>
-  <q-card>
+  <q-card class="no-shadow" bordered>
     <q-card-section>
       <div class="text-h6 text-grey-8">
         Inline Actions
         <q-btn label="Export" class="float-right text-capitalize text-indigo-8 shadow-3" icon="person"/>
       </div>
     </q-card-section>
+    <q-separator></q-separator>
     <q-card-section class="q-pa-none">
-      <q-table :rows="data" :columns="columns" hide-bottom>
+      <q-table :rows="data" :columns="columns" hide-bottom class="no-shadow">
         <template v-slot:body-cell-Name="props">
           <q-td :props="props">
             <q-item style="max-width: 420px">

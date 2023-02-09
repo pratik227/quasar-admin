@@ -1,23 +1,31 @@
 <template>
   <div>
-    <q-card>
+    <q-card class="no-shadow" bordered>
       <q-card-section class="text-h6">
         Pie Chart
       </q-card-section>
       <q-card-section>
-        <div ref="piechart" id="pieChart" style="height: 300px;"></div>
+        <ECharts :option="options"
+                 class="q-mt-md"
+                 :resizable="true"
+                 autoresize style="height: 285px;"
+        />
       </q-card-section>
-      <q-resize-observer @resize="onResize"/>
     </q-card>
   </div>
 </template>
 
 <script>
-export default {
+import {defineComponent} from "vue";
+import ECharts from "vue-echarts";
+
+export default defineComponent({
   name: "PieChart",
+  components: {
+    ECharts
+  },
   data() {
     return {
-      model: false,
       options: {
         tooltip: {
           trigger: 'item',
@@ -63,33 +71,10 @@ export default {
             ]
           }
         ]
-      },
-      pie_chart: null
-    }
-  },
-  mounted() {
-    this.init();
-  },
-  watch: {
-    '$q.dark.isActive': function () {
-      this.init();
-    }
-  },
-  methods: {
-    init() {
-      let pieChart = document.getElementById('pieChart');
-      echarts.dispose(pieChart);
-      let theme = this.model ? 'dark' : 'light';
-      this.pie_chart = echarts.init(pieChart, theme);
-      this.pie_chart.setOption(this.options)
-    },
-    onResize() {
-      if (this.pie_chart) {
-        this.pie_chart.resize();
       }
     }
   }
-}
+})
 </script>
 
 <style scoped>

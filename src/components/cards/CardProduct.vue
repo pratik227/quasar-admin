@@ -1,5 +1,5 @@
 <template>
-  <q-card class="">
+  <q-card class="no-shadow" bordered>
     <q-img :src="data.img" height="220px">
       <q-chip v-if="data.chip" :class="data.chip_class" :color="data.chip_color" :label="data.chip"></q-chip>
     </q-img>

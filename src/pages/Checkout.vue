@@ -6,7 +6,7 @@
           v-model="step"
           header-nav
           ref="stepper"
-          color="primary"
+          color="primary" class="no-shadow" bordered
           animated
         >
           <q-step
@@ -220,7 +220,7 @@
         </q-stepper>
       </div>
       <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-        <q-card class="bg-grey-2">
+        <q-card class="bg-grey-2 no-shadow" bordered>
           <q-card-section class="text-center text-h6 text-black ">
             <q-icon name="shopping_cart" class="q-mr-sm"/>
             Order Summary

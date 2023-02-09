@@ -18,9 +18,9 @@ import {defineComponent, defineAsyncComponent} from 'vue';
 export default defineComponent({
   name: "Pagination",
   components: {
-    BasicFilter: defineAsyncComponent(() => import('components/paginations/BasicFilter')),
-    ListPagination: defineAsyncComponent(() => import('components/paginations/ListPagination')),
-    CardPagination: defineAsyncComponent(() => import('components/paginations/CardPagination'))
+    BasicFilter: defineAsyncComponent(() => import('components/paginations/BasicFilter.vue')),
+    ListPagination: defineAsyncComponent(() => import('components/paginations/ListPagination.vue')),
+    CardPagination: defineAsyncComponent(() => import('components/paginations/CardPagination.vue'))
   },
 })
 </script>

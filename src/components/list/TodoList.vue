@@ -1,6 +1,6 @@
 <template>
   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-    <q-card class="bg-blue text-white">
+    <q-card class="bg-blue text-white no-shadow" bordered>
       <q-card-section class="text-h6 q-pb-none">
         <q-item>
           <q-item-section avatar>
@@ -26,7 +26,7 @@ import {defineComponent,defineAsyncComponent} from 'vue'
 export default defineComponent({
   name: 'ToDoList',
   components: {
-    Todo: defineAsyncComponent(() =>  import('components/Todo')),
+    Todo: defineAsyncComponent(() =>  import('components/Todo.vue')),
   },
   setup () {
     return {

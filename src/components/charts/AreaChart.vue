@@ -1,23 +1,29 @@
 <template>
   <div>
-    <q-card>
+    <q-card class="no-shadow" bordered>
       <q-card-section class="text-h6">
         Stacked Area Chart
       </q-card-section>
       <q-card-section>
-        <div ref="areachart" id="areaChart" style="height: 250px;"></div>
+        <ECharts :option="options"
+                 class="q-mt-md"
+                 :resizable="true"
+                 autoresize style="height: 285px;"
+        />
       </q-card-section>
-      <q-resize-observer @resize="onResize"/>
     </q-card>
   </div>
 </template>
 
 <script>
-export default {
+import ECharts from 'vue-echarts';
+import "echarts";
+import {defineComponent} from "vue";
+
+export default defineComponent({
   name: "AreaChart",
-  data() {
+  setup() {
     return {
-      model: false,
       options: {
         tooltip: {
           trigger: 'axis',
@@ -36,7 +42,7 @@ export default {
           left: '3%',
           right: '4%',
           bottom: '10%',
-          top:'5%',
+          top: '5%',
           containLabel: true
         },
         xAxis: [
@@ -107,33 +113,13 @@ export default {
             data: [820, 932, 901, 934, 1290, 1330, 1320]
           }
         ]
-      },
-      area_chart: null
-    }
-  },
-  mounted() {
-    this.init();
-  },
-  watch: {
-    '$q.dark.isActive': function () {
-      this.init();
-    }
-  },
-  methods: {
-    init() {
-      let areaChart = document.getElementById('areaChart');
-      echarts.dispose(areaChart);
-      let theme = this.model ? 'dark' : 'light';
-      this.area_chart = echarts.init(areaChart, theme);
-      this.area_chart.setOption(this.options)
-    },
-    onResize() {
-      if (this.area_chart) {
-        this.area_chart.resize();
       }
     }
+  },
+  components: {
+    ECharts
   }
-}
+})
 </script>
 
 <style scoped>

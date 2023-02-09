@@ -1,5 +1,5 @@
 <template>
-  <q-card>
+  <q-card class="no-shadow" bordered>
     <q-card-section class="text-center">
       <q-avatar size="100px" class="shadow-10">
         <img :src="avatar">

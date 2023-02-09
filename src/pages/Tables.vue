@@ -20,11 +20,11 @@ import {defineComponent, defineAsyncComponent} from 'vue';
 export default defineComponent({
   name: "Tables",
   components: {
-    TableProgress: defineAsyncComponent(() => import('components/tables/TableProgress')),
-    TableCustomGrid: defineAsyncComponent(() => import('components/tables/TableCustomGrid')),
-    TableDarkMode: defineAsyncComponent(() => import('components/tables/TableDarkMode')),
-    TableActions: defineAsyncComponent(() => import('components/tables/TableActions')),
-    TablesBasic: defineAsyncComponent(() => import('components/tables/TableBasic'))
+    TableProgress: defineAsyncComponent(() => import('components/tables/TableProgress.vue')),
+    TableCustomGrid: defineAsyncComponent(() => import('components/tables/TableCustomGrid.vue')),
+    TableDarkMode: defineAsyncComponent(() => import('components/tables/TableDarkMode.vue')),
+    TableActions: defineAsyncComponent(() => import('components/tables/TableActions.vue')),
+    TablesBasic: defineAsyncComponent(() => import('components/tables/TableBasic.vue'))
   },
 })
 </script>

@@ -89,7 +89,7 @@ const pricing_data = [
 export default defineComponent({
   name: "Pricing",
   components: {
-    CardPricing: defineAsyncComponent(() => import('components/cards/CardPricing'))
+    CardPricing: defineAsyncComponent(() => import('components/cards/CardPricing.vue'))
   },
   setup() {
     return {

@@ -1,13 +1,13 @@
 <template>
-  <q-card>
+  <q-card class="no-shadow" bordered>
     <q-card-section>
       <div class="text-h6 text-grey-8">
         Team Progress
       </div>
     </q-card-section>
-    <q-separator color="white"/>
+    <q-separator/>
     <q-card-section class="q-pa-none">
-      <q-table class="" :rows="data3" :columns="column" hide-bottom>
+      <q-table class="no-shadow" :rows="data3" :columns="column" hide-bottom>
         <template v-slot:body-cell-Name="props">
           <q-td :props="props" style="max-width: 100px">
             <q-item>

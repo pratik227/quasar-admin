@@ -1,6 +1,6 @@
 <template>
     <span>
-      <q-hierarchy id="test" :columns="columns" :data="data" classes="bg-indigo-8 text-white">
+      <q-hierarchy square id="test" :columns="columns" :data="data" classes="bg-indigo-8 text-white">
           <template v-slot:body="props">
             <td data-th="Name">
               <div v-bind:style="props.setPadding(props.item)"

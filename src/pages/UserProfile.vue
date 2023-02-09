@@ -2,7 +2,7 @@
   <q-page class="q-pa-sm">
     <div class="row q-col-gutter-sm">
       <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12">
-        <q-card class="card-bg text-white">
+        <q-card class="card-bg text-white no-shadow" bordered>
           <q-card-section class="text-h6 ">
             <div class="text-h6">Edit Profile</div>
             <div class="text-subtitle2">Complete your profile</div>
@@ -70,7 +70,7 @@
       </div>
       <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
 
-        <q-card class="card-bg text-white">
+        <q-card class="card-bg text-white no-shadow" bordered>
           <q-card-section class="text-center bg-transparent">
             <q-avatar size="100px" class="shadow-10">
               <img src="profile.svg">
@@ -89,7 +89,7 @@
       </div>
 
       <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12">
-        <q-card class="card-bg text-white">
+        <q-card class="card-bg text-white no-shadow" bordered>
           <q-card-section class="text-h6 q-pa-sm">
             <div class="text-h6">Change Password</div>
           </q-card-section>

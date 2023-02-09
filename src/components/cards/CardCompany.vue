@@ -1,5 +1,5 @@
 <template>
-  <q-card class="text-white" :style="{'background-image': background_image}">
+  <q-card class="text-white no-shadow" :style="{'background-image': background_image}">
     <q-card-section>
       <div class="text-h6 text-center">
         Extended
