@@ -6,9 +6,9 @@
 # Looking for beautiful premium Quasar admin template for Vue 3? Please drop me an [email](mailto:pratikpatelpp802@gmail.com). Buy only at <b>$69</b>!
 
 
-# Looking for minimalist Quasar template? I have the perfect solution for you. Simply sponsor me $49 a month for once [Sponsor](https://github.com/sponsors/pratik227) and you will gain access to the repo.
+## Looking for minimalist Quasar template? I have the perfect solution for you. Simply sponsor me $49 a month for once [Sponsor](https://github.com/sponsors/pratik227) and you will gain access to the repo.
 
-# Check out the website at https://quasar-minimalist-design.netlify.app/.
+## Check out the website at https://quasar-minimalist-design.netlify.app/.
 
 
 # Quasar Admin Template
