@@ -81,6 +81,14 @@ quasar build
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
 
+### Sponsors  
+  
+<p align="center">
+  <a href="https://github.com/pratik227/static/blob/main/sponsors.svg">
+    <img src='https://github.com/pratik227/static/blob/main/sponsors.svg'/>
+  </a>
+</p>
+  
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
