@@ -3,7 +3,7 @@
 ## Quasar Admin Premium Demo: [https://quasar-admin-premium.netlify.app/](https://quasar-admin-premium.netlify.app/)
 
 
-# Looking for beautiful premium Quasar admin template for Vue 3? Please drop me an [email](mailto:pratikpatelpp802@gmail.com). Buy only at <b>$69</b>!
+## Looking for beautiful premium Quasar admin template for Vue 3? To gain access to the code, you'll need to sponsor me for $69 per month (one-time payment). Please visit my sponsorship page([sponsor me](https://github.com/sponsors/pratik227)).
 
 ### Good News 🎉🎉 I want to let you know that I recently made some updates to my Quasar Admin Premium template, and it's now also available for Typescript with Composition API and <script setup>. 
 
