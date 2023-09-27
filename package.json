@@ -9,12 +9,12 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
-    "@quasar/quasar-ui-qcalendar": "^4.0.0-beta.15",
+    "@quasar/extras": "^1.16.6",
+    "@quasar/quasar-ui-qcalendar": "^4.0.0-beta.16",
     "axios": "^0.21.1",
     "echarts": "^5.4.1",
     "pinia": "^2.0.11",
-    "quasar": "^2.6.0",
+    "quasar": "^2.12.7",
     "vue": "^3.0.0",
     "vue-echarts": "^6.5.4",
     "vue-i18n": "^9.0.0",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^3.3.1",
-    "@quasar/app-vite": "^1.0.0",
+    "@quasar/app-vite": "^1.6.2",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.14",
     "quasar-app-extension-qhierarchy": "^1.0.9"
