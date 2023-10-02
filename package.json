@@ -9,7 +9,7 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.16.6",
+    "@quasar/extras": "^1.16.7",
     "@quasar/quasar-ui-qcalendar": "^4.0.0-beta.16",
     "axios": "^0.21.1",
     "echarts": "^5.4.1",
