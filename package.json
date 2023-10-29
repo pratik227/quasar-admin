@@ -25,7 +25,7 @@
     "@intlify/vite-plugin-vue-i18n": "^3.3.1",
     "@quasar/app-vite": "^1.6.2",
     "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.14",
+    "postcss": "^8.4.31",
     "quasar-app-extension-qhierarchy": "^1.0.9"
   },
   "engines": {
