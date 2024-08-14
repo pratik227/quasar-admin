@@ -11,7 +11,7 @@
   "dependencies": {
     "@quasar/extras": "^1.16.11",
     "@quasar/quasar-ui-qcalendar": "^4.0.0-beta.19",
-    "axios": "^1.6.0",
+    "axios": "^1.7.4",
     "echarts": "^5.4.1",
     "pinia": "^2.0.11",
     "quasar": "^2.16.4",
