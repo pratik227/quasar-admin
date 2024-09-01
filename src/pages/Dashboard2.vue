@@ -24,7 +24,7 @@
                 </q-item-section>
                 <q-item-section>
                   <q-item-label class="text-h6 text-blue text-bold">4321</q-item-label>
-                  <q-item-label caption>Fashions</q-item-label>
+                  <q-item-label caption>Juices</q-item-label>
                 </q-item-section>
               </q-item>
             </div>
@@ -35,7 +35,7 @@
                 </q-item-section>
                 <q-item-section>
                   <q-item-label class="text-h6 text-grey-8 text-bold">9876</q-item-label>
-                  <q-item-label caption>Electronics</q-item-label>
+                  <q-item-label caption>Smoothies</q-item-label>
                 </q-item-section>
               </q-item>
             </div>
@@ -46,7 +46,7 @@
                 </q-item-section>
                 <q-item-section>
                   <q-item-label class="text-h6 text-green-6 text-bold">345</q-item-label>
-                  <q-item-label caption>Toys</q-item-label>
+                  <q-item-label caption>Drinks</q-item-label>
                 </q-item-section>
               </q-item>
             </div>
@@ -57,7 +57,7 @@
                 </q-item-section>
                 <q-item-section>
                   <q-item-label class="text-h6 text-orange-8 text-bold">1021</q-item-label>
-                  <q-item-label caption>Vouchers</q-item-label>
+                  <q-item-label caption>Water</q-item-label>
                 </q-item-section>
               </q-item>
             </div>
@@ -534,25 +534,25 @@ export default defineComponent({
         ],
         series: [
           {
-            name: "Fashions",
+            name: "Juices",
             type: "bar",
             data: [40, 45, 27, 50, 32, 50, 70, 30, 30, 40, 67, 29],
             color: "#546bfa"
           },
           {
-            name: "Electronics",
+            name: "Smoothies",
             type: "bar",
             data: [124, 100, 20, 120, 117, 70, 110, 90, 50, 90, 20, 50],
             color: "#3a9688"
           },
           {
-            name: "Toys",
+            name: "Drinks",
             type: "bar",
             data: [17, 2, 0, 29, 20, 10, 23, 0, 8, 20, 11, 30],
             color: "#02a9f4"
           },
           {
-            name: "Vouchers",
+            name: "Water",
             type: "bar",
             data: [20, 100, 80, 14, 90, 86, 100, 70, 120, 50, 30, 60],
             color: "#f88c2b"
@@ -567,7 +567,7 @@ export default defineComponent({
         legend: {
           bottom: 10,
           left: "center",
-          data: ["Fashions", "Electronics", "Toys", "Vouchers"]
+          data: ["Juices", "Smoothies", "Drinks", "Water"]
         },
         series: [
           {
@@ -592,28 +592,28 @@ export default defineComponent({
             data: [
               {
                 value: 335,
-                name: "Fashions",
+                name: "Juices",
                 itemStyle: {
                   color: "#546bfa"
                 }
               },
               {
                 value: 310,
-                name: "Electronics",
+                name: "Smoothies",
                 itemStyle: {
                   color: "#3a9688"
                 }
               },
               {
                 value: 234,
-                name: "Toys",
+                name: "Drinks",
                 itemStyle: {
                   color: "#02a9f4"
                 }
               },
               {
                 value: 135,
-                name: "Vouchers",
+                name: "Water",
                 itemStyle: {
                   color: "#f88c2b"
                 }

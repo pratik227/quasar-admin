@@ -70,14 +70,14 @@ export default defineComponent({
           {
             title: "Monthly Income",
             icon: "fas fa-dollar-sign",
-            value: "$ 20k",
+            value: "Ksh 278,000",
             color1: "#546bfa",
             color2: "#3e51b5"
           },
           {
             title: "Weekly Sales",
             icon: "fas fa-chart-bar",
-            value: "20",
+            value: "386",
             color1: "#3a9688",
             color2: "#3e51b5"
           },

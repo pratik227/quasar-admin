@@ -21,24 +21,31 @@
       <div class="text-subtitle1 text-justify q-mt-sm">
         {{ data.caption }}
       </div>
-      <div>
-        <q-rating
-          v-model="data.rating"
-          max="5"
-          size="1.5em"
-          color="yellow"
-          icon="star_border"
-          icon-selected="star"
-          icon-half="star_half" readonly
-          no-dimming
-        />
+      <div class="list-container">
+        <ol>
+          <li>Item 1 description</li>
+          <li>Item 2 description</li>
+          <li>Item 3 description</li>
+          <li>Item 4 description</li>
+        </ol>
+        <ol>
+          <li>Item 5 description</li>
+          <li>Item 6 description</li>
+          <li>Item 7 description</li>
+          <li>Item 8 description</li>
+        </ol>
       </div>
     </q-card-section>
     <q-card-section>
       <div class="col-12">
-        <span class="text-h6">{{ data.amount }}</span>
+        <span class="text-h6">{{ data.size }}: {{ data.amount }}</span>
+      </div>
+      <div class="col-12">
+        <span class="text-h6">{{ data.sizeOne }}: {{ data.amountLarge }}</span>
         <span class="text-h6 float-right">
-          <q-btn label="See Details" rounded color="secondary" outline></q-btn>
+          <q-btn icon="remove" round color="red" @click="removeItem"></q-btn>
+          <q-btn label="Qty: 0" outline style="margin: 0 10px;"></q-btn>
+          <q-btn icon="add" round color="green" @click="addItem"></q-btn>
         </span>
       </div>
     </q-card-section>
@@ -46,15 +53,38 @@
 </template>
 
 <script>
-import {defineComponent} from 'vue'
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-  name: "CardProduct",
+  name: 'CardProduct',
 
-  props: ['data']
-})
+  props: ['data'],
+
+  setup() {
+    const quantity = ref(0);
+
+    const addItem = () => {
+      quantity.value += 1;
+    };
+
+    const removeItem = () => {
+      if (quantity.value > 0) {
+        quantity.value -= 1;
+      }
+    };
+
+    return { quantity, addItem, removeItem };
+  },
+});
 </script>
 
 <style scoped>
+.list-container {
+  display: flex;
+  justify-content: space-between;
+}
 
+.list-container ol {
+  width: 48%;
+}
 </style>

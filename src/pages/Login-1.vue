@@ -36,7 +36,7 @@
               />
 
               <div>
-                <q-btn label="Login" to="/" type="button" color="primary"/>
+                <q-btn label="Login" to="/Dashboard2" type="button" color="primary"/>
               </div>
             </q-form>
           </q-card-section>

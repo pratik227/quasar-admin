@@ -11,78 +11,19 @@
         >
           <q-step
             :name="1"
-            title="Shipping address"
+            title="Payment details"
             icon="shopping_cart"
             :done="step > 1"
             :header-nav="step > 1"
           >
-            <div class="row">
-              <div class="col-6">
-                <q-item>
-                  <q-input dense outlined class="full-width" v-model="address_detail.first_name" label="First Name *"/>
-                </q-item>
-              </div>
-              <div class="col-6">
-                <q-item>
-                  <q-input dense outlined class="full-width" v-model="address_detail.last_name" label="Last Name *"/>
-                </q-item>
-              </div>
-              <div class="col-12">
-                <q-item>
-                  <q-input dense autogrow outlined v-model="address_detail.address_line_1" class="full-width"
-                           label="Address line 1 *"/>
-                </q-item>
-              </div>
-              <div class="col-12">
-                <q-item>
-                  <q-input dense autogrow outlined v-model="address_detail.address_line_2" class="full-width"
-                           label="Address line 2 *"/>
-                </q-item>
-              </div>
-              <div class="col-6">
-                <q-item>
-                  <q-input dense outlined class="full-width" v-model="address_detail.city" label="City *"/>
-                </q-item>
-              </div>
-              <div class="col-6">
-                <q-item>
-                  <q-input dense outlined class="full-width" v-model="address_detail.state" label="State"/>
-                </q-item>
-              </div>
-              <div class="col-6">
-                <q-item>
-                  <q-input dense outlined class="full-width" v-model="address_detail.zip_code" label="Zip Code"/>
-                </q-item>
-              </div>
-              <div class="col-6">
-                <q-item>
-                  <q-input dense outlined class="full-width" v-model="address_detail.country" label="Country *"/>
-                </q-item>
-              </div>
-              <div class="col-6">
-                <q-item>
-                  <q-checkbox dense outlined class="full-width" v-model="address_detail.checkbox"
-                              label="Use this address for payment details"/>
-                </q-item>
-              </div>
-            </div>
-
-            <q-stepper-navigation>
-              <q-btn rounded @click="() => { done1 = true; step = 2 }" class="float-right q-mr-md q-mb-md" color="blue"
-                     label="Next"/>
-            </q-stepper-navigation>
-          </q-step>
-
-          <q-step
-            :name="2"
-            title="Payment details"
-            icon="shopping_cart"
-            :done="step > 2"
-            :header-nav="step > 2"
-          >
 
             <div class="row">
+              <q-item>
+                  <q-input dense outlined class="full-width" v-model="card_detail.name" label="Mpesa Phone Number"/>
+                </q-item>
+              </div>
               <div class="col-6">
+              <!-- <div class="col-6">
                 <q-item>
                   <q-input dense outlined class="full-width" v-model="card_detail.name" label="Name on Card*"/>
                 </q-item>
@@ -109,9 +50,10 @@
                   <q-checkbox dense outlined class="full-width" v-model="address_detail.checkbox"
                               label="Remember credit card details for next time"/>
                 </q-item>
-              </div>
+              </div> -->
             </div>
 
+            
             <q-stepper-navigation>
               <q-btn rounded @click="() => { done2 = true; step = 3 }" class="float-right q-mr-md q-mb-md" color="blue"
                      label="Next"/>
@@ -191,19 +133,9 @@
 
             <q-card class="rounded-borders">
               <q-card-section horizontal>
-                <q-card-section class="col-5 q-pt-xs">
-                  <div class="text-h6 text-center">Shipping</div>
-                  <div class="text-subtitle1 ">Pratik Patel</div>
-                  <div class="text-subtitle2">
-                    4841 Johnston Locks
-                  </div>
-                </q-card-section>
                 <q-card-section class="col-7 q-pt-xs">
                   <div class="text-h6 text-center">Payment details</div>
-                  <div class="text-subtitle1 q-mb-xs">Card type - Visa</div>
-                  <div class="text-subtitle1 q-mb-xs">Card holder - P***ik Patel</div>
-                  <div class="text-subtitle1 q-mb-xs">Card Number - xxxx-xxxx-xxxx-1234</div>
-                  <div class="text-subtitle1 q-mb-xs">Expiry date - 04/2012</div>
+                  <div class="text-subtitle1 q-mb-xs">Phone Number - 07XXXXXXXX</div>
                 </q-card-section>
 
 
@@ -229,7 +161,7 @@
             <q-card-section class="col-5 flex flex-center">
               <q-img height="80px"
                      class="rounded-borders"
-                     src="https://cdn.quasar.dev/img/parallax2.jpg"
+                     src="../assets/products/smoothie.jpg"
               />
             </q-card-section>
             <q-card-section class="">
@@ -242,7 +174,7 @@
             <q-card-section class="col-5 flex flex-center">
               <q-img height="80px"
                      class="rounded-borders"
-                     src="https://cdn.quasar.dev/img/parallax2.jpg"
+                     src="../assets/products/smoothie.jpg"
               />
             </q-card-section>
             <q-card-section class="">
@@ -255,7 +187,7 @@
             <q-card-section class="col-5 flex flex-center">
               <q-img height="80px"
                      class="rounded-borders"
-                     src="https://cdn.quasar.dev/img/parallax2.jpg"
+                     src="../assets/products/smoothie.jpg"
               />
             </q-card-section>
             <q-card-section class="">
@@ -268,7 +200,7 @@
             <q-card-section class="col-5 flex flex-center">
               <q-img height="80px"
                      class="rounded-borders"
-                     src="https://cdn.quasar.dev/img/parallax2.jpg"
+                     src="../assets/products/smoothie.jpg"
               />
             </q-card-section>
             <q-card-section class="">
