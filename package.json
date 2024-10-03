@@ -14,7 +14,7 @@
     "axios": "^1.7.4",
     "echarts": "^5.4.1",
     "pinia": "^2.0.11",
-    "quasar": "^2.16.4",
+    "quasar": "^2.17.0",
     "vue": "^3.0.0",
     "vue-echarts": "^6.5.4",
     "vue-i18n": "^9.0.0",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@intlify/vite-plugin-vue-i18n": "^3.3.1",
-    "@quasar/app-vite": "^1.9.3",
+    "@quasar/app-vite": "^1.10.0",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.31",
     "quasar-app-extension-qhierarchy": "^1.0.9"
