@@ -17,7 +17,7 @@
     "quasar": "^2.17.0",
     "vue": "^3.0.0",
     "vue-echarts": "^6.7.3",
-    "vue-i18n": "^9.14.2",
+    "vue-i18n": "^9.14.3",
     "vue-router": "^4.4.5",
     "vuedraggable": "^2.24.3"
   },
