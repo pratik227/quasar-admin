@@ -15,10 +15,10 @@
         </q-toolbar-title>
         <q-space/>
         <div class="q-gutter-sm row items-center no-wrap">
-                    <q-btn round dense flat color="white" :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'"
-                           @click="$q.fullscreen.toggle()"
-                           v-if="$q.screen.gt.sm">
-                    </q-btn>
+          <q-btn round dense flat color="white" :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'"
+                 @click="$q.fullscreen.toggle()"
+                 v-if="$q.screen.gt.sm">
+          </q-btn>
           <q-btn round dense flat color="white" icon="fab fa-github" type="a"
                  href="https://github.com/pratik227/quasar-admin" target="_blank">
           </q-btn>
@@ -321,6 +321,45 @@
     <q-page-container class="bg-grey-2">
       <router-view/>
     </q-page-container>
+
+    <q-footer class="bg-transparent">
+    <q-banner
+      class="banner-row q-ma-md shadow-10 text-white"
+      role="status"
+      dense
+      rounded
+      inline-actions
+    >
+      <template v-slot:avatar>
+        <div class="banner-avatar row items-center justify-center">
+          <q-icon name="shopping_cart" size="20px"/>
+        </div>
+      </template>
+
+      <div class="banner-content text-body2">
+        <div class="title">
+          Quasar Prime: Vue.js Admin Template – Powerfully Elegant, Ultimate Dashboard Solution! 🚀
+        </div>
+        <div class="subtitle q-mt-sm">
+          Join 79+ satisfied clients and get exclusive access for only <strong>$249</strong> (launch price)!
+        </div>
+      </div>
+
+      <template v-slot:action>
+        <q-btn
+          flat
+          unelevated
+          class="check-btn"
+          :to="link"
+          target="_blank"
+          rel="noopener"
+          aria-label="Check it out"
+        >
+          Check it out
+        </q-btn>
+      </template>
+    </q-banner>
+    </q-footer>
   </q-layout>
 </template>
 
@@ -346,6 +385,7 @@ export default defineComponent({
     return {
       $q,
       leftDrawerOpen,
+      link:'https://quasar-prime-admin-template.netlify.app/analytics',
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value
       }
@@ -385,6 +425,58 @@ export default defineComponent({
   }
   70% {
     transform: scale(1);
+  }
+}
+
+.banner-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #5dcf8a;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  min-width: 360px;
+  max-width: calc(100% - 48px);
+  box-sizing: border-box;
+}
+
+.banner-avatar {
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+}
+
+/*  grows */
+.banner-content {
+  flex: 1 1 auto;
+  line-height: 1.2;
+  min-width: 0; /* allow truncation */
+}
+
+.banner-content .title {
+  font-weight: 600;
+}
+
+.check-btn {
+  background-color: #172b4d; /* dark blue button */
+  color: #fff;
+  border-radius: 6px;
+  padding: 8px 14px;
+  text-transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 720px) {
+  .banner-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+  }
+  .check-btn {
+    width: 100%;
+    margin-top: 8px;
   }
 }
 
