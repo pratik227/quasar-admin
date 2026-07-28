@@ -2,7 +2,9 @@
   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
     <q-card class="fit no-shadow" bordered>
       <q-card-section class="text-h6 q-pb-none">
-        <q-item>
+        <!-- Layout-only header, not a list item: role="presentation" stops QItem
+             emitting role="listitem" with no enclosing list. -->
+        <q-item role="presentation">
           <q-item-section avatar class="">
             <q-icon color="blue" name="access_time" style="font-size: 2em;"/>
           </q-item-section>

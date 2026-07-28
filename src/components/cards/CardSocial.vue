@@ -3,6 +3,10 @@
     <q-card-section class="q-pa-none">
       <div class="row q-col-gutter-sm ">
         <div v-for="(item, index) in items" :key="index" class="col-md-3 col-sm-12 col-xs-12">
+          <!-- QItem renders role="listitem", which ARIA requires to sit inside a
+               list. A bare q-list has no styles of its own, so this is purely
+               semantic wrapping. -->
+          <q-list>
           <q-item :style="`background-color: ${item.color1}`" class="q-pa-none">
             <q-item-section v-if="icon_position === 'left'" side :style="`background-color: ${item.color2}`"
                             class=" q-pa-lg q-mr-none text-white">
@@ -16,6 +20,7 @@
               <q-icon :name="item.icon" color="white" size="44px"></q-icon>
             </q-item-section>
           </q-item>
+          </q-list>
         </div>
       </div>
     </q-card-section>

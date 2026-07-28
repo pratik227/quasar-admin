@@ -4,6 +4,7 @@
       <q-img
         src="https://cdn.quasar.dev/img/parallax1.jpg"
         alt=""
+        ratio="3/2"
         basic
       >
         <div class="absolute-bottom-left bg-transparent q-ml-md">

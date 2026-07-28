@@ -23,16 +23,39 @@
 <script>
 import {defineComponent,defineAsyncComponent} from 'vue'
 
+/*
+ * These widgets ARE the dashboard, so they're imported statically rather than
+ * lazily. Code-splitting the landing page's own content bought nothing (it is
+ * always needed) while costing a chunk round-trip each — and because each one
+ * rendered nothing until its chunk arrived, they shifted the page as they popped
+ * in (CLS ~0.59). Statically importing them also lets CardWithImage's hero image
+ * be discovered on the first pass instead of after a chunk waterfall.
+ */
+import CardSocial from '@/components/cards/CardSocial.vue'
+import TabSocial from '@/components/tabs/TabSocial.vue'
+import CardWithImage from '@/components/cards/CardWithImage.vue'
+import CardTimeLine from '@/components/cards/CardTimeLine.vue'
+import TodoList from '@/components/list/TodoList.vue'
+import TableVisits from '@/components/tables/TableVisits.vue'
+import CardChartsSkeleton from '@/components/cards/CardChartsSkeleton.vue'
+
 export default defineComponent({
   name: 'PageIndex',
   components: {
-    CardSocial: defineAsyncComponent(() => import('@/components/cards/CardSocial.vue')),
-    CardCharts: defineAsyncComponent(() => import('@/components/cards/CardCharts.vue')),
-    TabSocial: defineAsyncComponent(() => import('@/components/tabs/TabSocial.vue')),
-    CardWithImage: defineAsyncComponent(() => import('@/components/cards/CardWithImage.vue')),
-    CardTimeLine: defineAsyncComponent(() => import('@/components/cards/CardTimeLine.vue')),
-    TodoList: defineAsyncComponent(() => import('@/components/list/TodoList.vue')),
-    TableVisits: defineAsyncComponent(() => import('@/components/tables/TableVisits.vue')),
+    CardSocial,
+    TabSocial,
+    CardWithImage,
+    CardTimeLine,
+    TodoList,
+    TableVisits,
+
+    // Kept lazy: this one pulls in ECharts, which we don't want blocking the
+    // dashboard's first paint. The skeleton reserves its exact footprint.
+    CardCharts: defineAsyncComponent({
+      loader: () => import('@/components/cards/CardCharts.vue'),
+      loadingComponent: CardChartsSkeleton,
+      delay: 0
+    }),
   },
   setup() {
     return {

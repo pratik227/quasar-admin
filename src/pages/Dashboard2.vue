@@ -344,7 +344,7 @@
 
 <script>
 import {defineComponent, defineAsyncComponent, ref} from 'vue';
-import 'echarts'
+import '@/utils/echarts.js'
 import ECharts from "vue-echarts";
 
 const messages = [
