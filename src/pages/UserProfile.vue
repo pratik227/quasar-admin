@@ -12,7 +12,7 @@
               <q-item class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <q-item-section side>
                   <q-avatar size="100px">
-                    <img src="https://cdn.quasar.dev/img/boy-avatar.png" alt="">
+                    <img src="/img/boy-avatar.jpg" alt="">
                   </q-avatar>
                 </q-item-section>
                 <q-item-section>

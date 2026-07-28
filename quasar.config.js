@@ -54,6 +54,11 @@ export default defineConfig((ctx) => {
       // (@quasar/app-vite v3 defaults it to false)
       vueOptionsAPI: true,
 
+      // Ship source maps for the production bundle. They are only fetched when
+      // devtools are open, so there is no cost for visitors, and it clears
+      // Lighthouse's "Missing source maps for large first-party JavaScript".
+      sourcemap: true,
+
       // publicPath: '/',
       // define: {},
       // defineEnv: {}

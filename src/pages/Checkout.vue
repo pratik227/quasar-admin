@@ -230,7 +230,7 @@
               <q-img height="80px"
                      class="rounded-borders"
                      alt=""
-                     src="https://cdn.quasar.dev/img/parallax2.jpg"
+                     src="/img/parallax2.jpg"
               />
             </q-card-section>
             <q-card-section class="">
@@ -244,7 +244,7 @@
               <q-img height="80px"
                      class="rounded-borders"
                      alt=""
-                     src="https://cdn.quasar.dev/img/parallax2.jpg"
+                     src="/img/parallax2.jpg"
               />
             </q-card-section>
             <q-card-section class="">
@@ -258,7 +258,7 @@
               <q-img height="80px"
                      class="rounded-borders"
                      alt=""
-                     src="https://cdn.quasar.dev/img/parallax2.jpg"
+                     src="/img/parallax2.jpg"
               />
             </q-card-section>
             <q-card-section class="">
@@ -272,7 +272,7 @@
               <q-img height="80px"
                      class="rounded-borders"
                      alt=""
-                     src="https://cdn.quasar.dev/img/parallax2.jpg"
+                     src="/img/parallax2.jpg"
               />
             </q-card-section>
             <q-card-section class="">

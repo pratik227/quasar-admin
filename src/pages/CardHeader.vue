@@ -11,7 +11,7 @@
         <q-item clickable v-ripple>
           <q-item-section avatar>
             <q-avatar>
-              <img src="https://cdn.quasar.dev/img/avatar2.jpg" alt="">
+              <img src="/img/avatar2.jpg" alt="">
             </q-avatar>
           </q-item-section>
 
@@ -34,7 +34,7 @@
         <q-item clickable v-ripple>
           <q-item-section avatar>
             <q-avatar>
-              <img src="https://cdn.quasar.dev/img/avatar4.jpg" alt="">
+              <img src="/img/avatar4.jpg" alt="">
             </q-avatar>
           </q-item-section>
 
@@ -62,7 +62,7 @@
         <q-item clickable v-ripple>
           <q-item-section avatar>
             <q-avatar>
-              <img src="https://cdn.quasar.dev/img/avatar2.jpg" alt="">
+              <img src="/img/avatar2.jpg" alt="">
             </q-avatar>
           </q-item-section>
 
@@ -85,7 +85,7 @@
         <q-item clickable v-ripple>
           <q-item-section avatar>
             <q-avatar>
-              <img src="https://cdn.quasar.dev/img/avatar4.jpg" alt="">
+              <img src="/img/avatar4.jpg" alt="">
             </q-avatar>
           </q-item-section>
 
@@ -119,7 +119,7 @@
         <q-item clickable v-ripple>
           <q-item-section avatar>
             <q-avatar>
-              <img src="https://cdn.quasar.dev/img/avatar2.jpg" alt="">
+              <img src="/img/avatar2.jpg" alt="">
             </q-avatar>
           </q-item-section>
 
@@ -142,7 +142,7 @@
         <q-item clickable v-ripple>
           <q-item-section avatar>
             <q-avatar>
-              <img src="https://cdn.quasar.dev/img/avatar4.jpg" alt="">
+              <img src="/img/avatar4.jpg" alt="">
             </q-avatar>
           </q-item-section>
 

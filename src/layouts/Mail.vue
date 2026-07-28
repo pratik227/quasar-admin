@@ -14,7 +14,7 @@
         />
 
         <q-toolbar-title v-if="$q.screen.gt.xs" shrink class="row items-center no-wrap">
-          <!--          <img src="https://cdn.quasar.dev/img/layout-gallery/logo-google.svg">-->
+          <!--          <img src="/img/layout-gallery/logo-google.svg">-->
           Email
         </q-toolbar-title>
 
@@ -52,7 +52,7 @@
           </q-btn>
           <q-btn round flat>
             <q-avatar size="26px">
-              <img src="https://cdn.quasar.dev/img/boy-avatar.png" alt="">
+              <img src="/img/boy-avatar.jpg" alt="">
             </q-avatar>
             <q-tooltip>Account</q-tooltip>
           </q-btn>
@@ -210,37 +210,37 @@ export default defineComponent({
         },
         {
           name: 'Winfield Stapforth',
-          avatar: 'https://cdn.quasar.dev/img/avatar6.jpg',
+          avatar: '/img/avatar6.jpg',
           date: 'March 22, 2019',
         },
         {
           name: 'Jeff Galbraith',
-          avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
+          avatar: '/img/team/jeff_galbraith.jpg',
           date: 'March 12, 2019',
         },
         {
           name: 'Jeff Galbraith',
-          avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
+          avatar: '/img/team/jeff_galbraith.jpg',
           date: 'March 22, 2019',
         },
         {
           name: 'Razvan Stoenescu',
-          avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
+          avatar: '/img/team/razvan_stoenescu.jpeg',
           date: 'March 12, 2019',
         },
         {
           name: 'Razvan Stoenescu',
-          avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
+          avatar: '/img/team/razvan_stoenescu.jpeg',
           date: 'March 22, 2019',
         },
         {
           name: 'John Doe',
-          avatar: 'https://cdn.quasar.dev/img/boy-avatar.png',
+          avatar: '/img/boy-avatar.jpg',
           date: 'March 12, 2019',
         },
         {
           name: 'Pratik Patel',
-          avatar: 'https://cdn.quasar.dev/img/boy-avatar.png',
+          avatar: '/img/boy-avatar.jpg',
           date: 'March 22, 2019',
         },
       ]

@@ -4,7 +4,7 @@
       <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
         <q-card class="no-shadow" bordered>
           <q-img
-            src="https://cdn.quasar.dev/img/parallax1.jpg"
+            src="/img/parallax1.jpg"
             alt=""
           />
           <q-separator></q-separator>
@@ -79,7 +79,7 @@ export default defineComponent({
       profile_card_data: {
         name: 'Pratik Patel',
         des: 'Solutions Developer',
-        avatar: 'https://cdn.quasar.dev/img/boy-avatar.png',
+        avatar: '/img/boy-avatar.jpg',
       },
       profile_data: {
         name: 'Pratik Patel',

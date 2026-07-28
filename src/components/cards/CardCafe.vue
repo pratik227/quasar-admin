@@ -1,10 +1,10 @@
 <template>
   <q-card class="no-shadow" bordered>
-    <q-img src="https://cdn.quasar.dev/img/chicken-salad.jpg" alt="Chicken salad served on a plate"/>
+    <q-img src="/img/chicken-salad.jpg" alt="Chicken salad served on a plate"/>
 
     <q-card-section class="absolute absolute-center text-center">
       <q-avatar size="100px" class="shadow-10">
-        <img src="https://cdn.quasar.dev/img/avatar6.jpg" alt="">
+        <img src="/img/avatar6.jpg" alt="">
       </q-avatar>
     </q-card-section>
 

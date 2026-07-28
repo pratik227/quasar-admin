@@ -48,7 +48,7 @@
           </q-btn>
           <q-btn round flat aria-label="Account">
             <q-avatar size="26px">
-              <img src="https://cdn.quasar.dev/img/boy-avatar.png" alt="">
+              <img src="/img/boy-avatar.jpg" alt="">
             </q-avatar>
           </q-btn>
         </div>
@@ -61,7 +61,10 @@
       bordered
       class="bg-primary text-white"
     >
-      <q-list>
+      <!-- role="navigation": QList would otherwise emit role="list", whose children
+           must all be listitem. These are router links (<a>) and expansion-item
+           buttons, so the list role makes the a11y tree invalid. -->
+      <q-list role="navigation" aria-label="Main navigation">
         <q-item to="/" active-class="q-item-no-link-highlighting">
           <q-item-section avatar>
             <q-icon name="dashboard"/>
@@ -82,7 +85,8 @@
           icon="pages"
           label="Pages"
         >
-          <q-list class="q-pl-lg">
+          <!-- role="presentation": see the drawer nav above. -->
+          <q-list class="q-pl-lg" role="presentation">
             <q-item to="/Login-1" active-class="q-item-no-link-highlighting">
               <q-item-section avatar>
                 <q-icon name="email"/>
@@ -138,7 +142,8 @@
           icon="map"
           label="Maps"
         >
-          <q-list class="q-pl-lg">
+          <!-- role="presentation": see the drawer nav above. -->
+          <q-list class="q-pl-lg" role="presentation">
             <q-item to="/Map" active-class="q-item-no-link-highlighting">
               <q-item-section avatar>
                 <q-icon name="map"/>

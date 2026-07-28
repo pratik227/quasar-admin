@@ -14,7 +14,27 @@
   to = "/index.html"
   status = 200
 
+# Vite emits content-hashed filenames here, so these can never go stale.
 [[headers]]
   for = "/assets/*"
   [headers.values]
     cache-control = "public, max-age=31536000, immutable"
+
+# Static demo imagery and favicons. Not content-hashed, so keep a long-but-
+# revalidatable TTL: if one of these is replaced, edge caches pick it up after
+# a week instead of a year. (Netlify's default of max-age=0 was costing ~545 KiB
+# of repeat-visit downloads in Lighthouse's "efficient cache lifetimes" audit.)
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    cache-control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/icons/*"
+  [headers.values]
+    cache-control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/favicon.ico"
+  [headers.values]
+    cache-control = "public, max-age=604800, stale-while-revalidate=86400"

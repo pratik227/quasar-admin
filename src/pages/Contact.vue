@@ -256,7 +256,7 @@ const contacts_list = [
   {
     name: 'Razvan Stoenescu',
     position: 'Developer',
-    avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
+    avatar: '/img/team/razvan_stoenescu.jpeg',
     email: 'mailto:razvan@quasar.dev',
     company_email: 'mailto:razvan@quasar.dev',
     website: 'https://github.com/rstoenescu',
@@ -267,7 +267,7 @@ const contacts_list = [
   {
     name: 'Jeff Galbraith',
     position: 'Developer',
-    avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
+    avatar: '/img/team/jeff_galbraith.jpg',
     email: 'mailto:jeff@quasar.dev',
     company_email: 'mailto:jeff@quasar.dev',
     website: 'http://jeffgalbraith.dev/',
@@ -278,7 +278,7 @@ const contacts_list = [
   {
     name: 'Brunhilde Panswick',
     position: 'Administrator',
-    avatar: 'https://cdn.quasar.dev/img/avatar2.jpg',
+    avatar: '/img/avatar2.jpg',
     email: 'test.@quasar.dev',
     company_email: 'test.@quasar.dev',
     website: 'http://test1.dev/',
@@ -289,7 +289,7 @@ const contacts_list = [
   {
     name: 'Winfield Stapforth',
     position: 'Administrator',
-    avatar: 'https://cdn.quasar.dev/img/avatar6.jpg',
+    avatar: '/img/avatar6.jpg',
     email: 'test2.@quasar.dev',
     company_email: 'test.@quasar.dev',
     website: 'http://test2.dev/',
@@ -315,7 +315,7 @@ const favorites_list = [
   {
     name: 'Razvan Stoenescu',
     position: 'Developer',
-    avatar: 'https://cdn.quasar.dev/team/razvan_stoenescu.jpeg',
+    avatar: '/img/team/razvan_stoenescu.jpeg',
     email: 'mailto:razvan@quasar.dev',
     company_email: 'mailto:razvan@quasar.dev',
     website: 'https://github.com/rstoenescu',
@@ -326,7 +326,7 @@ const favorites_list = [
   {
     name: 'Jeff Galbraith',
     position: 'Developer',
-    avatar: 'https://cdn.quasar.dev/team/jeff_galbraith.jpg',
+    avatar: '/img/team/jeff_galbraith.jpg',
     email: 'mailto:jeff@quasar.dev',
     company_email: 'mailto:jeff@quasar.dev',
     website: 'http://jeffgalbraith.dev/',
