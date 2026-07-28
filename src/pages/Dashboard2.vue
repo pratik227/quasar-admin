@@ -182,7 +182,7 @@
     <div class="row q-col-gutter-sm  q-py-sm">
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <q-card class="no-shadow" bordered>
-          <q-tabs v-model="tab" dense class="text-grey" active-color="primary" indicator-color="primary"
+          <q-tabs v-model="tab" dense class="text-grey-9" active-color="primary" indicator-color="primary"
                   align="justify">
             <q-tab name="contact" :class="tab == 'contact' ? 'text-blue' : ''" icon="contacts" label="Contact"/>
             <q-tab name="message" :class="tab == 'message' ? 'text-blue' : ''" icon="comment" label="Message">

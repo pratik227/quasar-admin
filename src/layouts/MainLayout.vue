@@ -29,7 +29,9 @@
                  target="_blank">
             <i class="fa fa-heart fa-2x fa-beat" aria-hidden="true"></i>
           </q-btn>
-          <q-btn round dense flat color="white" icon="notifications" aria-label="Notifications">
+          <!-- The badge is visible text inside the button, so the accessible name
+               has to contain it (axe: label-content-name-mismatch). -->
+          <q-btn round dense flat color="white" icon="notifications" aria-label="Notifications, 5 unread">
             <q-badge color="red" text-color="white" floating>
               5
             </q-badge>
