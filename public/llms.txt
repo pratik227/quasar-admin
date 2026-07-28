@@ -1,0 +1,51 @@
+# Quasar Admin Template
+
+> A free, open-source admin dashboard template built with Vue 3 and the Quasar
+> Framework, using Quasar CLI with Vite. It ships ready-made dashboard, table,
+> chart, e-commerce, calendar, mail and authentication screens that you can copy
+> into your own project.
+
+This is a demo site: every screen is populated with placeholder data and there is
+no backend, no real authentication and no user accounts. The login and lock
+screens are UI examples only and do not submit credentials anywhere.
+
+## Project
+
+- [Source code on GitHub](https://github.com/pratik227/quasar-admin): full source, MIT licensed.
+- [Live demo](https://next-quasar-admin.netlify.app/): this site.
+- [License](https://github.com/pratik227/quasar-admin/blob/next/LICENSE.md): MIT.
+
+## Dashboards
+
+- [Dashboard](https://next-quasar-admin.netlify.app/): stat cards, charts, timeline and a to-do list.
+- [Alternate dashboard](https://next-quasar-admin.netlify.app/Dashboard2): sales tables and product widgets.
+
+## Components and screens
+
+- [Cards](https://next-quasar-admin.netlify.app/Cards): card layout examples.
+- [Card headers](https://next-quasar-admin.netlify.app/CardHeader): card header variants.
+- [Tables](https://next-quasar-admin.netlify.app/Tables): data tables, including progress and dark variants.
+- [Tree table](https://next-quasar-admin.netlify.app/TreeTable): collapsible hierarchical table.
+- [Charts](https://next-quasar-admin.netlify.app/Charts): line, bar, area, pie, scatter and gauge charts via ECharts.
+- [Calendar](https://next-quasar-admin.netlify.app/Calendar): month calendar with events.
+- [Pagination](https://next-quasar-admin.netlify.app/Pagination): paginated lists and cards with filters.
+- [Footer](https://next-quasar-admin.netlify.app/Footer): footer layout examples.
+
+## Application screens
+
+- [User profile](https://next-quasar-admin.netlify.app/Profile): profile page layout.
+- [Contacts](https://next-quasar-admin.netlify.app/Contact): contact list and detail view.
+- [Directory](https://next-quasar-admin.netlify.app/Directory): people directory cards.
+- [Mail](https://next-quasar-admin.netlify.app/Mail): mail client layout.
+- [E-commerce](https://next-quasar-admin.netlify.app/Ecommerce): product catalogue.
+- [Checkout](https://next-quasar-admin.netlify.app/Checkout): checkout and order summary.
+- [Pricing](https://next-quasar-admin.netlify.app/Pricing): pricing table.
+- [Maps](https://next-quasar-admin.netlify.app/Map): Google Maps embed.
+- [Map markers](https://next-quasar-admin.netlify.app/MapMarker): map with markers.
+- [Street view](https://next-quasar-admin.netlify.app/StreetView): Street View panorama.
+
+## Optional
+
+- [Login screen](https://next-quasar-admin.netlify.app/Login-1): example login UI, non-functional.
+- [Lock screen](https://next-quasar-admin.netlify.app/Lock): example lock UI, non-functional.
+- [Maintenance page](https://next-quasar-admin.netlify.app/Maintenance): maintenance placeholder.
