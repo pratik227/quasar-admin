@@ -5,6 +5,7 @@
         <q-card class="no-shadow" bordered>
           <q-img
             src="https://cdn.quasar.dev/img/parallax1.jpg"
+            alt=""
           />
           <q-separator></q-separator>
           <q-card-section class="text-h6 text-grey-8 q-pa-md">

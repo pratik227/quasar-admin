@@ -9,7 +9,7 @@
       <q-item v-for="msg in getListData" class="bg-white" :key="msg.id" clickable v-ripple>
         <q-item-section avatar>
           <q-avatar>
-            <img :src="msg.avatar">
+            <img :src="msg.avatar" alt="">
           </q-avatar>
         </q-item-section>
 

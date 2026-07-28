@@ -14,7 +14,7 @@
             <q-item style="max-width: 420px">
               <q-item-section avatar>
                 <q-avatar>
-                  <img :src="props.row.avatar">
+                  <img :src="props.row.avatar" alt="">
                 </q-avatar>
               </q-item-section>
 

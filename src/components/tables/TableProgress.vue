@@ -13,7 +13,7 @@
             <q-item>
               <q-item-section avatar>
                 <q-avatar>
-                  <img :src="props.row.avatar">
+                  <img :src="props.row.avatar" alt="">
                 </q-avatar>
               </q-item-section>
 

@@ -64,7 +64,7 @@
           <q-toolbar class="text-black ">
             <q-btn round flat class="q-pa-sm">
               <q-avatar size="80px">
-                <img :src="selected_contact.avatar">
+                <img :src="selected_contact.avatar" alt="">
               </q-avatar>
             </q-btn>
 
@@ -161,7 +161,7 @@
           <q-toolbar class="text-black ">
             <q-btn round flat class="q-pa-sm">
               <q-avatar size="80px">
-                <img :src="selected_contact.avatar">
+                <img :src="selected_contact.avatar" alt="">
               </q-avatar>
             </q-btn>
 

@@ -33,7 +33,7 @@
             >
               <q-item-section avatar>
                 <q-avatar>
-                  <img :src="contact.avatar">
+                  <img :src="contact.avatar" alt="">
                 </q-avatar>
               </q-item-section>
 
@@ -60,7 +60,7 @@
           <q-item v-for="msg in messages" :key="msg.id" clickable v-ripple>
             <q-item-section avatar>
               <q-avatar>
-                <img :src="msg.avatar">
+                <img :src="msg.avatar" alt="">
               </q-avatar>
             </q-item-section>
 

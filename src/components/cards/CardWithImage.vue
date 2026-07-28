@@ -3,6 +3,7 @@
     <q-card class="my-card no-shadow" bordered>
       <q-img
         src="https://cdn.quasar.dev/img/parallax1.jpg"
+        alt=""
         basic
       >
         <div class="absolute-bottom-left bg-transparent q-ml-md">

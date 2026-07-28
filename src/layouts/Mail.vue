@@ -52,7 +52,7 @@
           </q-btn>
           <q-btn round flat>
             <q-avatar size="26px">
-              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+              <img src="https://cdn.quasar.dev/img/boy-avatar.png" alt="">
             </q-avatar>
             <q-tooltip>Account</q-tooltip>
           </q-btn>
@@ -109,7 +109,7 @@
           <template v-slot:header>
             <q-item-section avatar>
               <q-avatar>
-                <img :src="mail.avatar">
+                <img :src="mail.avatar" alt="">
               </q-avatar>
             </q-item-section>
 
