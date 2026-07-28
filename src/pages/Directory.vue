@@ -89,7 +89,7 @@ const card_data = [
 export default defineComponent({
   name: "Directory",
   components: {
-    DirectoryCard: defineAsyncComponent(() => import('components/cards/DirectoryCard.vue'))
+    DirectoryCard: defineAsyncComponent(() => import('@/components/cards/DirectoryCard.vue'))
   },
   setup() {
     return {

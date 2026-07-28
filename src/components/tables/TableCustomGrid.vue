@@ -21,7 +21,7 @@
 <script>
 import {defineComponent} from 'vue'
 
-import CardProfile from "components/cards/CardProfile.vue";
+import CardProfile from "@/components/cards/CardProfile.vue";
 
 
 const columns = [

@@ -17,6 +17,7 @@
 
 <script>
 import {defineComponent} from "vue";
+import 'echarts'
 import ECharts from "vue-echarts";
 
 export default defineComponent({

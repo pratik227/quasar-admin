@@ -80,7 +80,7 @@ const data = [
 
 export default defineComponent({
   name: "ProductCatalogues",
-  components: {CardProduct: defineAsyncComponent(() => import('components/cards/CardProduct.vue'))},
+  components: {CardProduct: defineAsyncComponent(() => import('@/components/cards/CardProduct.vue'))},
   setup() {
     const search = ref('');
     return {

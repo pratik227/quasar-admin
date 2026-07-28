@@ -339,8 +339,8 @@ const favorites_list = [
 export default defineComponent({
   name: "Contact",
   components: {
-    ContactDetailItem: defineAsyncComponent(() => import('components/ContactDetailItem.vue')),
-    ContactItem: defineAsyncComponent(() => import('components/ContactItem.vue'))
+    ContactDetailItem: defineAsyncComponent(() => import('@/components/ContactDetailItem.vue')),
+    ContactItem: defineAsyncComponent(() => import('@/components/ContactItem.vue'))
   },
   setup() {
 

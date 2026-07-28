@@ -48,7 +48,7 @@
 
 <script>
 import {defineComponent, defineAsyncComponent} from 'vue';
-import * as echarts from 'echarts';
+import 'echarts'
 import ECharts from "vue-echarts";
 
 export default defineComponent({

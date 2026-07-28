@@ -142,7 +142,7 @@
 </template>
 
 <script>
-import {fasGlobeAmericas, fasFlask} from '@quasar/extras/fontawesome-v5'
+import {fasGlobeAmericas, fasFlask} from '@quasar/extras/fontawesome-v7'
 
 import {defineComponent} from 'vue'
 import {ref} from 'vue'

@@ -23,6 +23,10 @@ Be sure to check out my sponsor page.
 
 Thank you so much!!!
 
+## Requirements
+
+Node.js `>= 22.12` (Node 24 / 26 also supported) — required by `@quasar/app-vite` v3.
+
 ## Install the dependencies
 ```bash
 npm install
@@ -30,14 +34,20 @@ npm install
 
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 ```bash
-quasar dev
+npm run dev
 ```
-
 
 ### Build the app for production
 ```bash
-quasar build
+npm run build
 ```
+
+The `dev` and `build` npm scripts work without a global install. If you prefer running
+`quasar dev` / `quasar build` directly, install the optional global CLI as well:
+```bash
+npm install -g @quasar/cli
+```
+See [Quasar CLI](https://quasar.dev/start/quasar-cli).
 
 ## Screens UI
 **Login**
@@ -72,7 +82,7 @@ quasar build
 
 
 ### Customize the configuration
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+See [Configuring quasar.config file](https://quasar.dev/quasar-cli-vite/quasar-config-file).
 
 ### Sponsors  
   

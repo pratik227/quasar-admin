@@ -40,8 +40,8 @@ import {defineComponent, defineAsyncComponent} from 'vue'
 export default defineComponent({
   name: "TreeTable",
   components: {
-    SimpleHierarchy: defineAsyncComponent(() => import('components/tree-table/SimpleHierarchy.vue')),
-    CustomHierarchy: defineAsyncComponent(() => import('components/tree-table/CustomHierarchy.vue'))
+    SimpleHierarchy: defineAsyncComponent(() => import('@/components/tree-table/SimpleHierarchy.vue')),
+    CustomHierarchy: defineAsyncComponent(() => import('@/components/tree-table/CustomHierarchy.vue'))
   }
 })
 </script>
