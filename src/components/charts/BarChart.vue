@@ -21,7 +21,7 @@
 <script>
 import {defineComponent} from 'vue';
 import ECharts from 'vue-echarts';
-import "echarts";
+import '@/utils/echarts.js'
 
 export default defineComponent({
   name: "BarChart",

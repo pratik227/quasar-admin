@@ -7,6 +7,7 @@
 <script>
 import {defineComponent} from 'vue'
 import {ref} from 'vue'
+import { loadGoogleMaps } from '@/utils/google-maps.js'
 
 export default defineComponent({
   name: "Map",
@@ -22,8 +23,9 @@ export default defineComponent({
       }
     }
   },
-  mounted() {
-    this.initMap();
+  async mounted() {
+    await loadGoogleMaps()
+    this.initMap()
   },
 })
 </script>

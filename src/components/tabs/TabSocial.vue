@@ -4,16 +4,16 @@
       <q-tabs
         v-model="tab"
         dense
-        class="text-grey"
+        class="text-grey-9"
         active-color="primary"
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="contact" :class="tab=='contact'?'text-blue':''" icon="contacts" label="Contact"/>
-        <q-tab name="message" :class="tab=='message'?'text-blue':''" icon="comment" label="Message">
+        <q-tab name="contact" :class="tab=='contact'?'text-blue-8':''" icon="contacts" label="Contact"/>
+        <q-tab name="message" :class="tab=='message'?'text-blue-8':''" icon="comment" label="Message">
           <q-badge color="red" floating>{{ messages.length }}</q-badge>
         </q-tab>
-        <q-tab name="notification" :class="tab=='notification'?'text-blue':''" icon="notifications"
+        <q-tab name="notification" :class="tab=='notification'?'text-blue-8':''" icon="notifications"
                label="Notification">
           <q-badge color="red" floating>4</q-badge>
         </q-tab>
@@ -23,7 +23,9 @@
 
       <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="contact" class="q-pa-sm">
-          <q-list class="rounded-borders" separator>
+          <!-- role="presentation": a clickable QItem renders role="button", which
+               ARIA does not allow as a direct child of role="list". -->
+          <q-list class="rounded-borders" separator role="presentation">
 
             <q-item
               v-for="(contact, index) in contacts"
@@ -33,7 +35,7 @@
             >
               <q-item-section avatar>
                 <q-avatar>
-                  <img :src="contact.avatar">
+                  <img :src="contact.avatar" alt="">
                 </q-avatar>
               </q-item-section>
 
@@ -46,9 +48,12 @@
 
               <q-item-section side>
                 <div class="text-grey-8 q-gutter-xs">
-                  <q-btn class="gt-xs" size="md" flat color="blue" dense round icon="comment"/>
-                  <q-btn class="gt-xs" size="md" flat color="red" dense round icon="email"/>
-                  <q-btn size="md" flat dense round color="green" icon="phone"/>
+                  <q-btn class="gt-xs" size="md" flat color="blue" dense round icon="comment"
+                         :aria-label="`Message ${contact.name}`"/>
+                  <q-btn class="gt-xs" size="md" flat color="red" dense round icon="email"
+                         :aria-label="`Email ${contact.name}`"/>
+                  <q-btn size="md" flat dense round color="green" icon="phone"
+                         :aria-label="`Call ${contact.name}`"/>
                 </div>
               </q-item-section>
             </q-item>
@@ -60,7 +65,7 @@
           <q-item v-for="msg in messages" :key="msg.id" clickable v-ripple>
             <q-item-section avatar>
               <q-avatar>
-                <img :src="msg.avatar">
+                <img :src="msg.avatar" alt="">
               </q-avatar>
             </q-item-section>
 
@@ -76,7 +81,8 @@
         </q-tab-panel>
 
         <q-tab-panel name="notification" class="q-pa-sm">
-          <q-list>
+          <!-- role="presentation": see the contact list above. -->
+          <q-list role="presentation">
             <q-item clickable v-ripple>
               <q-item-section avatar>
                 <q-avatar color="teal" text-color="white" icon="info"/>

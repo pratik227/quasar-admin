@@ -14,6 +14,7 @@
           <q-card style="background-color: #292845" class="text-white">
             <q-img
               :src="data.img"
+              :alt="data.title"
             />
             <q-separator></q-separator>
             <q-card-section class="text-h5 text-center">

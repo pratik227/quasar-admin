@@ -1,7 +1,7 @@
 <template>
   <div class="row q-col-gutter-sm  q-py-sm">
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <q-card class="q-ma-xs no-shadow" bordered style="background-color: #38b1c5">
+      <q-card class="q-ma-xs no-shadow" bordered style="background-color: #298190">
         <q-card-section class="text-h6 text-white">
           Today's View
         </q-card-section>
@@ -15,7 +15,7 @@
       </q-card>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <q-card class="q-ma-xs no-shadow" bordered style="background-color: #ea4b64">
+      <q-card class="q-ma-xs no-shadow" bordered style="background-color: #d04359">
         <q-card-section class="text-h6 text-white">
           Daily Sales
         </q-card-section>
@@ -29,7 +29,7 @@
       </q-card>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-      <q-card class="q-ma-xs no-shadow" bordered style="background-color: #1e88e5">
+      <q-card class="q-ma-xs no-shadow" bordered style="background-color: #1b79cc">
         <q-card-section class="text-h6 text-white">
           Today's User Visit
         </q-card-section>
@@ -48,7 +48,7 @@
 
 <script>
 import {defineComponent, defineAsyncComponent} from 'vue';
-import 'echarts'
+import '@/utils/echarts.js'
 import ECharts from "vue-echarts";
 
 export default defineComponent({

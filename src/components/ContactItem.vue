@@ -2,7 +2,7 @@
   <q-item clickable>
     <q-item-section avatar>
       <q-avatar>
-        <img :src="avatar">
+        <img :src="avatar" alt="">
       </q-avatar>
     </q-item-section>
 

@@ -7,6 +7,7 @@
             :id="todo.id"
             v-model="todo.completed"
             color="primary"
+            :aria-label="`Mark &quot;${todo.todo}&quot; as complete`"
           />
         </q-item-section>
         <q-item-section class="text-body1 text-wrap"
@@ -16,7 +17,7 @@
           <q-item-label caption class="text-grey-8">{{ todo.todo_desc }}</q-item-label>
         </q-item-section>
         <q-item-section side>
-          <q-btn icon="chat" round flat></q-btn>
+          <q-btn icon="chat" round flat :aria-label="`Comment on &quot;${todo.todo}&quot;`"></q-btn>
         </q-item-section>
       </q-item>
     </q-list>

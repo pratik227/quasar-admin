@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import * as echarts from 'echarts'
+import { graphic } from '@/utils/echarts.js'
 import ECharts from "vue-echarts";
 import {defineComponent} from "vue";
 export default defineComponent({
@@ -72,7 +72,7 @@ export default defineComponent({
             showSymbol: false,
             areaStyle: {
               opacity: 0.8,
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+              color: new graphic.LinearGradient(0, 0, 0, 1, [{
                 offset: 0,
                 color: 'rgba(128, 255, 165)'
               }, {
@@ -96,7 +96,7 @@ export default defineComponent({
             showSymbol: false,
             areaStyle: {
               opacity: 0.8,
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+              color: new graphic.LinearGradient(0, 0, 0, 1, [{
                 offset: 0,
                 color: 'rgba(0, 221, 255)'
               }, {
@@ -120,7 +120,7 @@ export default defineComponent({
             showSymbol: false,
             areaStyle: {
               opacity: 0.8,
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+              color: new graphic.LinearGradient(0, 0, 0, 1, [{
                 offset: 0,
                 color: 'rgba(55, 162, 255)'
               }, {
@@ -144,7 +144,7 @@ export default defineComponent({
             showSymbol: false,
             areaStyle: {
               opacity: 0.8,
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+              color: new graphic.LinearGradient(0, 0, 0, 1, [{
                 offset: 0,
                 color: 'rgba(255, 0, 135)'
               }, {
@@ -172,7 +172,7 @@ export default defineComponent({
             },
             areaStyle: {
               opacity: 0.8,
-              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+              color: new graphic.LinearGradient(0, 0, 0, 1, [{
                 offset: 0,
                 color: 'rgba(255, 191, 0)'
               }, {

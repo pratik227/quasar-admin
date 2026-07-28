@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import 'echarts'
+import '@/utils/echarts.js'
 import ECharts from 'vue-echarts';
 import {defineComponent} from "vue";
 

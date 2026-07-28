@@ -114,7 +114,7 @@
               <q-item>
                 <q-item-section>
                   <q-avatar square>
-                    <img :src="props.row.prod_img"/>
+                    <img :src="props.row.prod_img" alt=""/>
                   </q-avatar>
                 </q-item-section>
 
@@ -130,7 +130,7 @@
               <q-item>
                 <q-item-section avatar>
                   <q-avatar>
-                    <img :src="props.row.avatar"/>
+                    <img :src="props.row.avatar" alt=""/>
                   </q-avatar>
                 </q-item-section>
 
@@ -182,7 +182,7 @@
     <div class="row q-col-gutter-sm  q-py-sm">
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <q-card class="no-shadow" bordered>
-          <q-tabs v-model="tab" dense class="text-grey" active-color="primary" indicator-color="primary"
+          <q-tabs v-model="tab" dense class="text-grey-9" active-color="primary" indicator-color="primary"
                   align="justify">
             <q-tab name="contact" :class="tab == 'contact' ? 'text-blue' : ''" icon="contacts" label="Contact"/>
             <q-tab name="message" :class="tab == 'message' ? 'text-blue' : ''" icon="comment" label="Message">
@@ -202,7 +202,7 @@
                 <q-item v-for="(contact, index) in contacts" :key="index">
                   <q-item-section avatar>
                     <q-avatar>
-                      <img :src="contact.avatar"/>
+                      <img :src="contact.avatar" alt=""/>
                     </q-avatar>
                   </q-item-section>
 
@@ -228,7 +228,7 @@
               <q-item v-for="msg in messages" :key="msg.id" clickable v-ripple>
                 <q-item-section avatar>
                   <q-avatar>
-                    <img :src="msg.avatar"/>
+                    <img :src="msg.avatar" alt=""/>
                   </q-avatar>
                 </q-item-section>
 
@@ -286,7 +286,7 @@
           <q-carousel-slide :name="1" class="q-pa-none">
             <q-scroll-area class="fit">
               <q-card class="my-card">
-                <img src="../assets/coding.jpeg"/>
+                <img src="../assets/coding.jpeg" alt="Close-up of PHP source code on a dark editor screen"/>
 
                 <q-card-section>
                   <div class="text-h6">Work with something that you like, like…</div>
@@ -303,7 +303,7 @@
           <q-carousel-slide :name="2" class="q-pa-none">
             <q-scroll-area class="fit">
               <q-card class="my-card">
-                <img src="../assets/lookgood.jpeg"/>
+                <img src="../assets/lookgood.jpeg" alt="The words &quot;You look good.&quot; printed inside a pink gift box"/>
 
                 <q-card-section>
                   <div class="text-h6">Keep your schedule in the right time</div>
@@ -322,7 +322,7 @@
           <q-carousel-slide :name="3" class="q-pa-none">
             <q-scroll-area class="fit">
               <q-card class="my-card">
-                <img src="../assets/trawel.jpeg"/>
+                <img src="../assets/trawel.jpeg" alt="Aerial view of a road winding through autumn woodland"/>
 
                 <q-card-section>
                   <div class="text-h6">Travel everytime that you have a chance</div>
@@ -344,7 +344,7 @@
 
 <script>
 import {defineComponent, defineAsyncComponent, ref} from 'vue';
-import 'echarts'
+import '@/utils/echarts.js'
 import ECharts from "vue-echarts";
 
 const messages = [

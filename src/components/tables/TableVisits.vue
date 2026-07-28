@@ -24,6 +24,8 @@
                 round
                 dense
                 :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'"
+
+                :aria-label="props.inFullscreen ? 'Exit full screen' : 'View table full screen'"
                 @click="props.toggleFullscreen"
                 v-if="mode === 'list'" class="q-px-sm"
               >

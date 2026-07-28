@@ -3,6 +3,10 @@
     <q-card-section class="q-pa-none">
       <div class="row q-col-gutter-sm ">
         <div v-for="(item, index) in items" :key="index" class="col-md-3 col-sm-12 col-xs-12">
+          <!-- QItem renders role="listitem", which ARIA requires to sit inside a
+               list. A bare q-list has no styles of its own, so this is purely
+               semantic wrapping. -->
+          <q-list>
           <q-item :style="`background-color: ${item.color1}`" class="q-pa-none">
             <q-item-section v-if="icon_position === 'left'" side :style="`background-color: ${item.color2}`"
                             class=" q-pa-lg q-mr-none text-white">
@@ -16,6 +20,7 @@
               <q-icon :name="item.icon" color="white" size="44px"></q-icon>
             </q-item-section>
           </q-item>
+          </q-list>
         </div>
       </div>
     </q-card-section>
@@ -48,21 +53,21 @@ export default defineComponent({
             title: "Followers",
             icon: "fab fa-twitter",
             value: "500",
-            color1: "#f37169",
-            color2: "#f34636"
+            color1: "#bb5751",
+            color2: "#d83e30"
           },
           {
             title: "Connections",
             icon: "fab fa-google",
             value: "50",
-            color1: "#ea6a7f",
-            color2: "#ea4b64"
+            color1: "#bb5566",
+            color2: "#d04359"
           },
           {
             title: "Website Visits",
             icon: "bar_chart",
             value: "1020",
-            color1: "#a270b1",
+            color1: "#9366a1",
             color2: "#9f52b1"
           }
         ]
@@ -71,28 +76,28 @@ export default defineComponent({
             title: "Monthly Income",
             icon: "fas fa-dollar-sign",
             value: "$ 20k",
-            color1: "#546bfa",
+            color1: "#5168f3",
             color2: "#3e51b5"
           },
           {
             title: "Weekly Sales",
             icon: "fas fa-chart-bar",
             value: "20",
-            color1: "#3a9688",
+            color1: "#338377",
             color2: "#3e51b5"
           },
           {
             title: "New Customers",
             icon: "fas fa-chart-line",
             value: "321",
-            color1: "#7cb342",
+            color1: "#598130",
             color2: "#3e51b5"
           },
           {
             title: "Active Users",
             icon: "person",
             value: "82",
-            color1: "#f88c2b",
+            color1: "#b0631f",
             color2: "#3e51b5"
           }
         ];

@@ -17,16 +17,21 @@
         <div class="q-gutter-sm row items-center no-wrap">
           <q-btn round dense flat color="white" :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'"
                  @click="$q.fullscreen.toggle()"
+                 :aria-label="$q.fullscreen.isActive ? 'Exit full screen' : 'Enter full screen'"
                  v-if="$q.screen.gt.sm">
           </q-btn>
           <q-btn round dense flat color="white" icon="fab fa-github" type="a"
+                 aria-label="View this project on GitHub"
                  href="https://github.com/pratik227/quasar-admin" target="_blank">
           </q-btn>
           <q-btn round dense flat style="color:red !important;" type="a" href="https://github.com/sponsors/pratik227"
+                 aria-label="Sponsor this project on GitHub"
                  target="_blank">
-            <i class="fa fa-heart fa-2x fa-beat"></i>
+            <i class="fa fa-heart fa-2x fa-beat" aria-hidden="true"></i>
           </q-btn>
-          <q-btn round dense flat color="white" icon="notifications">
+          <!-- The badge is visible text inside the button, so the accessible name
+               has to contain it (axe: label-content-name-mismatch). -->
+          <q-btn round dense flat color="white" icon="notifications" aria-label="Notifications, 5 unread">
             <q-badge color="red" text-color="white" floating>
               5
             </q-badge>
@@ -41,9 +46,9 @@
               </q-list>
             </q-menu>
           </q-btn>
-          <q-btn round flat>
+          <q-btn round flat aria-label="Account">
             <q-avatar size="26px">
-              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+              <img src="https://cdn.quasar.dev/img/boy-avatar.png" alt="">
             </q-avatar>
           </q-btn>
         </div>
@@ -432,7 +437,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   gap: 16px;
-  background-color: #5dcf8a;
+  background-color: #3c8458;
   color: #fff;
   padding: 12px 16px;
   border-radius: 10px;

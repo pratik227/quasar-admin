@@ -13,7 +13,7 @@
         <div class="row q-col-gutter-lg">
           <div class="col-lg-3 col-sm-12 col-xs-12 col-md-3" v-for="data in getData2">
             <q-card style="background-color: #292845" class="text-white">
-              <q-img :src="data.img">
+              <q-img :src="data.img" :alt="data.title">
                 <template v-slot:loading>
                   <div class="text-subtitle1 text-white">
                     Loading...
