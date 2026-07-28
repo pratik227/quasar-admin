@@ -4,16 +4,16 @@
       <q-tabs
         v-model="tab"
         dense
-        class="text-grey"
+        class="text-grey-7"
         active-color="primary"
         indicator-color="primary"
         align="justify"
       >
-        <q-tab name="contact" :class="tab=='contact'?'text-blue':''" icon="contacts" label="Contact"/>
-        <q-tab name="message" :class="tab=='message'?'text-blue':''" icon="comment" label="Message">
+        <q-tab name="contact" :class="tab=='contact'?'text-blue-8':''" icon="contacts" label="Contact"/>
+        <q-tab name="message" :class="tab=='message'?'text-blue-8':''" icon="comment" label="Message">
           <q-badge color="red" floating>{{ messages.length }}</q-badge>
         </q-tab>
-        <q-tab name="notification" :class="tab=='notification'?'text-blue':''" icon="notifications"
+        <q-tab name="notification" :class="tab=='notification'?'text-blue-8':''" icon="notifications"
                label="Notification">
           <q-badge color="red" floating>4</q-badge>
         </q-tab>

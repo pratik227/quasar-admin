@@ -1,6 +1,6 @@
 <template>
   <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-    <q-card class="bg-blue text-white no-shadow" bordered>
+    <q-card class="bg-blue-8 text-white no-shadow" bordered>
       <q-card-section class="text-h6 q-pb-none">
         <!-- Layout-only header, not a list item: role="presentation" stops QItem
              emitting role="listitem" with no enclosing list. -->

@@ -45,9 +45,9 @@ export default defineComponent({
   setup () {
     return {
       cards: [
-        { title: "Today's View", color: '#38b1c5' },
-        { title: 'Daily Sales', color: '#ea4b64' },
-        { title: "Today's User Visit", color: '#1e88e5' }
+        { title: "Today's View", color: '#298190' },
+        { title: 'Daily Sales', color: '#d04359' },
+        { title: "Today's User Visit", color: '#1b79cc' }
       ]
     }
   }

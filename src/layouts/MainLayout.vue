@@ -44,7 +44,7 @@
               </q-list>
             </q-menu>
           </q-btn>
-          <q-btn round flat>
+          <q-btn round flat aria-label="Account">
             <q-avatar size="26px">
               <img src="https://cdn.quasar.dev/img/boy-avatar.png" alt="">
             </q-avatar>
@@ -435,7 +435,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   gap: 16px;
-  background-color: #5dcf8a;
+  background-color: #3c8458;
   color: #fff;
   padding: 12px 16px;
   border-radius: 10px;
