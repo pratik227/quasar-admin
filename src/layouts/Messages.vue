@@ -3,7 +3,7 @@
     <q-item style="max-width: 420px" v-for="msg in messages" :key="msg.id" clickable v-ripple>
       <q-item-section avatar>
         <q-avatar>
-          <img :src="msg.avatar" alt="">
+          <img width="40" height="40" :src="msg.avatar" alt="">
         </q-avatar>
       </q-item-section>
 
@@ -32,7 +32,7 @@ export default defineComponent({
           name: 'Pratik Patel',
           msg: ' -- I\'ll be in your neighborhood doing errands this\n' +
             '            weekend. Do you want to grab brunch?',
-          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=96&v=4',
           time: '10:42 PM'
         }, {
           id: 6,

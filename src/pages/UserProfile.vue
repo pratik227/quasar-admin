@@ -12,7 +12,7 @@
               <q-item class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <q-item-section side>
                   <q-avatar size="100px">
-                    <img src="/img/boy-avatar.jpg" alt="">
+                    <img width="100" height="100" src="/img/boy-avatar.jpg" alt="">
                   </q-avatar>
                 </q-item-section>
                 <q-item-section>
@@ -73,7 +73,7 @@
         <q-card class="card-bg text-white no-shadow" bordered>
           <q-card-section class="text-center bg-transparent">
             <q-avatar size="100px" class="shadow-10">
-              <img src="profile.svg" alt="">
+              <img width="100" height="100" src="profile.svg" alt="">
             </q-avatar>
             <div class="text-subtitle2 q-mt-lg">by Pratik Patel</div>
             <div class="text-h6 q-mt-md">Pratik Patel</div>

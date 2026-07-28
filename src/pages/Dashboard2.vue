@@ -114,7 +114,7 @@
               <q-item>
                 <q-item-section>
                   <q-avatar square>
-                    <img :src="props.row.prod_img" alt=""/>
+                    <img width="40" height="40" :src="props.row.prod_img" alt=""/>
                   </q-avatar>
                 </q-item-section>
 
@@ -130,7 +130,7 @@
               <q-item>
                 <q-item-section avatar>
                   <q-avatar>
-                    <img :src="props.row.avatar" alt=""/>
+                    <img width="40" height="40" :src="props.row.avatar" alt=""/>
                   </q-avatar>
                 </q-item-section>
 
@@ -202,7 +202,7 @@
                 <q-item v-for="(contact, index) in contacts" :key="index">
                   <q-item-section avatar>
                     <q-avatar>
-                      <img :src="contact.avatar" alt=""/>
+                      <img width="40" height="40" :src="contact.avatar" alt=""/>
                     </q-avatar>
                   </q-item-section>
 
@@ -228,7 +228,7 @@
               <q-item v-for="msg in messages" :key="msg.id" clickable v-ripple>
                 <q-item-section avatar>
                   <q-avatar>
-                    <img :src="msg.avatar" alt=""/>
+                    <img width="40" height="40" :src="msg.avatar" alt=""/>
                   </q-avatar>
                 </q-item-section>
 
@@ -286,7 +286,7 @@
           <q-carousel-slide :name="1" class="q-pa-none">
             <q-scroll-area class="fit">
               <q-card class="my-card">
-                <img src="../assets/coding.jpeg" alt="Close-up of PHP source code on a dark editor screen"/>
+                <img width="500" height="334" src="../assets/coding.jpeg" alt="Close-up of PHP source code on a dark editor screen"/>
 
                 <q-card-section>
                   <div class="text-h6">Work with something that you like, like…</div>
@@ -303,7 +303,7 @@
           <q-carousel-slide :name="2" class="q-pa-none">
             <q-scroll-area class="fit">
               <q-card class="my-card">
-                <img src="../assets/lookgood.jpeg" alt="The words &quot;You look good.&quot; printed inside a pink gift box"/>
+                <img width="500" height="333" src="../assets/lookgood.jpeg" alt="The words &quot;You look good.&quot; printed inside a pink gift box"/>
 
                 <q-card-section>
                   <div class="text-h6">Keep your schedule in the right time</div>
@@ -322,7 +322,7 @@
           <q-carousel-slide :name="3" class="q-pa-none">
             <q-scroll-area class="fit">
               <q-card class="my-card">
-                <img src="../assets/trawel.jpeg" alt="Aerial view of a road winding through autumn woodland"/>
+                <img width="500" height="375" src="../assets/trawel.jpeg" alt="Aerial view of a road winding through autumn woodland"/>
 
                 <q-card-section>
                   <div class="text-h6">Travel everytime that you have a chance</div>
@@ -352,7 +352,7 @@ const messages = [
     id: 5,
     name: "Pratik Patel",
     msg: " -- I'll be in your neighborhood doing errands this\n" + "            weekend. Do you want to grab brunch?",
-    avatar: "https://avatars2.githubusercontent.com/u/34883558?s=400&v=4",
+    avatar: "https://avatars2.githubusercontent.com/u/34883558?s=96&v=4",
     time: "10:42 PM"
   },
   {
@@ -388,7 +388,7 @@ const contacts = [
   {
     name: "Pratik Patel",
     position: "Developer",
-    avatar: "https://avatars2.githubusercontent.com/u/34883558?s=400&v=4"
+    avatar: "https://avatars2.githubusercontent.com/u/34883558?s=96&v=4"
   },
   {
     name: "Razvan Stoenescu",
@@ -418,7 +418,7 @@ const sales_data = [
     status: "Canceled",
     stock: "14 / 30",
     date: "23 Oct 2018",
-    avatar: "https://avatars3.githubusercontent.com/u/34883558?s=400&u=09455019882ac53dc69b23df570629fd84d37dd1&v=4",
+    avatar: "https://avatars3.githubusercontent.com/u/34883558?s=96&u=09455019882ac53dc69b23df570629fd84d37dd1&v=4",
     product_name: "Woman Bag",
     total: "$300,00",
     code: "QWE123",
@@ -430,7 +430,7 @@ const sales_data = [
     status: "Sent",
     date: "11 Nov 2018",
     stock: "25 / 70",
-    avatar: "https://avatars2.githubusercontent.com/u/27857088?s=400&u=a898efbc753d93cf4c2070a7cf3b05544b50deea&v=4",
+    avatar: "https://avatars2.githubusercontent.com/u/27857088?s=96&u=a898efbc753d93cf4c2070a7cf3b05544b50deea&v=4",
     product_name: "Laptop",
     total: "$230,00",
     code: "ABC890",
@@ -441,7 +441,7 @@ const sales_data = [
     Progress: 30,
     status: "Pending",
     stock: "35 / 50",
-    avatar: "https://avatars0.githubusercontent.com/u/55240045?s=400&u=cf9bffc2bd2d8e42ca6e5abf40ddd6c1a03ce2860&v=4",
+    avatar: "https://avatars0.githubusercontent.com/u/55240045?s=96&u=cf9bffc2bd2d8e42ca6e5abf40ddd6c1a03ce2860&v=4",
     product_name: "Pinapple Jam",
     total: "$34,00",
     date: "19 Sept 2020",
@@ -453,7 +453,7 @@ const sales_data = [
     Progress: 100,
     status: "Paid",
     stock: "18 / 33",
-    avatar: "https://avatars1.githubusercontent.com/u/10262924?s=400&u=9f601b344d597ed76581e3a6a10f3c149cb5f6dc&v=4",
+    avatar: "https://avatars1.githubusercontent.com/u/10262924?s=96&u=9f601b344d597ed76581e3a6a10f3c149cb5f6dc&v=4",
     product_name: "Action Figure",
     total: "$208,00",
     date: "19 Sept 2020",

@@ -37,7 +37,9 @@
             </q-badge>
             <q-menu
             >
-              <q-list style="min-width: 100px">
+              <!-- role="presentation": holds clickable QItems (role="button") and a
+                   QCard, neither of which ARIA allows as children of a list. -->
+              <q-list style="min-width: 100px" role="presentation">
                 <messages></messages>
                 <q-card class="text-center no-shadow no-border">
                   <q-btn label="View All" style="max-width: 120px !important;" flat dense
@@ -48,7 +50,7 @@
           </q-btn>
           <q-btn round flat aria-label="Account">
             <q-avatar size="26px">
-              <img src="/img/boy-avatar.jpg" alt="">
+              <img width="26" height="26" src="/img/boy-avatar.jpg" alt="">
             </q-avatar>
           </q-btn>
         </div>

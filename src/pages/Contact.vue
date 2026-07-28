@@ -64,7 +64,7 @@
           <q-toolbar class="text-black ">
             <q-btn round flat class="q-pa-sm">
               <q-avatar size="80px">
-                <img :src="selected_contact.avatar" alt="">
+                <img width="80" height="80" :src="selected_contact.avatar" alt="">
               </q-avatar>
             </q-btn>
 
@@ -161,7 +161,7 @@
           <q-toolbar class="text-black ">
             <q-btn round flat class="q-pa-sm">
               <q-avatar size="80px">
-                <img :src="selected_contact.avatar" alt="">
+                <img width="80" height="80" :src="selected_contact.avatar" alt="">
               </q-avatar>
             </q-btn>
 
@@ -245,7 +245,7 @@ const contacts_list = [
   {
     name: 'Pratik Patel',
     position: 'Developer',
-    avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+    avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=96&v=4',
     email: 'pratikpatelpp802@gmail.com',
     company_email: 'pratikpatelpp802@gmail.com',
     website: 'www.test.com',
@@ -304,7 +304,7 @@ const favorites_list = [
   {
     name: 'Pratik Patel',
     position: 'Developer',
-    avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+    avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=96&v=4',
     email: 'pratikpatelpp802@gmail.com',
     company_email: 'pratikpatelpp802@gmail.com',
     website: 'www.test.com',

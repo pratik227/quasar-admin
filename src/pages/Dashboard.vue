@@ -66,7 +66,7 @@ export default defineComponent({
           name: 'Pratik Patel',
           msg: ' -- I\'ll be in your neighborhood doing errands this\n' +
             '            weekend. Do you want to grab brunch?',
-          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=96&v=4',
           time: '10:42 PM'
         }, {
           id: 6,

@@ -1,7 +1,66 @@
 // Configuration for your app
 // https://quasar.dev/quasar-cli-vite/quasar-config-file
 
+import { existsSync } from 'node:fs'
+import { dirname, join, relative, resolve, sep } from 'node:path'
+
 import { defineConfig } from '#q-app'
+
+/*
+ * Slims down the two webfont stylesheets @quasar/extras contributes, by patching
+ * their source before Vite's CSS pipeline turns the url()s into asset handles --
+ * which is why this cannot live in postcss.config.js: by the time PostCSS sees a
+ * `src:` declaration, the path is already an internal placeholder.
+ *
+ * Font Awesome: repoint the four @font-face files at the subsets in
+ *   src/assets/fonts (251 KB -> 5 KB, glyph-for-glyph identical). Generated and
+ *   verified by tools/subset_fontawesome.py -- re-run it after adding an icon;
+ *   the PostCSS purge fails the build if the subset is missing one.
+ *
+ * Roboto: drop the weights nothing needs enough to justify a 26 KB download.
+ *   Quasar's .text-h1-.text-h4 ask for 300 and text-weight-bolder for 900; those
+ *   now fall back to 400 and to synthesis from 700, saving ~53 KB. Dropping the
+ *   @font-face here rather than in PostCSS also keeps the unused .woff files out
+ *   of dist entirely.
+ */
+const ROBOTO_WEIGHTS_TO_KEEP = new Set([ '400', '500', '700' ])
+const FA_SUBSET_DIR = resolve('src/assets/fonts')
+
+const slimQuasarExtrasFonts = {
+  name: 'slim-quasar-extras-fonts',
+  enforce: 'pre',
+
+  transform (code, id) {
+    const file = id.split('?')[ 0 ]
+    if (file.endsWith('.css') === false) return null
+
+    if (file.includes('fontawesome-v7') === true) {
+      return code.replace(
+        /url\((["']?)\.\/(fa-[a-z0-9-]+)\.woff2\1\)/g,
+        (match, quote, name) => {
+          const target = join(FA_SUBSET_DIR, `${name}-subset.woff2`)
+          if (existsSync(target) === false) {
+            this.error(`missing ${target} -- run: python3 tools/subset_fontawesome.py`)
+          }
+
+          const rel = relative(dirname(file), target).split(sep).join('/')
+          return `url(${quote}${rel.startsWith('.') ? rel : `./${rel}`}${quote})`
+        }
+      )
+    }
+
+    if (file.includes('roboto-font') === true) {
+      return code.replace(/@font-face\s*\{[^}]*\}/g, rule => {
+        const weight = /font-weight:\s*([0-9]+)/.exec(rule)
+        return weight !== null && ROBOTO_WEIGHTS_TO_KEEP.has(weight[ 1 ]) === false
+          ? ''
+          : rule
+      })
+    }
+
+    return null
+  }
+}
 
 export default defineConfig((ctx) => {
   return {
@@ -11,9 +70,13 @@ export default defineConfig((ctx) => {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli-vite/boot-files
+    /*
+     * The scaffolded 'i18n' and 'axios' boot files were removed: nothing in the
+     * app ever called $t()/useI18n() or $axios/$api, yet they pulled vue-i18n
+     * (54 KB) and axios (45 KB) into the boot graph of every page — which is
+     * what Lighthouse's "Reduce unused JavaScript" was reporting.
+     */
     boot: [
-      'i18n',
-      'axios',
       'qhierarchy'
     ],
 
@@ -66,23 +129,26 @@ export default defineConfig((ctx) => {
       // minify: false,
       // distDir
 
-      // extendViteConf (viteConf) {},
+      extendViteConf (viteConf) {
+        /*
+         * Never inline webfonts. The Font Awesome subsets are only a couple of KB
+         * each, so Vite would base64 them straight into the render-blocking
+         * stylesheet -- and because Font Awesome declares the same file across
+         * several @font-face rules (v7, v5 and legacy family names), every copy
+         * gets embedded again: ~18 KB of CSS in front of first paint to save four
+         * requests for 5 KB of fonts.
+         */
+        viteConf.build = viteConf.build || {}
+        viteConf.build.assetsInlineLimit = filePath => (
+          /\.(?:woff2?|ttf|otf|eot)$/i.test(filePath) === true ? false : void 0
+        )
+      },
+
       // viteVuePluginOptions: {},
 
+      // (The @intlify/unplugin-vue-i18n plugin went away with the i18n boot file.)
       vitePlugins: [
-        ['@intlify/unplugin-vue-i18n/vite', {
-          // if you want to use Vue I18n Legacy API, you need to set `compositionOnly: false`
-          // compositionOnly: false,
-
-          // if you want to use named tokens in your Vue I18n messages, such as 'Hello {name}',
-          // you need to set `runtimeOnly: false`
-          // runtimeOnly: false,
-
-          ssr: ctx.mode.ssr || ctx.mode.ssg,
-
-          // you need to set i18n resource including paths !
-          include: [ ctx.appPaths.resolve.app('src/i18n') ]
-        }]
+        slimQuasarExtrasFonts
       ]
     },
 

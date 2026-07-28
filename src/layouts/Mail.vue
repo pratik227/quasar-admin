@@ -52,7 +52,7 @@
           </q-btn>
           <q-btn round flat>
             <q-avatar size="26px">
-              <img src="/img/boy-avatar.jpg" alt="">
+              <img width="26" height="26" src="/img/boy-avatar.jpg" alt="">
             </q-avatar>
             <q-tooltip>Account</q-tooltip>
           </q-btn>
@@ -109,7 +109,7 @@
           <template v-slot:header>
             <q-item-section avatar>
               <q-avatar>
-                <img :src="mail.avatar" alt="">
+                <img width="40" height="40" :src="mail.avatar" alt="">
               </q-avatar>
             </q-item-section>
 
@@ -195,17 +195,17 @@ export default defineComponent({
       mail_data: [
         {
           name: 'Pratik Patel',
-          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=96&v=4',
           date: 'March 12, 2019',
         },
         {
           name: 'Pratik Patel',
-          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=96&v=4',
           date: 'March 22, 2019',
         },
         {
           name: 'Pratik Patel',
-          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=400&v=4',
+          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=96&v=4',
           date: 'March 12, 2019',
         },
         {

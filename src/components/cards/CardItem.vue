@@ -3,7 +3,7 @@
     <q-item>
       <q-item-section avatar>
         <q-avatar size="70px">
-          <img :src="avatar" alt="">
+          <img width="70" height="70" :src="avatar" alt="">
         </q-avatar>
       </q-item-section>
 

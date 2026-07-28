@@ -4,7 +4,7 @@
 
     <q-card-section class="absolute absolute-center text-center">
       <q-avatar size="100px" class="shadow-10">
-        <img src="/img/avatar6.jpg" alt="">
+        <img width="100" height="100" src="/img/avatar6.jpg" alt="">
       </q-avatar>
     </q-card-section>
 

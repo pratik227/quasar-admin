@@ -2,7 +2,7 @@
   <q-card class="no-shadow" bordered>
     <q-card-section class="text-center">
       <q-avatar size="100px" class="shadow-10">
-        <img :src="avatar" alt="">
+        <img width="100" height="100" :src="avatar" alt="">
       </q-avatar>
     </q-card-section>
 
