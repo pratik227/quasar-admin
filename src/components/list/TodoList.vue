@@ -26,7 +26,7 @@ import {defineComponent,defineAsyncComponent} from 'vue'
 export default defineComponent({
   name: 'ToDoList',
   components: {
-    Todo: defineAsyncComponent(() =>  import('components/Todo.vue')),
+    Todo: defineAsyncComponent(() =>  import('@/components/Todo.vue')),
   },
   setup () {
     return {

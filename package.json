@@ -4,33 +4,35 @@
   "description": "Quasar Admin",
   "productName": "Quasar Admin",
   "author": "pratikpatelpp802@gmail.com",
+  "type": "module",
   "private": true,
   "scripts": {
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "postinstall": "quasar prepare --silent",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.17.0",
-    "@quasar/quasar-ui-qcalendar": "^4.1.2",
-    "axios": "^1.12.0",
-    "echarts": "^5.5.1",
-    "pinia": "^2.2.4",
-    "quasar": "^2.18.5",
-    "vue": "^3.0.0",
-    "vue-echarts": "^6.7.3",
-    "vue-i18n": "^9.14.5",
-    "vue-router": "^4.4.5",
-    "vuedraggable": "^2.24.3"
+    "@quasar/extras": "^2.0.2",
+    "@quasar/quasar-ui-qcalendar": "^5.2.0",
+    "axios": "^1.18.1",
+    "echarts": "^6.1.0",
+    "pinia": "^4.0.2",
+    "quasar": "^2.23.2",
+    "quasar-ui-qhierarchy": "^1.0.19",
+    "vue": "^3.5.40",
+    "vue-echarts": "^8.0.1",
+    "vue-i18n": "^11.4.8",
+    "vue-router": "^5.2.0",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
-    "@intlify/vite-plugin-vue-i18n": "^3.4.0",
-    "@quasar/app-vite": "^1.11.0",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47",
-    "quasar-app-extension-qhierarchy": "^1.0.15"
+    "@intlify/unplugin-vue-i18n": "^11.2.4",
+    "@quasar/app-vite": "^3.2.0",
+    "autoprefixer": "^10.5.4",
+    "postcss": "^8.5.24"
   },
   "engines": {
-    "node": "^18 || ^16 || ^14.19",
-    "npm": ">= 6.13.4",
-    "yarn": ">= 1.21.1"
+    "node": ">= 26 || ^24 || ^22.12"
   }
 }

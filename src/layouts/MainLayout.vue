@@ -364,7 +364,7 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+import EssentialLink from '@/components/EssentialLink.vue'
 import Messages from "./Messages.vue";
 
 import {defineComponent, ref} from 'vue'

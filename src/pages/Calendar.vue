@@ -41,16 +41,16 @@
   </q-page>
 </template>
 
-<script>import {
-  QCalendarMonth,
+<script>import { QCalendarMonth } from '@quasar/quasar-ui-qcalendar'
+import {
   addToDate,
   parseDate,
   parseTimestamp,
   today
-} from '@quasar/quasar-ui-qcalendar'
-import '@quasar/quasar-ui-qcalendar/src/QCalendarVariables.sass'
-import '@quasar/quasar-ui-qcalendar/src/QCalendarTransitions.sass'
-import '@quasar/quasar-ui-qcalendar/src/QCalendarMonth.sass'
+} from '@/utils/calendar-dates.js'
+import '@quasar/quasar-ui-qcalendar/QCalendarVariables.css'
+import '@quasar/quasar-ui-qcalendar/QCalendarTransitions.css'
+import '@quasar/quasar-ui-qcalendar/QCalendarMonth.css'
 import {defineComponent} from 'vue'
 // The function below is used to set up our demo data
 const CURRENT_DAY = new Date()

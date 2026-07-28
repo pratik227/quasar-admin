@@ -344,7 +344,7 @@
 
 <script>
 import {defineComponent, defineAsyncComponent, ref} from 'vue';
-import * as echarts from 'echarts';
+import 'echarts'
 import ECharts from "vue-echarts";
 
 const messages = [
@@ -492,7 +492,7 @@ const sales_column = [
 export default defineComponent({
   name: "Dashboard2",
   components: {
-    CardSocial: defineAsyncComponent(() => import("components/cards/CardSocial.vue")),
+    CardSocial: defineAsyncComponent(() => import("@/components/cards/CardSocial.vue")),
     ECharts
   },
   setup() {
