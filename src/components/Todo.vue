@@ -1,6 +1,6 @@
 <template>
   <span>
-    <q-list bordered class="bg-white no-shadow rounded-borders text-black">
+    <q-list class="md-todo">
       <q-item v-for="todo in todos" :key="todo.id">
         <q-item-section avatar>
           <q-checkbox
@@ -10,11 +10,13 @@
             :aria-label="`Mark &quot;${todo.todo}&quot; as complete`"
           />
         </q-item-section>
-        <q-item-section class="text-body1 text-wrap"
-                        :style="todo.completed?{'textDecoration':'line-through'}:{}">
+        <!-- Completion is a class rather than an inline style so the strike is
+             themeable and survives a dark-mode repaint. -->
+        <q-item-section class="md-body-large text-wrap"
+                        :class="{ 'md-todo__item--done': todo.completed }">
 
           <q-item-label>{{ todo.todo }}</q-item-label>
-          <q-item-label caption class="text-grey-8">{{ todo.todo_desc }}</q-item-label>
+          <q-item-label caption>{{ todo.todo_desc }}</q-item-label>
         </q-item-section>
         <q-item-section side>
           <q-btn icon="chat" round flat :aria-label="`Comment on &quot;${todo.todo}&quot;`"></q-btn>
@@ -83,5 +85,25 @@ export default defineComponent({
 </script>
 
 <style scoped>
+/*
+ * Was bg-white / text-black, which only worked on a light page. The list is a
+ * neutral surface nested inside TodoList.vue's primary-container panel; the
+ * tone difference is what separates them, so no border is needed.
+ *
+ * Optical roundness: the panel's corner is 28 and the card section pads it by
+ * 16, so this one is 28 - 16 = 12 (medium). Matching 28 would look unbalanced.
+ */
+.md-todo {
+  background: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+  border-radius: var(--md-sys-shape-corner-medium);
+  overflow: hidden;
+}
 
+/* Quasar's item captions already resolve to currentColor at 54%, so the
+   description follows the surface role without an explicit colour. */
+.md-todo__item--done {
+  text-decoration: line-through;
+  color: var(--md-sys-color-on-surface-variant);
+}
 </style>

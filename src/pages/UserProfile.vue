@@ -1,85 +1,85 @@
 <template>
-  <q-page class="q-pa-sm">
-    <div class="row q-col-gutter-sm">
-      <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12">
-        <q-card class="card-bg text-white no-shadow" bordered>
-          <q-card-section class="text-h6 ">
-            <div class="text-h6">Edit Profile</div>
-            <div class="text-subtitle2">Complete your profile</div>
+  <q-page class="md-page">
+    <div class="row q-col-gutter-md">
+      <div class="col-12 col-md-8">
+        <q-card class="md-panel no-shadow" bordered>
+          <q-card-section>
+            <div class="md-title-large md-title-large--emphasized">Edit Profile</div>
+            <div class="md-body-medium md-supporting">Complete your profile</div>
           </q-card-section>
           <q-card-section class="q-pa-sm">
             <q-list class="row">
-              <q-item class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <q-item class="col-12">
                 <q-item-section side>
                   <q-avatar size="100px">
                     <img width="100" height="100" src="/img/boy-avatar.jpg" alt="">
                   </q-avatar>
                 </q-item-section>
                 <q-item-section>
-                  <q-btn label="Add Photo" class="text-capitalize" rounded color="info"
-                         style="max-width: 120px"></q-btn>
+                  <q-btn label="Add Photo" unelevated class="text-capitalize md-filled-button md-photo-btn"
+                         rounded></q-btn>
                 </q-item-section>
               </q-item>
 
-              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <q-item class="col-12 col-sm-6">
                 <q-item-section>
-                  <q-input dark color="white" dense v-model="user_details.user_name" label="User Name"/>
+                  <q-input dense v-model="user_details.user_name" label="User Name"/>
                 </q-item-section>
               </q-item>
-              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <q-item class="col-12 col-sm-6">
                 <q-item-section>
-                  <q-input dark color="white" dense v-model="user_details.email" label="Email Address"/>
+                  <q-input dense v-model="user_details.email" label="Email Address"/>
                 </q-item-section>
               </q-item>
-              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <q-item class="col-12 col-sm-6">
                 <q-item-section>
-                  <q-input dark color="white" dense v-model="user_details.first_name" label="First Name"/>
+                  <q-input dense v-model="user_details.first_name" label="First Name"/>
                 </q-item-section>
               </q-item>
-              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <q-item class="col-12 col-sm-6">
                 <q-item-section>
-                  <q-input dark color="white" dense v-model="user_details.last_name" label="Last Name"/>
+                  <q-input dense v-model="user_details.last_name" label="Last Name"/>
                 </q-item-section>
               </q-item>
-              <q-item class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <q-item class="col-12">
                 <q-item-section>
-                  <q-input dark color="white" autogrow dense v-model="user_details.address" label="Address"/>
+                  <q-input autogrow dense v-model="user_details.address" label="Address"/>
                 </q-item-section>
               </q-item>
-              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <q-item class="col-12 col-sm-6">
                 <q-item-section>
-                  <q-input dark color="white" dense v-model="user_details.city" label="City"/>
+                  <q-input dense v-model="user_details.city" label="City"/>
                 </q-item-section>
               </q-item>
-              <q-item class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <q-item class="col-12 col-sm-6">
                 <q-item-section>
-                  <q-input dark color="white" dense v-model="user_details.post_code" label="Postal Code"/>
+                  <q-input dense v-model="user_details.post_code" label="Postal Code"/>
                 </q-item-section>
               </q-item>
-              <q-item class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <q-item class="col-12">
                 <q-item-section>
-                  <q-input dark color="white" type="textarea" dense v-model="user_details.about" label="About"/>
+                  <q-input type="textarea" dense v-model="user_details.about" label="About"/>
                 </q-item-section>
               </q-item>
             </q-list>
           </q-card-section>
           <q-card-actions align="right">
-            <q-btn class="text-capitalize bg-info text-white">Update User Info</q-btn>
+            <q-btn unelevated class="text-capitalize md-filled-button">Update User Info</q-btn>
           </q-card-actions>
         </q-card>
       </div>
-      <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+      <div class="col-12 col-md-4">
 
-        <q-card class="card-bg text-white no-shadow" bordered>
-          <q-card-section class="text-center bg-transparent">
+        <q-card class="md-panel no-shadow" bordered>
+          <q-card-section class="text-center">
             <q-avatar size="100px" class="shadow-10">
               <img width="100" height="100" src="profile.svg" alt="">
             </q-avatar>
-            <div class="text-subtitle2 q-mt-lg">by Pratik Patel</div>
-            <div class="text-h6 q-mt-md">Pratik Patel</div>
+            <div class="md-body-medium md-supporting q-mt-lg">by Pratik Patel</div>
+            <div class="md-title-large md-title-large--emphasized q-mt-md">Pratik Patel</div>
           </q-card-section>
           <q-card-section>
-            <div class="text-body2 text-justify">
+            <div class="md-body-medium text-justify md-measure">
               My name is Pratik Patel (also known as @pratik227). I noticed myself pulling into programming since 2013,
               and then determined myself to become a skilled and knowledgeable programmer. My passion for my programming
               increases as I started working for Incentius (where I am currently working in).
@@ -88,50 +88,50 @@
         </q-card>
       </div>
 
-      <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12">
-        <q-card class="card-bg text-white no-shadow" bordered>
-          <q-card-section class="text-h6 q-pa-sm">
-            <div class="text-h6">Change Password</div>
+      <div class="col-12 col-md-8">
+        <q-card class="md-panel no-shadow" bordered>
+          <q-card-section class="q-pa-sm">
+            <div class="md-title-large md-title-large--emphasized">Change Password</div>
           </q-card-section>
           <q-card-section class="q-pa-sm row">
-            <q-item class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <q-item class="col-12 col-sm-4">
               <q-item-section>
                 Current Password
               </q-item-section>
             </q-item>
-            <q-item class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <q-item class="col-12 col-sm-8">
               <q-item-section>
-                <q-input type="password" dark dense outlined color="white" round
+                <q-input type="password" dense outlined round
                          v-model="password_dict.current_password"
                          label="Current Password"/>
               </q-item-section>
             </q-item>
-            <q-item class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <q-item class="col-12 col-sm-4">
               <q-item-section>
                 New Password
               </q-item-section>
             </q-item>
-            <q-item class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <q-item class="col-12 col-sm-8">
               <q-item-section>
-                <q-input type="password" dark dense outlined color="white" round v-model="password_dict.new_password"
+                <q-input type="password" dense outlined round v-model="password_dict.new_password"
                          label="New Password"/>
               </q-item-section>
             </q-item>
-            <q-item class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <q-item class="col-12 col-sm-4">
               <q-item-section>
                 Confirm New Password
               </q-item-section>
             </q-item>
-            <q-item class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <q-item class="col-12 col-sm-8">
               <q-item-section>
-                <q-input type="password" dark dense outlined round color="white"
+                <q-input type="password" dense outlined round
                          v-model="password_dict.confirm_new_password"
                          label="Confirm New Password"/>
               </q-item-section>
             </q-item>
           </q-card-section>
           <q-card-actions align="right">
-            <q-btn class="text-capitalize bg-info text-white">Change Password</q-btn>
+            <q-btn unelevated class="text-capitalize md-filled-button">Change Password</q-btn>
           </q-card-actions>
 
         </q-card>
@@ -155,8 +155,29 @@ export default defineComponent({
 </script>
 
 <style scoped>
+/* M3 window margin -- 16dp on compact, 24dp from 600px up. */
+.md-page { padding: var(--md-layout-margin); }
 
-.card-bg {
-  background-color: #162b4d;
+/*
+ * These three panels used to be a hardcoded navy (#162b4d) with `text-white`
+ * and `dark` inputs -- a fixed dark card that only read correctly because the
+ * page behind it was white, and which lost all separation once the page itself
+ * went dark. Elevation in M3 is surface tone, so the panel simply steps one
+ * container off the page and takes the matching on- role.
+ */
+.md-panel {
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+  border-radius: var(--md-sys-shape-corner-large);
 }
+
+.md-supporting { color: var(--md-sys-color-on-surface-variant); }
+
+/*
+ * Quasar pairs a filled `color` with a hardcoded `text-white`, unreadable on
+ * the dark-scheme primary. The role pair lives on the class instead.
+ */
+
+/* Was an inline `max-width: 120px`. */
+.md-photo-btn { max-inline-size: 120px; }
 </style>

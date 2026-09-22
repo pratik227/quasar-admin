@@ -9,6 +9,7 @@
       </q-card-section>
       <q-card-section>
         <ECharts :option="options"
+                 :theme="chartTheme"
                  class="q-mt-md"
                  :resizable="true"
                  autoresize style="height: 285px;"
@@ -21,11 +22,15 @@
 
 <script>
 import '@/utils/echarts.js'
+import {chartTheme} from '@/utils/echarts-theme.js'
 import ECharts from 'vue-echarts';
 import {defineComponent} from "vue";
 
 export default defineComponent({
   name: "GuageChart",
+  setup() {
+    return {chartTheme}
+  },
   data() {
     return {
       options: {

@@ -1,22 +1,27 @@
 <template>
-  <q-page class="q-pa-sm">
-    <div class="row q-col-gutter-sm q-py-sm">
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+  <q-page class="md-page">
+    <!--
+      Grid: one chart per row on compact/medium, two from expanded (840px) up.
+      With Quasar's breakpoints realigned to Material's, `col-md-6` now takes
+      effect at 840 rather than 1024, which is where the second pane appears.
+    -->
+    <div class="row q-col-gutter-md">
+      <div class="col-12 col-md-6">
         <bar-chart></bar-chart>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="col-12 col-md-6">
         <line-chart></line-chart>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="col-12 col-md-6">
         <scatter-plot></scatter-plot>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="col-12 col-md-6">
         <pie-chart></pie-chart>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="col-12 col-md-6">
         <area-chart></area-chart>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="col-12 col-md-6">
         <guage-chart></guage-chart>
       </div>
     </div>
@@ -40,5 +45,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+/* M3 window margin -- 16dp on compact, 24dp from 600px up. */
+.md-page { padding: var(--md-layout-margin); }
 </style>

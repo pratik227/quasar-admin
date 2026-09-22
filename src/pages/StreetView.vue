@@ -1,7 +1,12 @@
 <template>
-  <q-page class="q-pa-sm row">
-    <div id="myMap" class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="height: 85vh;width: 50%;"></div>
-    <div id="pano" class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="height: 85vh;width: 50%;"></div>
+  <!--
+    Two panes side by side from expanded (840px) up, stacked below it -- the
+    grid columns own the widths now, so the old inline `width: 50%` (which
+    fought the column at every size) is gone.
+  -->
+  <q-page class="md-page row q-col-gutter-md">
+    <div id="myMap" class="col-12 col-md-6 md-map"></div>
+    <div id="pano" class="col-12 col-md-6 md-map"></div>
   </q-page>
 </template>
 
@@ -42,6 +47,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
+/* M3 window margin -- 16dp on compact, 24dp from 600px up. */
+.md-page { padding: var(--md-layout-margin); }
 
+.md-map {
+  block-size: 85vh;
+  border-radius: var(--md-sys-shape-corner-large);
+  overflow: hidden;
+}
 </style>
-

@@ -1,7 +1,7 @@
 <template>
-  <q-page class="q-pa-sm bg-white">
-    <div class="row q-col-gutter-sm">
-      <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+  <q-page class="md-page">
+    <div class="row q-col-gutter-md">
+      <div class="col-12 col-md-7">
         <q-stepper
           v-model="step"
           header-nav
@@ -17,12 +17,12 @@
             :header-nav="step > 1"
           >
             <div class="row">
-              <div class="col-6">
+              <div class="col-12 col-sm-6">
                 <q-item>
                   <q-input dense outlined class="full-width" v-model="address_detail.first_name" label="First Name *"/>
                 </q-item>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-sm-6">
                 <q-item>
                   <q-input dense outlined class="full-width" v-model="address_detail.last_name" label="Last Name *"/>
                 </q-item>
@@ -39,27 +39,27 @@
                            label="Address line 2 *"/>
                 </q-item>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-sm-6">
                 <q-item>
                   <q-input dense outlined class="full-width" v-model="address_detail.city" label="City *"/>
                 </q-item>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-sm-6">
                 <q-item>
                   <q-input dense outlined class="full-width" v-model="address_detail.state" label="State"/>
                 </q-item>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-sm-6">
                 <q-item>
                   <q-input dense outlined class="full-width" v-model="address_detail.zip_code" label="Zip Code"/>
                 </q-item>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-sm-6">
                 <q-item>
                   <q-input dense outlined class="full-width" v-model="address_detail.country" label="Country *"/>
                 </q-item>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-sm-6">
                 <q-item>
                   <q-checkbox dense outlined class="full-width" v-model="address_detail.checkbox"
                               label="Use this address for payment details"/>
@@ -68,7 +68,7 @@
             </div>
 
             <q-stepper-navigation>
-              <q-btn rounded @click="() => { done1 = true; step = 2 }" class="float-right q-mr-md q-mb-md" color="blue"
+              <q-btn rounded unelevated @click="() => { done1 = true; step = 2 }" class="float-right q-mb-md md-filled-button"
                      label="Next"/>
             </q-stepper-navigation>
           </q-step>
@@ -82,29 +82,29 @@
           >
 
             <div class="row">
-              <div class="col-6">
+              <div class="col-12 col-sm-6">
                 <q-item>
                   <q-input dense outlined class="full-width" v-model="card_detail.name" label="Name on Card*"/>
                 </q-item>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-sm-6">
                 <q-item>
                   <q-input dense outlined class="full-width" v-model="address_detail.card_number"
                            label="Card Number *"/>
                 </q-item>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-sm-6">
                 <q-item>
                   <q-input dense autogrow outlined v-model="address_detail.expiry_date" class="full-width"
                            label="Expiry Date *"/>
                 </q-item>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-sm-6">
                 <q-item>
                   <q-input dense autogrow outlined v-model="address_detail.cvv" class="full-width" label="CVV *"/>
                 </q-item>
               </div>
-              <div class="col-6">
+              <div class="col-12 col-sm-6">
                 <q-item>
                   <q-checkbox dense outlined class="full-width" v-model="address_detail.checkbox"
                               label="Remember credit card details for next time"/>
@@ -113,7 +113,7 @@
             </div>
 
             <q-stepper-navigation>
-              <q-btn rounded @click="() => { done2 = true; step = 3 }" class="float-right q-mr-md q-mb-md" color="blue"
+              <q-btn rounded unelevated @click="() => { done2 = true; step = 3 }" class="float-right q-mb-md md-filled-button"
                      label="Next"/>
               <q-btn flat @click="step = 1" color="primary" rounded label="Back" class="q-mr-sm float-right"/>
             </q-stepper-navigation>
@@ -127,7 +127,7 @@
           >
             <div class="row">
               <div class="col-12">
-                <q-item-label header class="text-h6">Order summary</q-item-label>
+                <q-item-label header class="md-title-large">Order summary</q-item-label>
                 <q-item class="full-width">
                   <q-item-section>
                     <q-item-label lines="1">Product 1</q-item-label>
@@ -178,7 +178,7 @@
                   </q-item-section>
                 </q-item>
                 <q-separator></q-separator>
-                <q-item class="full-width" style="border-top: 3px dotted blue">
+                <q-item class="full-width md-total-row">
                   <q-item-section>
                     <q-item-label lines="1">Total</q-item-label>
                   </q-item-section>
@@ -192,14 +192,14 @@
             <q-card class="rounded-borders">
               <q-card-section horizontal>
                 <q-card-section class="col-5 q-pt-xs">
-                  <div class="text-h6 text-center">Shipping</div>
+                  <div class="md-title-large text-center">Shipping</div>
                   <div class="text-subtitle1 ">Pratik Patel</div>
                   <div class="text-subtitle2">
                     4841 Johnston Locks
                   </div>
                 </q-card-section>
                 <q-card-section class="col-7 q-pt-xs">
-                  <div class="text-h6 text-center">Payment details</div>
+                  <div class="md-title-large text-center">Payment details</div>
                   <div class="text-subtitle1 q-mb-xs">Card type - Visa</div>
                   <div class="text-subtitle1 q-mb-xs">Card holder - P***ik Patel</div>
                   <div class="text-subtitle1 q-mb-xs">Card Number - xxxx-xxxx-xxxx-1234</div>
@@ -212,16 +212,16 @@
 
             <q-stepper-navigation>
 
-              <q-btn rounded @click="done3 = true" class="float-right q-mr-md q-mb-md" color="blue"
+              <q-btn rounded unelevated @click="done3 = true" class="float-right q-mb-md md-filled-button"
                      label="Place Order"/>
               <q-btn flat @click="step = 2" color="primary" rounded label="Back" class="q-mr-sm float-right"/>
             </q-stepper-navigation>
           </q-step>
         </q-stepper>
       </div>
-      <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-        <q-card class="bg-grey-2 no-shadow" bordered>
-          <q-card-section class="text-center text-h6 text-black ">
+      <div class="col-12 col-md-5">
+        <q-card class="md-summary no-shadow" bordered>
+          <q-card-section class="text-center md-title-large">
             <q-icon name="shopping_cart" class="q-mr-sm"/>
             Order Summary
           </q-card-section>
@@ -285,9 +285,9 @@
 
           <q-separator></q-separator>
           <q-card-section class="row">
-            <div class="  col-12 text-h6 full-width">
-              <div class="float-right q-mr-md">
-                Total : <span class="text-blue">$288.96</span></div>
+            <div class="col-12 md-title-large full-width">
+              <div class="float-right">
+                Total : <span class="text-primary">$288.96</span></div>
             </div>
           </q-card-section>
 
@@ -315,5 +315,24 @@ export default defineComponent({
 </script>
 
 <style scoped>
+/* M3 window margin -- 16dp on compact, 24dp from 600px up. */
+.md-page { padding: var(--md-layout-margin); }
 
+/*
+ * Quasar pairs a filled `color` with a hardcoded `text-white`, which is
+ * unreadable on the dark-scheme primary (#cfbdfe). Carrying the role pair on a
+ * class keeps the primary action legible in both schemes.
+ */
+
+/* The basket is a secondary pane, so it steps one tone off the page surface
+   rather than being painted a flat grey. */
+.md-summary {
+  background: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+}
+
+/* Logical property so the rule stays above the total in RTL too. */
+.md-total-row {
+  border-block-start: 3px dotted var(--md-sys-color-outline);
+}
 </style>

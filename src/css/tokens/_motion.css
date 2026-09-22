@@ -1,0 +1,70 @@
+/*
+ * M3 motion physics -- https://m3.material.io/styles/motion/overview/specs
+ *
+ * Material's motion system is springs (damping + stiffness). The web has no
+ * spring primitive in CSS, so Material publishes an official conversion table;
+ * these are those curves and durations verbatim.
+ *
+ * Two schemes:
+ *   standard   -- utilitarian movement, settles without overshoot
+ *   expressive -- overshoots and settles back
+ *
+ * CAUTION: every "spatial" curve has a y control point > 1, i.e. the value
+ * travels past its target and comes back. That is only cheap and only correct
+ * on `transform` and `opacity`. Animating width/height/top/left with these
+ * forces layout every frame AND can overshoot into negative values.
+ *
+ * Use "effects" curves (all y <= 1) for color, opacity and other non-spatial
+ * properties.
+ */
+:root {
+  /* spatial -- position, size, rotation (via transform) */
+  --md-sys-motion-spring-expressive-fast-spatial:    cubic-bezier(0.42, 1.67, 0.21, 0.90);
+  --md-sys-motion-spring-expressive-default-spatial: cubic-bezier(0.38, 1.21, 0.22, 1.00);
+  --md-sys-motion-spring-expressive-slow-spatial:    cubic-bezier(0.39, 1.29, 0.35, 0.98);
+  --md-sys-motion-spring-standard-fast-spatial:      cubic-bezier(0.27, 1.06, 0.18, 1.00);
+  --md-sys-motion-spring-standard-default-spatial:   cubic-bezier(0.27, 1.06, 0.18, 1.00);
+  --md-sys-motion-spring-standard-slow-spatial:      cubic-bezier(0.27, 1.06, 0.18, 1.00);
+
+  /* effects -- color, opacity; no overshoot */
+  --md-sys-motion-spring-expressive-fast-effects:    cubic-bezier(0.31, 0.94, 0.34, 1.00);
+  --md-sys-motion-spring-expressive-default-effects: cubic-bezier(0.34, 0.80, 0.34, 1.00);
+  --md-sys-motion-spring-expressive-slow-effects:    cubic-bezier(0.34, 0.88, 0.34, 1.00);
+  --md-sys-motion-spring-standard-fast-effects:      cubic-bezier(0.31, 0.94, 0.34, 1.00);
+  --md-sys-motion-spring-standard-default-effects:   cubic-bezier(0.34, 0.80, 0.34, 1.00);
+  --md-sys-motion-spring-standard-slow-effects:      cubic-bezier(0.34, 0.88, 0.34, 1.00);
+
+  /* durations paired with the curves above */
+  --md-sys-motion-duration-fast-spatial:    350ms;
+  --md-sys-motion-duration-default-spatial: 500ms;
+  --md-sys-motion-duration-slow-spatial:    650ms;  /* 750ms for the standard scheme */
+  --md-sys-motion-duration-slow-spatial-standard: 750ms;
+  --md-sys-motion-duration-fast-effects:    150ms;
+  --md-sys-motion-duration-default-effects: 200ms;
+  --md-sys-motion-duration-slow-effects:    300ms;
+}
+
+/*
+ * Honour the OS setting. Collapsing durations to ~0 rather than removing the
+ * transitions keeps `transitionend` listeners firing, so nothing that waits on
+ * a transition to finish silently hangs.
+ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --md-sys-motion-duration-fast-spatial:    1ms;
+    --md-sys-motion-duration-default-spatial: 1ms;
+    --md-sys-motion-duration-slow-spatial:    1ms;
+    --md-sys-motion-duration-slow-spatial-standard: 1ms;
+    --md-sys-motion-duration-fast-effects:    1ms;
+    --md-sys-motion-duration-default-effects: 1ms;
+    --md-sys-motion-duration-slow-effects:    1ms;
+
+    /* linear as well: a 1ms overshoot is still a (jarring) overshoot */
+    --md-sys-motion-spring-expressive-fast-spatial:    linear;
+    --md-sys-motion-spring-expressive-default-spatial: linear;
+    --md-sys-motion-spring-expressive-slow-spatial:    linear;
+    --md-sys-motion-spring-standard-fast-spatial:      linear;
+    --md-sys-motion-spring-standard-default-spatial:   linear;
+    --md-sys-motion-spring-standard-slow-spatial:      linear;
+  }
+}

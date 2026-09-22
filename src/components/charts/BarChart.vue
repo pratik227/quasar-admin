@@ -9,6 +9,7 @@
       </q-card-section>
       <q-card-section>
         <ECharts ref="barchart"  :option="options"
+                 :theme="chartTheme"
                  class="q-mt-md"
                  :resizable="true"
                  autoresize style="height: 300px;"
@@ -22,11 +23,13 @@
 import {defineComponent} from 'vue';
 import ECharts from 'vue-echarts';
 import '@/utils/echarts.js'
+import {chartTheme} from '@/utils/echarts-theme.js'
 
 export default defineComponent({
   name: "BarChart",
   setup() {
     return {
+      chartTheme,
       options: {
         legend: {
           bottom: 10,

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-item style="max-width: 420px" v-for="msg in messages" :key="msg.id" clickable v-ripple>
+    <q-item class="md-message" v-for="msg in messages" :key="msg.id" clickable v-ripple>
       <q-item-section avatar>
         <q-avatar>
           <img width="40" height="40" :src="msg.avatar" alt="">
@@ -8,11 +8,11 @@
       </q-item-section>
 
       <q-item-section>
-        <q-item-label>{{ msg.name }}</q-item-label>
-        <q-item-label caption lines="1">{{ msg.msg }}</q-item-label>
+        <q-item-label class="md-body-large">{{ msg.name }}</q-item-label>
+        <q-item-label caption lines="1" class="md-body-small md-message__preview">{{ msg.msg }}</q-item-label>
       </q-item-section>
 
-      <q-item-section side>
+      <q-item-section side class="md-label-small md-message__preview">
         {{ msg.time }}
       </q-item-section>
     </q-item>
@@ -50,10 +50,10 @@ export default defineComponent({
           time: '5:17 AM'
         }, {
           id: 2,
-          name: 'Jeff Galbraith',
+          name: 'Jordan Lee',
           msg: ' -- I\'ll be in your neighborhood doing errands this\n' +
             '            weekend. Do you want to grab brunch?',
-          avatar: '/img/team/jeff_galbraith.jpg',
+          avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=96&v=4',
           time: '5:17 AM'
         }, {
           id: 3,
@@ -70,5 +70,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+/* Was an inline `max-width: 420px`; logical, so the menu keeps its cap in RTL. */
+.md-message { max-inline-size: 420px; }
 
+/* Preview and timestamp are secondary to the sender name. */
+.md-message__preview { color: var(--md-sys-color-on-surface-variant); }
 </style>

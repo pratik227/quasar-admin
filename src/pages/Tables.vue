@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-sm">
+  <q-page class="md-page">
 
     <tables-basic></tables-basic>
 
@@ -29,6 +29,7 @@ export default defineComponent({
 })
 </script>
 
-<style>
-
+<style scoped>
+/* M3 window margin -- 16dp on compact, 24dp from 600px up. */
+.md-page { padding: var(--md-layout-margin); }
 </style>

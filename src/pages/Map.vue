@@ -1,6 +1,6 @@
 <template>
-  <q-page class="q-pa-sm">
-    <div id="myMap" style="height: 85vh;"></div>
+  <q-page class="md-page">
+    <div id="myMap" class="md-map"></div>
   </q-page>
 </template>
 
@@ -31,5 +31,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
+/* M3 window margin -- 16dp on compact, 24dp from 600px up. */
+.md-page { padding: var(--md-layout-margin); }
 
+/* The map canvas is the page's single pane, so it gets a card's corner. */
+.md-map {
+  block-size: 85vh;
+  border-radius: var(--md-sys-shape-corner-large);
+  overflow: hidden;
+}
 </style>

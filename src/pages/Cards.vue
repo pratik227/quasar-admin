@@ -1,29 +1,37 @@
 <template>
-  <q-page class="q-pa-sm">
-    <div class="row q-col-gutter-lg">
-      <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+  <q-page class="md-page">
+    <!--
+      Three equal columns of sample cards. With Quasar's breakpoints realigned
+      to Material's, `col-md-4` now splits at 840px -- the point where the
+      scaffold gains its second pane -- and everything below that is one column.
+    -->
+    <div class="row q-col-gutter-md">
+      <div class="col-12 col-md-4">
         <q-card class="no-shadow" bordered>
           <q-img
             src="/img/parallax1.jpg"
             alt=""
           />
           <q-separator></q-separator>
-          <q-card-section class="text-h6 text-grey-8 q-pa-md">
+          <q-card-section class="md-title-large q-pa-md">
             Bar XYZ
           </q-card-section>
           <q-separator></q-separator>
 
-          <q-card-section class="text-h6 text-grey-8 q-pa-md">
+          <q-card-section class="md-title-large q-pa-md">
             Gas Station
           </q-card-section>
           <q-card-section>
-            <div class="text-h5 q-mt-sm q-mb-xs text-grey-8">Title</div>
-            <div>
+            <div class="md-headline-small q-mt-sm q-mb-xs">Title</div>
+            <div class="md-body-medium md-measure">
               {{ text }}
             </div>
           </q-card-section>
           <q-card-actions>
-            <q-btn label="Go Somewhere" class="text-capitalize" color="indigo-7"/>
+            <!-- No `color` prop: Quasar pairs a filled colour with a hardcoded
+                 `text-white`, which is unreadable on the dark-scheme primary.
+                 The role pair lives on the class instead. -->
+            <q-btn label="Go Somewhere" unelevated class="text-capitalize md-filled-button"/>
           </q-card-actions>
         </q-card>
 
@@ -31,7 +39,7 @@
 
         <card-cafe class="q-mt-lg"></card-cafe>
       </div>
-      <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+      <div class="col-12 col-md-4">
 
         <basic-card></basic-card>
 
@@ -44,13 +52,20 @@
         <card-profile-dark class="q-mt-lg" :name="profile_data.name" :des="profile_data.des"
                            :text="profile_data.text"></card-profile-dark>
       </div>
-      <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+      <div class="col-12 col-md-4">
 
-        <card-company class="q-mt-lg" :background_image="background_img2"></card-company>
+        <!--
+          `background_image` is deliberately not passed any more. It used to
+          carry two hardcoded gradients (#30cfd0/#330867 and rgb(45,206,137)...)
+          that could not follow the theme; CardCompany now paints itself from
+          primary-container with its on- pair, so the tile is legible in both
+          schemes without the page dictating a colour.
+        -->
+        <card-company class="q-mt-lg"></card-company>
 
         <basic-card class="q-mt-lg"></basic-card>
 
-        <card-company class="q-mt-lg" :background_image="background_img1"></card-company>
+        <card-company class="q-mt-lg"></card-company>
 
         <card-profile-dark class="q-mt-lg" :name="profile_data.name" :des="profile_data.des"
                            :text="profile_data.text"></card-profile-dark>
@@ -85,14 +100,14 @@ export default defineComponent({
         name: 'Pratik Patel',
         des: '--- Solution Developer, Pune',
         text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-      },
-      background_img1: 'linear-gradient(to top, #30cfd0 0%, #330867 100%)',
-      background_img2: 'linear-gradient(87deg, rgb(45, 206, 137), rgb(45, 206, 204)) !important'
+      }
     }
   },
 })
 </script>
 
 <style scoped>
+/* M3 window margin -- 16dp on compact, 24dp from 600px up. */
+.md-page { padding: var(--md-layout-margin); }
 
 </style>

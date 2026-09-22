@@ -1,6 +1,6 @@
 <template>
-  <q-page class="q-pa-sm">
-    <div class="text-h6 q-ma-md">Pagination and Filters</div>
+  <q-page class="md-page">
+    <div class="md-headline-small q-mb-md">Pagination and Filters</div>
     <q-separator/>
 
     <CardPagination></CardPagination>
@@ -26,5 +26,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
+/* M3 window margin -- 16dp on compact, 24dp from 600px up. */
+.md-page { padding: var(--md-layout-margin); }
 </style>

@@ -13,8 +13,8 @@
     </q-item-section>
 
     <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>
+      <q-item-label class="md-label-large">{{ title }}</q-item-label>
+      <q-item-label caption class="md-body-small">
         {{ caption }}
       </q-item-label>
     </q-item-section>
@@ -49,3 +49,13 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+/*
+ * Deliberately colourless. This renders inside the navigation drawer, so it has
+ * to take whatever surface role the drawer is painted with -- Quasar resolves
+ * the icon and the caption from currentColor, and M3's list-item type pair is
+ * label-large over body-small. Pinning a colour here would break the moment the
+ * drawer's own container role changes.
+ */
+</style>

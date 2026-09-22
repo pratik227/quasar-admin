@@ -6,6 +6,7 @@
       </q-card-section>
       <q-card-section>
         <ECharts :option="options"
+                 :theme="chartTheme"
                  class="q-mt-md"
                  :resizable="true"
                  autoresize style="height: 285px;"
@@ -18,12 +19,16 @@
 <script>
 import {defineComponent} from "vue";
 import '@/utils/echarts.js'
+import {chartTheme} from '@/utils/echarts-theme.js'
 import ECharts from "vue-echarts";
 
 export default defineComponent({
   name: "PieChart",
   components: {
     ECharts
+  },
+  setup() {
+    return {chartTheme}
   },
   data() {
     return {
@@ -44,11 +49,6 @@ export default defineComponent({
             radius: ['40%', '70%'],
             center: ['50%', '35%'],
             avoidLabelOverlap: false,
-            itemStyle: {
-              borderRadius: 10,
-              borderColor: '#fff',
-              borderWidth: 2
-            },
             label: {
               show: false,
               position: 'center'

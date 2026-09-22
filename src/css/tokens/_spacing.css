@@ -1,0 +1,30 @@
+/*
+ * M3 system spacing tokens -- https://m3.material.io/styles/spacing/tokens
+ *
+ * An 8dp scale where space100 = 8dp. Material only defines the values it
+ * actively uses, so the "nested" units (2/6/10/14dp) are deliberately not a
+ * uniform progression -- don't fill in the gaps.
+ *
+ * Material's guidance: reach for padding and gaps on the parent container
+ * before margins on children. Margins are for layouts, not components.
+ */
+:root {
+  --md-sys-space-0:   0px;
+  --md-sys-space-25:  2px;
+  --md-sys-space-50:  4px;
+  --md-sys-space-75:  6px;
+  --md-sys-space-100: 8px;
+  --md-sys-space-125: 10px;
+  --md-sys-space-150: 12px;
+  --md-sys-space-175: 14px;
+  --md-sys-space-200: 16px;
+  --md-sys-space-250: 20px;
+  --md-sys-space-300: 24px;
+  --md-sys-space-400: 32px;
+  --md-sys-space-450: 36px;
+  --md-sys-space-500: 40px;
+  --md-sys-space-600: 48px;
+  --md-sys-space-700: 56px;
+  --md-sys-space-800: 64px;
+  --md-sys-space-900: 72px;
+}
