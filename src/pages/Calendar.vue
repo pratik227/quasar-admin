@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-sm bg-white">
+  <q-page class="md-page">
     <q-calendar-month
       ref="calendar"
       v-model="selectedDate"
@@ -76,14 +76,14 @@ export default defineComponent({
           title: '1st of the Month',
           details: 'Everything is funny as long as it is happening to someone else',
           date: getCurrentDay(1),
-          bgcolor: 'orange'
+          bgcolor: 'tertiary'
         },
         {
           id: 2,
           title: 'Sisters Birthday',
           details: 'Buy a nice present',
           date: getCurrentDay(4),
-          bgcolor: 'green',
+          bgcolor: 'secondary',
           icon: 'fas fa-birthday-cake'
         },
         {
@@ -93,7 +93,7 @@ export default defineComponent({
           date: getCurrentDay(10),
           time: '10:00',
           duration: 120,
-          bgcolor: 'red',
+          bgcolor: 'primary',
           icon: 'fas fa-handshake'
         },
         {
@@ -103,7 +103,7 @@ export default defineComponent({
           date: getCurrentDay(10),
           time: '11:30',
           duration: 90,
-          bgcolor: 'teal',
+          bgcolor: 'secondary',
           icon: 'fas fa-hamburger'
         },
         {
@@ -113,7 +113,7 @@ export default defineComponent({
           date: getCurrentDay(20),
           time: '17:00',
           duration: 90,
-          bgcolor: 'grey',
+          bgcolor: 'surface',
           icon: 'fas fa-car'
         },
         {
@@ -123,7 +123,7 @@ export default defineComponent({
           date: getCurrentDay(22),
           time: '08:00',
           duration: 540,
-          bgcolor: 'blue',
+          bgcolor: 'primary',
           icon: 'fas fa-chalkboard-teacher'
         },
         {
@@ -133,7 +133,7 @@ export default defineComponent({
           date: getCurrentDay(22),
           time: '19:00',
           duration: 180,
-          bgcolor: 'teal',
+          bgcolor: 'secondary',
           icon: 'fas fa-utensils'
         },
         {
@@ -141,7 +141,7 @@ export default defineComponent({
           title: 'Rowing',
           details: 'Stay in shape!',
           date: getCurrentDay(27),
-          bgcolor: 'purple',
+          bgcolor: 'tertiary',
           icon: 'rowing',
           days: 2
         },
@@ -150,7 +150,7 @@ export default defineComponent({
           title: 'Fishing',
           details: 'Time for some weekend R&R',
           date: getCurrentDay(27),
-          bgcolor: 'purple',
+          bgcolor: 'tertiary',
           icon: 'fas fa-fish',
           days: 2
         },
@@ -159,7 +159,7 @@ export default defineComponent({
           title: 'Vacation',
           details: 'Trails and hikes, going camping! Don\'t forget to bring bear spray!',
           date: getCurrentDay(29),
-          bgcolor: 'purple',
+          bgcolor: 'tertiary',
           icon: 'fas fa-plane',
           days: 5
         }
@@ -193,10 +193,16 @@ export default defineComponent({
     }
   },
   methods: {
+    /*
+     * `bgcolor` now names an M3 container role rather than a crayon colour.
+     * The old form emitted `text-white bg-red`, which relied on hardcoded
+     * hues that could not follow the theme and went unreadable the moment the
+     * calendar was viewed in dark mode. A container role always carries its
+     * `on-` pair, so the badge is legible in both schemes.
+     */
     badgeClasses(event, type) {
       return {
-        [`text-white bg-${event.bgcolor}`]: true,
-        'rounded-border': true
+        [`md-event--${event.bgcolor}`]: true
       }
     },
     badgeStyles(day, event) {
@@ -241,16 +247,51 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style scoped>
+/* M3 window margin -- 16dp on compact, 24dp from 600px up. */
+.md-page { padding: var(--md-layout-margin); }
+
 .my-event {
   position: relative;
-  font-size: 12px;
   width: 100%;
   margin: 1px 0 0 0;
   justify-content: center;
   text-overflow: ellipsis;
   overflow: hidden;
   cursor: pointer;
+  /* label-small: the smallest step in the scale, which is what a day cell can
+     actually hold. Replaces a bare `font-size: 12px`. */
+  font: 500 11px/16px var(--md-sys-typescale-plain-font);
+  letter-spacing: 0.5px;
+  /* extra-small, not the cell's own radius -- nested containers must not share
+     one (optical roundness). */
+  border-radius: var(--md-sys-shape-corner-extra-small);
+  padding-inline: var(--md-sys-space-50);
+}
+
+/*
+ * Four tones cycled across the event list. error-container is deliberately
+ * absent: it carries meaning in this system, and a birthday tinted with it
+ * would read as a problem.
+ */
+.md-event--primary {
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+
+.md-event--secondary {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.md-event--tertiary {
+  background: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+}
+
+.md-event--surface {
+  background: var(--md-sys-color-surface-container-highest);
+  color: var(--md-sys-color-on-surface);
 }
 
 .title {
@@ -259,42 +300,6 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-.text-white {
-  color: white
-}
-
-.bg-blue {
-  background: blue
-}
-
-.bg-green {
-  background: green
-}
-
-.bg-orange {
-  background: orange
-}
-
-.bg-red {
-  background: red
-}
-
-.bg-teal {
-  background: teal
-}
-
-.bg-grey {
-  background: grey
-}
-
-.bg-purple {
-  background: purple
-}
-
-.rounded-border {
-  border-radius: 2px
 }
 
 abbr.tooltip {

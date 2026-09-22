@@ -1,0 +1,23 @@
+/*
+ * M3 corner radius scale -- https://m3.material.io/styles/shape/corner-radius-scale
+ *
+ * Ten steps named for the amount of roundedness (M2 named them for container
+ * size instead). Components map to a step; to reshape the whole app, remap the
+ * step rather than editing components.
+ *
+ * Nesting: use OPTICAL ROUNDNESS, not the same radius twice --
+ *   inner radius = outer radius - padding    (e.g. 48 - 14 = 34)
+ * Equal radii on nested containers read as unbalanced.
+ */
+:root {
+  --md-sys-shape-corner-none:               0px;
+  --md-sys-shape-corner-extra-small:        4px;
+  --md-sys-shape-corner-small:              8px;
+  --md-sys-shape-corner-medium:             12px;
+  --md-sys-shape-corner-large:              16px;
+  --md-sys-shape-corner-large-increased:    20px;
+  --md-sys-shape-corner-extra-large:        28px;
+  --md-sys-shape-corner-extra-large-increased: 32px;
+  --md-sys-shape-corner-extra-extra-large:  48px;
+  --md-sys-shape-corner-full:               9999px;
+}

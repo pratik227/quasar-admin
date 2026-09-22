@@ -1,1 +1,9 @@
 /* app global css */
+
+/*
+ * Material 3 Expressive design tokens. See docs/design-system.md for the
+ * scales, and tools/generate_m3_tokens.mjs for how the colour roles are
+ * derived. Everything downstream -- components, pages, chart themes -- reads
+ * these custom properties rather than hardcoding values.
+ */
+@import './tokens/index.css';

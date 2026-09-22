@@ -21,6 +21,7 @@ const routes = [
       {path: '/Directory', component: () => import('@/pages/Directory.vue')},
       {path: '/Footer', component: () => import('@/pages/Footer.vue')},
       {path: '/CardHeader', component: () => import('@/pages/CardHeader.vue')},
+      {path: '/About', component: () => import('@/pages/About.vue')},
 
       // Not completed yet
       // {path: '/Taskboard', component: () => import('@/pages/TaskBoard.vue')},
@@ -48,6 +49,10 @@ const routes = [
   {
     path: '/Login-1',
     component: () => import('@/pages/Login-1.vue')
+  },
+  {
+    path: '/Signup',
+    component: () => import('@/pages/SignUp.vue')
   },
   {
     path: '/Lock',

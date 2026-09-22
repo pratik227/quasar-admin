@@ -1,8 +1,8 @@
 <template>
-  <q-page class="q-pa-sm">
+  <q-page class="md-page">
     <q-card class="no-shadow" bordered>
       <q-card-section class="row">
-        <div class="text-h6 text-weight-bolder text-grey-8">
+        <div class="md-title-large md-title-large--emphasized">
           Friends
         </div>
       </q-card-section>
@@ -49,13 +49,13 @@
       </q-list>
     </q-card>
 
-    <q-card class="q-mt-sm no-shadow" bordered>
+    <q-card class="q-mt-md no-shadow" bordered>
       <q-card-section class="row">
-        <div class="text-h6 text-weight-bolder text-grey-8">
+        <div class="md-title-large md-title-large--emphasized">
           Friends
         </div>
         <q-space></q-space>
-        <q-btn class="text-capitalize" outline label="Add Friend" color="indigo-7"></q-btn>
+        <q-btn class="text-capitalize" outline label="Add Friend" color="primary"></q-btn>
       </q-card-section>
       <q-separator></q-separator>
       <q-list :disabled="true">
@@ -100,17 +100,17 @@
       </q-list>
     </q-card>
 
-    <q-card class="q-mt-sm no-shadow" bordered>
+    <q-card class="q-mt-md no-shadow" bordered>
       <q-card-section class="row q-pa-sm">
         <q-item class="full-width">
           <q-item-section>
-            <q-item-label class="text-h6 text-weight-bolder text-grey-8" lines="1">Friend List</q-item-label>
+            <q-item-label class="md-title-large md-title-large--emphasized" lines="1">Friend List</q-item-label>
             <q-item-label caption>
               Lorem ipsum dolor sit amet consectetur adipisicing elit quam corrupti consectetur.
             </q-item-label>
           </q-item-section>
           <q-item-section side>
-            <q-btn class="text-capitalize" outline label="Add Friend" color="indigo-7"></q-btn>
+            <q-btn class="text-capitalize" outline label="Add Friend" color="primary"></q-btn>
           </q-item-section>
         </q-item>
       </q-card-section>
@@ -166,5 +166,6 @@ export default {
 </script>
 
 <style scoped>
-
+/* M3 window margin -- 16dp on compact, 24dp from 600px up. */
+.md-page { padding: var(--md-layout-margin); }
 </style>

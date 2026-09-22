@@ -12,14 +12,19 @@
     "postinstall": "quasar prepare --silent",
     "fonts:subset": "python3 tools/subset_fontawesome.py",
     "fonts:check": "python3 tools/subset_fontawesome.py --check",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "tokens:generate": "node tools/generate_m3_tokens.mjs",
+    "tokens:check": "node tools/generate_m3_tokens.mjs --check",
+    "check:sfc": "node tools/check_sfc.mjs",
+    "check:tokens": "node tools/check_tokens.mjs",
+    "check": "npm run check:sfc && npm run tokens:check && npm run fonts:check"
   },
   "dependencies": {
     "@quasar/extras": "^2.0.2",
-    "@quasar/quasar-ui-qcalendar": "^5.2.0",
+    "@quasar/quasar-ui-qcalendar": "^5.3.0",
     "echarts": "^6.1.0",
     "pinia": "^4.0.2",
-    "quasar": "^2.23.2",
+    "quasar": "^2.33.0",
     "quasar-ui-qhierarchy": "^1.0.19",
     "vue": "^3.5.40",
     "vue-echarts": "^8.0.1",
@@ -27,7 +32,8 @@
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
-    "@quasar/app-vite": "^3.2.0",
+    "@material/material-color-utilities": "^0.4.0",
+    "@quasar/app-vite": "^3.9.0",
     "autoprefixer": "^10.5.4",
     "postcss": "^8.5.24"
   },

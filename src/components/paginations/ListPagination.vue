@@ -1,12 +1,13 @@
 <template>
   <q-card class="bg-transparent no-shadow no-border">
     <q-card-section class="row q-pa-sm">
-      <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
-        <div class="text-h6 float-left q-ml-md q-mt-sm">Pagination on QList</div>
+      <!-- Was `float-left`; a flex row is direction-agnostic. -->
+      <div class="col-12 row items-center">
+        <div class="col md-title-large md-list__heading">Pagination on QList</div>
       </div>
     </q-card-section>
-    <q-card-section>
-      <q-item v-for="msg in getListData" class="bg-white" :key="msg.id" clickable v-ripple>
+    <q-card-section class="md-list">
+      <q-item v-for="msg in getListData" class="md-list__item" :key="msg.id" clickable v-ripple>
         <q-item-section avatar>
           <q-avatar>
             <img width="40" height="40" :src="msg.avatar" alt="">
@@ -15,10 +16,10 @@
 
         <q-item-section>
           <q-item-label>{{ msg.name }}</q-item-label>
-          <q-item-label caption lines="1">{{ msg.msg }}</q-item-label>
+          <q-item-label caption lines="1" class="md-list__caption">{{ msg.msg }}</q-item-label>
         </q-item-section>
 
-        <q-item-section side>
+        <q-item-section side class="md-list__side">
           {{ msg.time }}
         </q-item-section>
       </q-item>
@@ -29,7 +30,7 @@
         :min="currentPage"
         :max="Math.ceil(list_Data.length/totalPages)"
         :input="true"
-        input-class="text-orange-10"
+        input-class="md-pagination__input"
       >
       </q-pagination>
     </q-card-actions>
@@ -66,10 +67,10 @@ const list_Data = [
     time: '5:17 AM'
   }, {
     id: 2,
-    name: 'Jeff Galbraith',
+    name: 'Jordan Lee',
     msg: ' -- I\'ll be in your neighborhood doing errands this\n' +
       '            weekend. Do you want to grab brunch?',
-    avatar: '/img/team/jeff_galbraith.jpg',
+    avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=96&v=4',
     time: '5:17 AM'
   }, {
     id: 3,
@@ -87,10 +88,10 @@ const list_Data = [
     time: '5:17 AM'
   }, {
     id: 2,
-    name: 'Jeff Galbraith',
+    name: 'Jordan Lee',
     msg: ' -- I\'ll be in your neighborhood doing errands this\n' +
       '            weekend. Do you want to grab brunch?',
-    avatar: '/img/team/jeff_galbraith.jpg',
+    avatar: 'https://avatars2.githubusercontent.com/u/34883558?s=96&v=4',
     time: '5:17 AM'
   }, {
     id: 5,
@@ -122,5 +123,43 @@ export default defineComponent({
 </script>
 
 <style scoped>
+/*
+ * The items used to be `bg-white`, which pinned them to a colour the theme
+ * cannot reach. They are one continuous list rather than eight separate cards,
+ * so the corner rounding belongs to the group; clipping it here means the
+ * individual rows can stay square and still sit inside a 12px "medium" corner.
+ */
+.md-list {
+  border-radius: var(--md-sys-shape-corner-medium);
+  overflow: hidden;
+}
 
+/* Logical replacement for `q-ml-md q-mt-sm`, which were physical offsets. */
+.md-list__heading {
+  margin-inline-start: var(--md-sys-space-200);
+  margin-block-start: var(--md-sys-space-100);
+}
+
+.md-list__item {
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+}
+
+/*
+ * Quasar gives caption/side sections a fixed black alpha. on-surface-variant is
+ * the role for exactly this relationship, and it flips with the scheme.
+ */
+.md-list__caption,
+.md-list__side {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/*
+ * Was `input-class="text-orange-10"` -- a palette entry with no relationship to
+ * the theme. :deep() because the class lands on an <input> inside QPagination,
+ * not on its root.
+ */
+:deep(.md-pagination__input) {
+  color: var(--md-sys-color-on-surface);
+}
 </style>

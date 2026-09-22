@@ -1,0 +1,61 @@
+/*
+ * Categorical series colours.
+ *
+ * COUPLED TO `SERIES` IN src/utils/echarts-theme.js -- same roles, same order.
+ * Change one and change the other.
+ *
+ * The duplication is deliberate and unavoidable: charts are painted on a canvas
+ * from JavaScript, while category chips, legends and stat tiles are DOM painted
+ * from CSS, and CSS cannot import the array. Keeping the order identical is
+ * what makes a category read as the same colour in the chart and in the tile
+ * beside it; two independently chosen palettes would quietly disagree.
+ *
+ * Why these roles rather than the `-container` ones: a TonalSpot scheme has
+ * only three decorative hue families (primary, secondary, tertiary -- error
+ * carries meaning and is excluded), so six series need tone as well as hue.
+ * `X` sits at tone 40 in light and 80 in dark, and `on-X-container` at 10 and
+ * 90; both stay clear of the background in either scheme, whereas the container
+ * roles fall to roughly 2:1 against it and disappear.
+ */
+:root {
+  --md-series-1: var(--md-sys-color-primary);
+  --md-series-2: var(--md-sys-color-secondary);
+  --md-series-3: var(--md-sys-color-tertiary);
+  --md-series-4: var(--md-sys-color-on-primary-container);
+  --md-series-5: var(--md-sys-color-outline);
+  --md-series-6: var(--md-sys-color-on-tertiary-container);
+}
+
+/*
+ * Repeated for the same reason as the Quasar bridge: a custom property holding
+ * var() resolves on the element carrying the declaration, and .body--dark sits
+ * below :root, so without this the series would stay frozen at their light
+ * values. See _quasar-bridge.css.
+ */
+.body--dark {
+  --md-series-1: var(--md-sys-color-primary);
+  --md-series-2: var(--md-sys-color-secondary);
+  --md-series-3: var(--md-sys-color-tertiary);
+  --md-series-4: var(--md-sys-color-on-primary-container);
+  --md-series-5: var(--md-sys-color-outline);
+  --md-series-6: var(--md-sys-color-on-tertiary-container);
+}
+
+.md-series-1 { color: var(--md-series-1); }
+.md-series-2 { color: var(--md-series-2); }
+.md-series-3 { color: var(--md-series-3); }
+.md-series-4 { color: var(--md-series-4); }
+.md-series-5 { color: var(--md-series-5); }
+.md-series-6 { color: var(--md-series-6); }
+
+/*
+ * Tonal chip/avatar form: the series hue mixed into the surface rather than
+ * used at full strength, so a row of them reads as a set of quiet categories
+ * instead of six competing blocks. Text stays on-surface for legibility.
+ */
+.md-series-fill-1 { background: color-mix(in srgb, var(--md-series-1) 20%, var(--md-sys-color-surface-container-low)); }
+.md-series-fill-2 { background: color-mix(in srgb, var(--md-series-2) 20%, var(--md-sys-color-surface-container-low)); }
+.md-series-fill-3 { background: color-mix(in srgb, var(--md-series-3) 20%, var(--md-sys-color-surface-container-low)); }
+.md-series-fill-4 { background: color-mix(in srgb, var(--md-series-4) 20%, var(--md-sys-color-surface-container-low)); }
+.md-series-fill-5 { background: color-mix(in srgb, var(--md-series-5) 20%, var(--md-sys-color-surface-container-low)); }
+.md-series-fill-6 { background: color-mix(in srgb, var(--md-series-6) 20%, var(--md-sys-color-surface-container-low)); }

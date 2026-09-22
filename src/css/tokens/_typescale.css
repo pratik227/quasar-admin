@@ -1,0 +1,69 @@
+/*
+ * M3 type scale -- https://m3.material.io/styles/typography/type-scale-tokens
+ *
+ * One scale, two sets of 15: baseline and `emphasized`. Emphasized arrived with
+ * the expressive update and differs chiefly by weight; the two are meant to be
+ * used TOGETHER -- emphasized for selection, actions, headlines and unread
+ * state, baseline for everything else. Components use baseline by default.
+ *
+ * Material splits the typeface in two: `brand` for display/headline (expression)
+ * and `plain` for body/label (readability). Both default to Roboto, and both
+ * stay Roboto here -- quasar.config.js deliberately ships only Roboto 400/500/700
+ * to keep the font payload down. Baseline needs 400/500 and emphasized needs
+ * 500/700, so the whole scale renders without adding a weight. Swapping the
+ * brand face (e.g. Roboto Flex) means a new download; weigh that against the
+ * font budget before doing it.
+ */
+:root {
+  --md-sys-typescale-brand-font: 'Roboto', -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --md-sys-typescale-plain-font: 'Roboto', -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/*
+ * Each style is a class rather than a bundle of per-axis custom properties:
+ * a type style is always applied as a set, and `font:` shorthand in a class
+ * costs one declaration instead of five var() lookups per element.
+ */
+.md-display-large   { font: 400 57px/64px var(--md-sys-typescale-brand-font); letter-spacing: -0.25px; }
+.md-display-medium  { font: 400 45px/52px var(--md-sys-typescale-brand-font); letter-spacing: 0; }
+.md-display-small   { font: 400 36px/44px var(--md-sys-typescale-brand-font); letter-spacing: 0; }
+
+.md-headline-large  { font: 400 32px/40px var(--md-sys-typescale-brand-font); letter-spacing: 0; }
+.md-headline-medium { font: 400 28px/36px var(--md-sys-typescale-brand-font); letter-spacing: 0; }
+.md-headline-small  { font: 400 24px/32px var(--md-sys-typescale-brand-font); letter-spacing: 0; }
+
+.md-title-large     { font: 400 22px/28px var(--md-sys-typescale-brand-font); letter-spacing: 0; }
+.md-title-medium    { font: 500 16px/24px var(--md-sys-typescale-plain-font); letter-spacing: 0.15px; }
+.md-title-small     { font: 500 14px/20px var(--md-sys-typescale-plain-font); letter-spacing: 0.1px; }
+
+.md-body-large      { font: 400 16px/24px var(--md-sys-typescale-plain-font); letter-spacing: 0.5px; }
+.md-body-medium     { font: 400 14px/20px var(--md-sys-typescale-plain-font); letter-spacing: 0.25px; }
+.md-body-small      { font: 400 12px/16px var(--md-sys-typescale-plain-font); letter-spacing: 0.4px; }
+
+.md-label-large     { font: 500 14px/20px var(--md-sys-typescale-plain-font); letter-spacing: 0.1px; }
+.md-label-medium    { font: 500 12px/16px var(--md-sys-typescale-plain-font); letter-spacing: 0.5px; }
+.md-label-small     { font: 500 11px/16px var(--md-sys-typescale-plain-font); letter-spacing: 0.5px; }
+
+/* Emphasized -- same metrics, heavier weight. */
+.md-display-large--emphasized   { font-weight: 500; }
+.md-display-medium--emphasized  { font-weight: 500; }
+.md-display-small--emphasized   { font-weight: 500; }
+.md-headline-large--emphasized  { font-weight: 500; }
+.md-headline-medium--emphasized { font-weight: 500; }
+.md-headline-small--emphasized  { font-weight: 500; }
+.md-title-large--emphasized     { font-weight: 500; }
+.md-title-medium--emphasized    { font-weight: 700; }
+.md-title-small--emphasized     { font-weight: 700; }
+.md-body-large--emphasized      { font-weight: 500; }
+.md-body-medium--emphasized     { font-weight: 500; }
+.md-body-small--emphasized      { font-weight: 500; }
+.md-label-large--emphasized     { font-weight: 700; }
+.md-label-medium--emphasized    { font-weight: 700; }
+.md-label-small--emphasized     { font-weight: 700; }
+
+/*
+ * Material asks for 40-60 characters per line at every breakpoint. `ch` is
+ * measured against "0", which runs narrower than mixed-case prose, so ~64ch
+ * lands around 60 real characters.
+ */
+.md-measure { max-width: 64ch; }

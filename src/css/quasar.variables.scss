@@ -1,11 +1,139 @@
+// Quasar SCSS variables, remapped onto Material 3.
+// https://quasar.dev/style/sass-scss-variables
+//
+// This file is the COMPILE-TIME half of the M3 theme; src/css/tokens/ is the
+// runtime half. The split matters:
+//
+//   - Custom properties (tokens/) can retheme anything Quasar reads through
+//     var() -- which is colour, and only colour.
+//   - Everything else Quasar bakes into its stylesheet at build time: border
+//     radii, the type scale, breakpoint boundaries, grid gutters. No runtime
+//     variable can reach those, so they have to be set here.
+//
+// Where a value can be expressed as var(), it is -- e.g. $separator-color below
+// resolves per-element, so every Quasar border follows dark mode for free.
 
-$primary   : rgba(15, 23, 42, 0.89);
-$secondary : #26A69A;
-$accent    : #dd4b39;
+// ---------------------------------------------------------------------------
+// Brand colours
+// ---------------------------------------------------------------------------
+// These only seed the initial :root values; src/css/tokens/_quasar-bridge.css
+// overrides them at runtime and is the real source of truth. They are kept in
+// sync with the generated light scheme so the compiled default is never a
+// colour the theme doesn't contain.
+//
+// Regenerate with `npm run tokens:generate` after changing SEED, then copy the
+// light values across.
 
-$dark      : #1D1D1D;
+$primary   : #65558f;  // md-sys-color-primary
+$secondary : #625b71;  // md-sys-color-secondary
+$accent    : #7e5260;  // md-sys-color-tertiary
 
-$positive  : #21BA45;
-$negative  : #C10015;
-$info      : #31CCEC;
-$warning   : #F2C037;
+$dark      : #2b292f;  // md-sys-color-surface-container-high (dark scheme)
+$dark-page : #141218;  // md-sys-color-surface (dark scheme)
+
+$positive  : #21BA45;  // no M3 role -- see _quasar-bridge.css
+$negative  : #ba1a1a;  // md-sys-color-error
+$info      : #31CCEC;  // no M3 role
+$warning   : #F2C037;  // no M3 role
+
+// ---------------------------------------------------------------------------
+// Breakpoints
+// ---------------------------------------------------------------------------
+// Quasar happens to have exactly five size classes, so they map 1:1 onto M3's
+// five breakpoints. Realigning them here means `$q.screen`, `col-md-*`,
+// `xs/sm/md/lg/xl` visibility classes and the gutter classes all switch at
+// Material's boundaries instead of Quasar's defaults -- so the grid agrees with
+// the layout scaffold rather than fighting it.
+//
+//   Quasar default : 599 / 1023 / 1439 / 1919
+//   M3             : 599 /  839 / 1199 / 1599
+//
+// These are MAX widths; Quasar derives each size's min as max + 1, giving
+// 600 / 840 / 1200 / 1600 exactly.
+//
+//   xs = compact   sm = medium   md = expanded   lg = large   xl = extra-large
+//
+// This does shift existing responsive classes: anything marked `col-md-*` now
+// takes effect from 840px rather than 1024px.
+
+$breakpoint-xs : 599px;
+$breakpoint-sm : 839px;
+$breakpoint-md : 1199px;
+$breakpoint-lg : 1599px;
+
+// ---------------------------------------------------------------------------
+// Shape
+// ---------------------------------------------------------------------------
+// Steps from the M3 corner radius scale. Kept as literals rather than var()
+// because Quasar composes some of these arithmetically at build time.
+//
+// Buttons are fully rounded: that is the M3 default and the most recognisable
+// cue in the whole system. Per Material's guidance on remapping shape, drop
+// $button-border-radius to 8px (small) if a squarer product is wanted -- it is
+// a one-line change here, not a per-component edit.
+
+$generic-border-radius        : 12px;    // medium -- cards, tables, tooltips
+$button-border-radius         : 9999px;  // full
+$button-rounded-border-radius : 9999px;  // full
+$button-push-border-radius    : 9999px;  // full
+
+// ---------------------------------------------------------------------------
+// Typography
+// ---------------------------------------------------------------------------
+// Quasar's .text-h1..h6 / .text-body1 / etc. remapped onto the M3 type scale,
+// so existing markup picks up M3 metrics without being rewritten.
+//
+//   h1..h3        -> display large / medium / small
+//   h4..h6        -> headline large / medium / small
+//   subtitle1/2   -> title medium / small
+//   body1/2       -> body large / medium
+//   caption       -> body small
+//   overline      -> label small
+//
+// This also repairs a live bug. Quasar's stock h1/h2 ask for weight 300, but
+// quasar.config.js ships only Roboto 400/500/700, so those headings silently
+// fell back to 400 at the wrong metrics. M3 specifies 400 for display and
+// headline, so the declared weight and the shipped weight now agree.
+//
+// Letter-spacing is in px to match the spec exactly; Quasar passes these
+// through untouched, so there is no need to convert to em and round.
+
+$typography-font-family : 'Roboto', '-apple-system', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$body-font-size   : 14px;    // M3 body-medium
+$body-line-height : 1.4286;  // 20px / 14px
+
+$h1 : (size: 3.5625rem, line-height: 4rem,     letter-spacing: -0.25px, weight: 400);  // display-large  57/64
+$h2 : (size: 2.8125rem, line-height: 3.25rem,  letter-spacing: 0,       weight: 400);  // display-medium 45/52
+$h3 : (size: 2.25rem,   line-height: 2.75rem,  letter-spacing: 0,       weight: 400);  // display-small  36/44
+$h4 : (size: 2rem,      line-height: 2.5rem,   letter-spacing: 0,       weight: 400);  // headline-large 32/40
+$h5 : (size: 1.75rem,   line-height: 2.25rem,  letter-spacing: 0,       weight: 400);  // headline-med   28/36
+$h6 : (size: 1.5rem,    line-height: 2rem,     letter-spacing: 0,       weight: 400);  // headline-small 24/32
+
+$subtitle1 : (size: 1rem,     line-height: 1.5rem,  letter-spacing: 0.15px, weight: 500);  // title-medium 16/24
+$subtitle2 : (size: 0.875rem, line-height: 1.25rem, letter-spacing: 0.1px,  weight: 500);  // title-small  14/20
+
+$body1 : (size: 1rem,     line-height: 1.5rem,  letter-spacing: 0.5px,  weight: 400);  // body-large  16/24
+$body2 : (size: 0.875rem, line-height: 1.25rem, letter-spacing: 0.25px, weight: 400);  // body-medium 14/20
+
+$caption  : (size: 0.75rem,   line-height: 1rem, letter-spacing: 0.4px, weight: 400);  // body-small  12/16
+$overline : (size: 0.6875rem, line-height: 1rem, letter-spacing: 0.5px, weight: 500);  // label-small 11/16
+
+// ---------------------------------------------------------------------------
+// Separators
+// ---------------------------------------------------------------------------
+// M3 draws boundaries with outline-variant rather than a flat black alpha.
+// Holding a var() here is safe: Quasar only ever assigns these (border,
+// background), it never runs Sass colour functions over them -- so the value
+// resolves per element and follows dark mode automatically. That is also why
+// both light and dark point at the same token.
+
+$separator-color      : var(--md-sys-color-outline-variant);
+$separator-dark-color : var(--md-sys-color-outline-variant);
+
+// ---------------------------------------------------------------------------
+// Spacing
+// ---------------------------------------------------------------------------
+// $space-base is already 16px, which is M3's space200, so Quasar's q-pa-md /
+// q-gutter-md and the M3 scale land on the same grid. Left at the default
+// deliberately -- restating it would only invite drift.

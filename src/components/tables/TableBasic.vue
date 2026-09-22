@@ -1,18 +1,21 @@
 <template>
-  <q-card class="no-shadow" bordered>
+  <q-card class="md-table-card no-shadow" bordered>
     <q-card-section>
-      <div class="text-h6 text-grey-8">
+      <div class="md-title-large">
         Basic
       </div>
     </q-card-section>
     <q-separator></q-separator>
     <q-card-section class="q-pa-none">
-      <q-table square class="no-shadow"
+      <q-table square class="md-table no-shadow"
         title="Treats"
         :rows="data"
         :columns="columns"
         row-key="name"
         :filter="filter"
+        title-class="md-title-large"
+        table-header-class="md-title-small"
+        table-class="md-body-medium"
       >
         <template v-slot:top-right>
           <q-input v-if="show_filter" filled borderless dense debounce="300" v-model="filter" placeholder="Search">
@@ -21,7 +24,7 @@
             </template>
           </q-input>
 
-          <q-btn class="q-ml-sm" icon="filter_list" @click="show_filter=!show_filter" flat/>
+          <q-btn class="md-toolbar-btn" icon="filter_list" @click="show_filter=!show_filter" flat/>
         </template>
       </q-table>
     </q-card-section>
@@ -181,5 +184,73 @@ export default defineComponent({
 </script>
 
 <style scoped>
+/*
+ * Quasar hardcodes `background: #fff` on .q-card and `background: #fff;
+ * color: #000` on .q-table__card -- neither goes through var(), so the M3
+ * surface roles have to be restated here.
+ *
+ * Borders are deliberately NOT restated: $separator-color is already bridged to
+ * outline-variant in quasar.variables.scss, so Quasar's own table borders
+ * follow the scheme already.
+ */
+.md-table-card {
+  background: var(--md-sys-color-surface-container-low);
+  color: var(--md-sys-color-on-surface);
+}
 
+/* The table is the card's surface, not a second surface stacked on top of it. */
+.md-table {
+  background: transparent;
+  color: inherit;
+}
+
+/*
+ * Quasar sets font-size/weight directly on th and td, which outranks a class on
+ * <thead>/<table>. Deferring to the inherited value is what lets the M3 type
+ * classes handed to table-header-class / table-class reach the cells.
+ */
+.md-table :deep(thead th),
+.md-table :deep(tbody td) {
+  font: inherit;
+}
+
+.md-table :deep(thead th) {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* State layer: the content colour at 8%, composited over the surface. */
+.md-table :deep(tbody td:before) {
+  background: color-mix(in srgb, var(--md-sys-color-on-surface) 8%, transparent);
+}
+
+/*
+ * Selected rows. Quasar paints selection with an overlay pseudo-element, which
+ * only works while it stays translucent -- an opaque container role there would
+ * cover the text. So the role pair goes on the row (cells inherit their
+ * background) and the overlay is switched off.
+ */
+.md-table :deep(tbody tr.selected) {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.md-table :deep(tbody tr.selected td:after) {
+  background: transparent;
+}
+
+/*
+ * Interactive targets stay 48x48 regardless of density. The inline offset
+ * replaces `q-ml-sm`, which is a physical margin-left and would sit on the
+ * wrong side under RTL.
+ */
+.md-toolbar-btn {
+  min-inline-size: 48px;
+  min-block-size: 48px;
+  margin-inline-start: var(--md-sys-space-100);
+}
+
+/* The pagination controls in the bottom bar are secondary to the data. */
+.md-table :deep(.q-table__bottom) {
+  color: var(--md-sys-color-on-surface-variant);
+}
 </style>

@@ -1,17 +1,22 @@
 <template>
-  <q-page class="bg-white">
+  <q-page class="md-page">
+    <!--
+      Four columns of a kanban board. They were `col-3` unconditionally, which
+      meant four 90px columns on a phone; they now step 1 -> 2 -> 4 and only
+      reach four abreast from expanded (840px) up.
+    -->
     <div
-      class="row q-mt-xs"
+      class="row q-col-gutter-md"
       group="columns"
     >
-      <div class="col-3 rounded-borders q-px-xs">
-        <q-card class="q-pa-xs custom_bg ">
-          <q-item style="cursor: move;" class="q-pa-none text-white q-pa-sm rounded-borders">
-            <q-item-section class="text-h6 text-weight-bolder text-color">PLANNED TASKS</q-item-section>
+      <div class="col-12 col-sm-6 col-md-3">
+        <q-card flat class="md-column md-column--planned">
+          <q-item class="md-column__header q-pa-sm">
+            <q-item-section class="md-title-medium md-title-medium--emphasized">PLANNED TASKS</q-item-section>
             <q-item-section avatar>
               <q-icon name="more_vert" class="cursor-pointer">
                 <q-menu transition-show="fade" transition-hide="fade">
-                  <q-list style="min-width: 100px">
+                  <q-list class="md-menu-list">
                     <q-item clickable>
                       <q-item-section>Remove</q-item-section>
                     </q-item>
@@ -44,19 +49,20 @@
               <q-card
                 v-for="(item, index) in planned_task"
                 v-bind:key="index"
-                class="rounded-borders q-my-sm"
+                flat
+                class="md-task q-my-sm"
                 @mouseover="$set(task_selected_index,'planned',index)"
                 @mouseleave="task_selected_index.planned = null"
               >
                 <q-card-section class="row q-pa-sm">
                   <div class="col-12">
-                    <span class="text-weight-bold text-h6 q-ml-sm">{{ item.title }}</span>
-                    <span class="float-right text-grey-8 q-mt-sm">{{ item.label }}
+                    <span class="md-title-medium md-title-medium--emphasized q-ml-sm">{{ item.title }}</span>
+                    <span class="float-right md-body-small md-supporting q-mt-sm">{{ item.label }}
                     <q-icon
                       filled
                       size="xs"
                       name="close"
-                      class="absolute-top-right q-mr-md q-mt-xs text-red"
+                      class="md-task__close text-negative"
                       v-if="index==task_selected_index.planned"
                       @click="deleteTask('panned', task_selected_index.planned)"
                     />
@@ -64,19 +70,26 @@
                   </div>
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
-                  <q-chip dense v-for="(tag, index) in item.tags" :key="index" :color="tag.color" text-color="white">
+                  <!--
+                    The tag name already says what the tag means, so the chip
+                    only has to stay legible: each status maps onto a container
+                    role and its on- pair instead of a flat brand colour with
+                    `text-color="white"`, which the dark scheme cannot carry.
+                  -->
+                  <q-chip dense v-for="(tag, index) in item.tags" :key="index"
+                          :class="`md-tag md-tag--${tag.color}`">
                     {{ tag.name }}
                   </q-chip>
                 </q-card-section>
-                <q-card-section class="q-pa-sm text-grey-8">
+                <q-card-section class="q-pa-sm md-body-medium md-supporting">
                   {{ item.description }}
                 </q-card-section>
               </q-card>
             </draggable>
 
-            <q-card class="full-width" v-if="add_model.planned">
+            <q-card flat class="md-task full-width" v-if="add_model.planned">
               <q-card-section>
-                <div class="text-h6">
+                <div class="md-title-medium md-title-medium--emphasized">
                   Add Task
                 </div>
               </q-card-section>
@@ -85,27 +98,25 @@
                 <q-input dense class="q-mt-sm" v-model="add_data.planned.label" label="Label" outlined/>
                 <q-input dense class="q-mt-sm" v-model="add_data.planned.description" label="Description" outlined/>
               </q-card-section>
-              <q-card-actions align="right" class="q-pa-sm text-grey-8">
-                <q-btn label="Add" color="indigo-5" class="text-capitalize"></q-btn>
-                <q-btn label="Cancel" color="primary" class="text-capitalize" @click="add_model.planned=false"></q-btn>
+              <q-card-actions align="right" class="q-pa-sm">
+                <q-btn label="Add" unelevated class="text-capitalize md-filled-button"></q-btn>
+                <q-btn label="Cancel" flat color="primary" class="text-capitalize" @click="add_model.planned=false"></q-btn>
               </q-card-actions>
             </q-card>
             <q-item v-else>
               <q-btn icon="add" rounded flat label="Add Task" @click="add_model.planned=true"/>
             </q-item>
           </q-scroll-area>
-
         </q-card>
       </div>
-
-      <div class="col-3 q-px-xs">
-        <q-card class="q-pa-xs custom_bg ">
-          <q-item style="cursor: move;" class="q-pa-none text-white q-pa-sm">
-            <q-item-section class="text-h6 text-weight-bolder text-color">WORK IN PROGRESS</q-item-section>
+      <div class="col-12 col-sm-6 col-md-3">
+        <q-card flat class="md-column md-column--wip">
+          <q-item class="md-column__header q-pa-sm">
+            <q-item-section class="md-title-medium md-title-medium--emphasized">WORK IN PROGRESS</q-item-section>
             <q-item-section avatar>
               <q-icon name="more_vert" class="cursor-pointer">
                 <q-menu transition-show="fade" transition-hide="fade">
-                  <q-list style="min-width: 100px">
+                  <q-list class="md-menu-list">
                     <q-item clickable>
                       <q-item-section>Remove</q-item-section>
                     </q-item>
@@ -138,19 +149,20 @@
               <q-card
                 v-for="(item, index) in wip_task"
                 v-bind:key="index"
-                class="rounded-borders q-my-sm"
+                flat
+                class="md-task q-my-sm"
                 @mouseover="task_selected_index.wip = index"
                 @mouseleave="task_selected_index.wip = null"
               >
                 <q-card-section class="row q-pa-sm">
                   <div class="col-12">
-                    <span class="text-weight-bold text-h6 q-ml-sm">{{ item.title }}</span>
-                    <span class="float-right text-grey-8 q-mt-sm">{{ item.label }}
+                    <span class="md-title-medium md-title-medium--emphasized q-ml-sm">{{ item.title }}</span>
+                    <span class="float-right md-body-small md-supporting q-mt-sm">{{ item.label }}
                     <q-icon
                       filled
                       size="xs"
                       name="close"
-                      class="absolute-top-right q-mr-md q-mt-xs text-red"
+                      class="md-task__close text-negative"
                       v-if="index==task_selected_index.wip"
                       @click="deleteTask('wip', task_selected_index.wip)"
                     />
@@ -158,19 +170,26 @@
                   </div>
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
-                  <q-chip dense v-for="(tag, index) in item.tags" :key="index" :color="tag.color" text-color="white">
+                  <!--
+                    The tag name already says what the tag means, so the chip
+                    only has to stay legible: each status maps onto a container
+                    role and its on- pair instead of a flat brand colour with
+                    `text-color="white"`, which the dark scheme cannot carry.
+                  -->
+                  <q-chip dense v-for="(tag, index) in item.tags" :key="index"
+                          :class="`md-tag md-tag--${tag.color}`">
                     {{ tag.name }}
                   </q-chip>
                 </q-card-section>
-                <q-card-section class="q-pa-sm text-grey-8">
+                <q-card-section class="q-pa-sm md-body-medium md-supporting">
                   {{ item.description }}
                 </q-card-section>
               </q-card>
             </draggable>
 
-            <q-card class="full-width" v-if="add_model.wip">
+            <q-card flat class="md-task full-width" v-if="add_model.wip">
               <q-card-section>
-                <div class="text-h6">
+                <div class="md-title-medium md-title-medium--emphasized">
                   Add Task
                 </div>
               </q-card-section>
@@ -179,9 +198,9 @@
                 <q-input dense class="q-mt-sm" v-model="add_data.wip.label" label="Label" outlined/>
                 <q-input dense class="q-mt-sm" v-model="add_data.wip.description" label="Description" outlined/>
               </q-card-section>
-              <q-card-actions align="right" class="q-pa-sm text-grey-8">
-                <q-btn label="Add" color="indigo-5" class="text-capitalize"></q-btn>
-                <q-btn label="Cancel" color="primary" class="text-capitalize" @click="add_model.wip=false"></q-btn>
+              <q-card-actions align="right" class="q-pa-sm">
+                <q-btn label="Add" unelevated class="text-capitalize md-filled-button"></q-btn>
+                <q-btn label="Cancel" flat color="primary" class="text-capitalize" @click="add_model.wip=false"></q-btn>
               </q-card-actions>
             </q-card>
             <q-item v-else>
@@ -190,16 +209,14 @@
           </q-scroll-area>
         </q-card>
       </div>
-
-      <div class="col-3 q-px-xs">
-        <q-card class="q-pa-xs custom_bg2 ">
-          <q-item style="cursor: move;" class="q-pa-none text-white q-pa-sm">
-            <q-item-section class="text-h6 text-weight-bolder text-color">BLOCKED
-            </q-item-section>
+      <div class="col-12 col-sm-6 col-md-3">
+        <q-card flat class="md-column md-column--blocked">
+          <q-item class="md-column__header q-pa-sm">
+            <q-item-section class="md-title-medium md-title-medium--emphasized">BLOCKED</q-item-section>
             <q-item-section avatar>
               <q-icon name="more_vert" class="cursor-pointer">
                 <q-menu transition-show="fade" transition-hide="fade">
-                  <q-list style="min-width: 100px">
+                  <q-list class="md-menu-list">
                     <q-item clickable>
                       <q-item-section>Remove</q-item-section>
                     </q-item>
@@ -214,7 +231,6 @@
               </q-icon>
             </q-item-section>
           </q-item>
-
           <q-scroll-area
             :thumb-style="thumbStyle"
             :bar-style="barStyle"
@@ -233,20 +249,20 @@
               <q-card
                 v-for="(item, index) in blocked_task"
                 v-bind:key="index"
-                class="rounded-borders q-my-sm"
+                flat
+                class="md-task q-my-sm"
                 @mouseover="task_selected_index.blocked = index"
                 @mouseleave="task_selected_index.blocked  = null"
               >
                 <q-card-section class="row q-pa-sm">
                   <div class="col-12">
-                    <span class="text-weight-bold text-h6 q-ml-sm">{{ item.title }}</span>
-                    <span class="float-right text-grey-8 q-mt-sm">{{ item.label }}
-
+                    <span class="md-title-medium md-title-medium--emphasized q-ml-sm">{{ item.title }}</span>
+                    <span class="float-right md-body-small md-supporting q-mt-sm">{{ item.label }}
                     <q-icon
                       filled
                       size="xs"
                       name="close"
-                      class="absolute-top-right q-mr-md q-mt-xs text-red"
+                      class="md-task__close text-negative"
                       v-if="index==task_selected_index.blocked"
                       @click="deleteTask('blocked', task_selected_index.blocked)"
                     />
@@ -254,18 +270,26 @@
                   </div>
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
-                  <q-chip dense v-for="(tag, index) in item.tags" :key="index" :color="tag.color" text-color="white">
+                  <!--
+                    The tag name already says what the tag means, so the chip
+                    only has to stay legible: each status maps onto a container
+                    role and its on- pair instead of a flat brand colour with
+                    `text-color="white"`, which the dark scheme cannot carry.
+                  -->
+                  <q-chip dense v-for="(tag, index) in item.tags" :key="index"
+                          :class="`md-tag md-tag--${tag.color}`">
                     {{ tag.name }}
                   </q-chip>
                 </q-card-section>
-                <q-card-section class="q-pa-sm text-grey-8">
+                <q-card-section class="q-pa-sm md-body-medium md-supporting">
                   {{ item.description }}
                 </q-card-section>
               </q-card>
             </draggable>
-            <q-card class="full-width" v-if="add_model.blocked">
+
+            <q-card flat class="md-task full-width" v-if="add_model.blocked">
               <q-card-section>
-                <div class="text-h6">
+                <div class="md-title-medium md-title-medium--emphasized">
                   Add Task
                 </div>
               </q-card-section>
@@ -274,9 +298,9 @@
                 <q-input dense class="q-mt-sm" v-model="add_data.blocked.label" label="Label" outlined/>
                 <q-input dense class="q-mt-sm" v-model="add_data.blocked.description" label="Description" outlined/>
               </q-card-section>
-              <q-card-actions align="right" class="q-pa-sm text-grey-8">
-                <q-btn label="Add" color="indigo-5" class="text-capitalize"></q-btn>
-                <q-btn label="Cancel" color="primary" class="text-capitalize" @click="add_model.blocked=false"></q-btn>
+              <q-card-actions align="right" class="q-pa-sm">
+                <q-btn label="Add" unelevated class="text-capitalize md-filled-button"></q-btn>
+                <q-btn label="Cancel" flat color="primary" class="text-capitalize" @click="add_model.blocked=false"></q-btn>
               </q-card-actions>
             </q-card>
             <q-item v-else>
@@ -285,16 +309,14 @@
           </q-scroll-area>
         </q-card>
       </div>
-
-      <div class="col-3 q-px-xs">
-        <q-card class="q-pa-xs custom_bg2 ">
-          <q-item style="cursor: move;" class="q-pa-none text-white q-pa-sm">
-            <q-item-section class="text-h6 text-weight-bolder text-color">COMPLETED
-            </q-item-section>
+      <div class="col-12 col-sm-6 col-md-3">
+        <q-card flat class="md-column md-column--completed">
+          <q-item class="md-column__header q-pa-sm">
+            <q-item-section class="md-title-medium md-title-medium--emphasized">COMPLETED</q-item-section>
             <q-item-section avatar>
               <q-icon name="more_vert" class="cursor-pointer">
                 <q-menu transition-show="fade" transition-hide="fade">
-                  <q-list style="min-width: 100px">
+                  <q-list class="md-menu-list">
                     <q-item clickable>
                       <q-item-section>Remove</q-item-section>
                     </q-item>
@@ -309,7 +331,6 @@
               </q-icon>
             </q-item-section>
           </q-item>
-
           <q-scroll-area
             :thumb-style="thumbStyle"
             :bar-style="barStyle"
@@ -328,19 +349,20 @@
               <q-card
                 v-for="(item, index) in completed_task"
                 v-bind:key="index"
-                class="rounded-borders q-my-sm"
+                flat
+                class="md-task q-my-sm"
                 @mouseover="task_selected_index.completed = index"
                 @mouseleave="task_selected_index.completed = null"
               >
                 <q-card-section class="row q-pa-sm">
                   <div class="col-12">
-                    <span class="text-weight-bold text-h6 q-ml-sm">{{ item.title }}</span>
-                    <span class="float-right text-grey-8 q-mt-sm">{{ item.label }}
+                    <span class="md-title-medium md-title-medium--emphasized q-ml-sm">{{ item.title }}</span>
+                    <span class="float-right md-body-small md-supporting q-mt-sm">{{ item.label }}
                     <q-icon
                       filled
                       size="xs"
                       name="close"
-                      class="absolute-top-right q-mr-md q-mt-xs text-red"
+                      class="md-task__close text-negative"
                       v-if="index==task_selected_index.completed"
                       @click="deleteTask('completed', task_selected_index.completed)"
                     />
@@ -348,18 +370,26 @@
                   </div>
                 </q-card-section>
                 <q-card-section class="q-pa-sm">
-                  <q-chip dense v-for="(tag, index) in item.tags" :key="index" :color="tag.color" text-color="white">
+                  <!--
+                    The tag name already says what the tag means, so the chip
+                    only has to stay legible: each status maps onto a container
+                    role and its on- pair instead of a flat brand colour with
+                    `text-color="white"`, which the dark scheme cannot carry.
+                  -->
+                  <q-chip dense v-for="(tag, index) in item.tags" :key="index"
+                          :class="`md-tag md-tag--${tag.color}`">
                     {{ tag.name }}
                   </q-chip>
                 </q-card-section>
-                <q-card-section class="q-pa-sm text-grey-8">
+                <q-card-section class="q-pa-sm md-body-medium md-supporting">
                   {{ item.description }}
                 </q-card-section>
               </q-card>
             </draggable>
-            <q-card class="full-width" v-if="add_model.completed">
+
+            <q-card flat class="md-task full-width" v-if="add_model.completed">
               <q-card-section>
-                <div class="text-h6">
+                <div class="md-title-medium md-title-medium--emphasized">
                   Add Task
                 </div>
               </q-card-section>
@@ -368,10 +398,9 @@
                 <q-input dense class="q-mt-sm" v-model="add_data.completed.label" label="Label" outlined/>
                 <q-input dense class="q-mt-sm" v-model="add_data.completed.description" label="Description" outlined/>
               </q-card-section>
-              <q-card-actions align="right" class="q-pa-sm text-grey-8">
-                <q-btn label="Add" color="indigo-5" class="text-capitalize"></q-btn>
-                <q-btn label="Cancel" color="primary" class="text-capitalize"
-                       @click="add_model.completed=false"></q-btn>
+              <q-card-actions align="right" class="q-pa-sm">
+                <q-btn label="Add" unelevated class="text-capitalize md-filled-button"></q-btn>
+                <q-btn label="Cancel" flat color="primary" class="text-capitalize" @click="add_model.completed=false"></q-btn>
               </q-card-actions>
             </q-card>
             <q-item v-else>
@@ -488,12 +517,22 @@ export default defineComponent({
         planned: ref(null),
         wip: ref(null)
       },
+      /*
+       * QScrollArea takes these as plain style objects, so they are the one
+       * place on this page a colour cannot be a class. A var() in an inline
+       * style still resolves against the element, which is under <body>, so
+       * the scrollbar follows the dark toggle like everything else.
+       *
+       * The values were previously wrapped in ref() inside a plain object.
+       * setup() only unwraps refs at the top level, so each one reached the DOM
+       * as "[object Object]" and the styling never applied at all.
+       */
       thumbStyle: {
-        right: ref('4px'),
-        borderRadius: ref('5px'),
-        backgroundColor: ref('#027be3'),
-        width: ref('5px'),
-        opacity: ref(0.75)
+        right: '4px',
+        borderRadius: 'var(--md-sys-shape-corner-extra-small)',
+        backgroundColor: 'var(--md-sys-color-primary)',
+        width: '5px',
+        opacity: 0.75
       },
       add_model: {
         blocked: ref(false),
@@ -509,11 +548,11 @@ export default defineComponent({
       },
       size,
       barStyle: {
-        right: ref('2px'),
-        borderRadius: ref('9px'),
-        backgroundColor: ref('#027be3'),
-        width: ref('9px'),
-        opacity: ref(0.2)
+        right: '2px',
+        borderRadius: 'var(--md-sys-shape-corner-small)',
+        backgroundColor: 'var(--md-sys-color-outline-variant)',
+        width: '9px',
+        opacity: 0.4
       },
       planned_task,
       wip_task,
@@ -557,23 +596,108 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.custom_bg {
-  background-image: linear-gradient(to bottom, #a18cd1 0%, #fbc2eb 100%);
+/* M3 window margin -- 16dp on compact, 24dp from 600px up. */
+.md-page { padding: var(--md-layout-margin); }
+
+/*
+ * The four columns were `custom_bg` / `custom_bg2`, two hardcoded gradients
+ * (#a18cd1 -> #fbc2eb and #4facfe -> #00f2fe) with `.text-color { color: white }`
+ * on top. They neither followed the theme nor distinguished the columns from
+ * one another -- two of them shared a gradient. Each column is now a container
+ * role with its own on- pair, which both tells them apart and survives the
+ * dark toggle.
+ *
+ * error-container is deliberately not used for BLOCKED: it is the one
+ * container role that carries meaning in this system, and it is already spoken
+ * for by the "Error" tag below.
+ */
+.md-column {
+  border-radius: var(--md-sys-shape-corner-large);
+  padding: var(--md-sys-space-50);
 }
 
-.custom_bg2 {
-  background-image: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%);
+.md-column--planned {
+  background: var(--md-sys-color-surface-container-high);
+  color: var(--md-sys-color-on-surface);
 }
 
-.custom_bg3 {
-  background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+.md-column--wip {
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
 }
 
-.custom_bg4 {
-  background-image: linear-gradient(to bottom, #a18cd1 0%, #fbc2eb 100%);
+.md-column--blocked {
+  background: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
 }
 
-.text-color {
-  color: white
+.md-column--completed {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
 }
+
+/* Was an inline `style="cursor: move"` on all four headers. */
+.md-column__header {
+  cursor: move;
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+
+/*
+ * Optical roundness: the card sits inside a 16px column corner with 4px of
+ * padding, so 16 - 4 = 12. It steps to the lowest surface tone so it reads as
+ * lifted off whichever container role its column carries.
+ */
+.md-task {
+  background: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+  border-radius: var(--md-sys-shape-corner-medium);
+}
+
+/* Was `absolute-top-right q-mr-md q-mt-xs`; logical properties so the dismiss
+   affordance stays in the trailing corner under RTL. */
+.md-task__close {
+  position: absolute;
+  inset-block-start: var(--md-sys-space-50);
+  inset-inline-end: var(--md-sys-space-200);
+  cursor: pointer;
+}
+
+.md-supporting { color: var(--md-sys-color-on-surface-variant); }
+
+/* Was an inline `min-width: 100px` on each of the four overflow menus. */
+.md-menu-list { min-inline-size: 100px; }
+
+/*
+ * Status tags. M3 has no success/info/warning roles, and `text-color="white"`
+ * on Quasar's positive/info/warning went unreadable the moment those colours
+ * were lightened for dark mode. The chip label already carries the meaning, so
+ * each status takes a container role purely to stay legible -- with the single
+ * exception of "Error", which genuinely is the case error-container exists for.
+ */
+.md-tag {
+  border-radius: var(--md-sys-shape-corner-small);
+}
+
+.md-tag--negative {
+  background: var(--md-sys-color-error-container);
+  color: var(--md-sys-color-on-error-container);
+}
+
+.md-tag--warning {
+  background: var(--md-sys-color-tertiary-container);
+  color: var(--md-sys-color-on-tertiary-container);
+}
+
+.md-tag--info {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+.md-tag--positive {
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+}
+
+/* Quasar pairs a filled `color` with a hardcoded `text-white`, unreadable on
+   the dark-scheme primary. */
 </style>

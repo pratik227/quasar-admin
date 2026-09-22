@@ -155,12 +155,22 @@ export default defineConfig((ctx) => {
     // https://quasar.dev/quasar-cli-vite/quasar-config-file#devserver
     devServer: {
       // https: true,
+      port:9005,
       open: true // opens browser window automatically
     },
 
     // https://quasar.dev/quasar-cli-vite/quasar-config-file#framework
     framework: {
-      config: {},
+      config: {
+        /*
+         * Follow the OS colour scheme by default. Set here rather than in app
+         * code so Quasar applies it during boot, before first paint -- a
+         * composable doing it on mount would flash the light theme at every
+         * dark-mode visitor. An explicit user choice is layered on top of this
+         * by src/composables/useDarkMode.js.
+         */
+        dark: 'auto'
+      },
 
       // iconSet: 'material-icons', // Quasar icon set
       // lang: 'en-US', // Quasar language pack
@@ -174,7 +184,9 @@ export default defineConfig((ctx) => {
 
       // Quasar plugins
       plugins: [
-        'AppFullscreen'
+        'AppFullscreen',
+        /* SignUp.vue reports validation results through $q.notify. */
+        'Notify'
       ]
     },
 

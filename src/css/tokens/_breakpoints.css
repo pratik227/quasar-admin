@@ -1,0 +1,44 @@
+/*
+ * M3 breakpoints -- https://m3.material.io/foundations/layout/breakpoints/overview
+ *
+ *   compact      <600    1 pane          nav bar / modal expanded rail
+ *   medium     600-839   1 (2 if sparse) rail (1-pane) / nav bar (2-pane)
+ *   expanded   840-1199  2               rail, collapsed or expanded
+ *   large     1200-1599  2               rail, collapsed or expanded
+ *   extra-large  1600+   2 (up to 3)     expanded rail
+ *
+ * These are NOT Quasar's $q.screen breakpoints (600/1024/1440/1920), which is
+ * why useBreakpoint() exists rather than reusing $q.screen.
+ *
+ * `--md-layout-margin` is the leading/trailing window margin and is the one
+ * value the scaffold needs; it steps 16 -> 24 at 600 and then holds.
+ */
+:root {
+  --md-sys-breakpoint-medium:      600px;
+  --md-sys-breakpoint-expanded:    840px;
+  --md-sys-breakpoint-large:       1200px;
+  --md-sys-breakpoint-extra-large: 1600px;
+
+  /* compact */
+  --md-layout-margin: var(--md-sys-space-200); /* 16dp */
+  --md-layout-spacer: var(--md-sys-space-300); /* 24dp between panes */
+
+  /* fixed-pane widths; the flexible pane takes the remainder */
+  --md-layout-pane-fixed: 360px;
+
+  /* rail widths -- collapsed is icon-only, expanded carries labels */
+  --md-layout-rail-collapsed: 96px;
+  --md-layout-rail-expanded:  280px;
+
+  /* Material's floor for any interactive target, at any density */
+  --md-sys-target-min: 48px;
+}
+
+@media (min-width: 600px) {
+  :root { --md-layout-margin: var(--md-sys-space-300); } /* 24dp, holds from here up */
+}
+
+@media (min-width: 1200px) {
+  /* fixed panes grow at large/extra-large; side sheets still cap at 400px */
+  :root { --md-layout-pane-fixed: 412px; }
+}

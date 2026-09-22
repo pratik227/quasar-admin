@@ -1,0 +1,93 @@
+/*
+ * Shared component utilities.
+ *
+ * WHY THESE EXIST
+ * Quasar's `color` prop on a non-flat QBtn sets the background AND hardcodes a
+ * white label (use-btn.js). That is correct under M2, where every brand colour
+ * is a mid tone. Under M3 it breaks in dark mode: `primary` becomes a light
+ * tone (#cfbdfe here), and white-on-light is unreadable.
+ *
+ * There is no way to express "use the `on-` role for the label" through a
+ * Quasar colour name, so filled buttons drop `color=` and take one of these
+ * classes instead, which carry the role PAIR.
+ *
+ * Defined once here rather than per component: thirteen identical copies of
+ * these three rules had accumulated across ten files, under three different
+ * spellings (.md-filled-button / .md-button-filled / .md-btn-filled).
+ */
+
+/* Filled -- the high-emphasis action. One per view, ideally. */
+.md-filled-button {
+  background: var(--md-sys-color-primary);
+  color: var(--md-sys-color-on-primary);
+}
+
+/* Tonal -- medium emphasis; M3's default for secondary actions. */
+.md-tonal-button {
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+}
+
+/* Text -- low emphasis. No container, so it needs no `on-` pair. */
+.md-text-button {
+  color: var(--md-sys-color-primary);
+}
+
+/*
+ * Secondary list text: contrast fix.
+ *
+ * Quasar renders captions and overlines as `currentColor` at 54% alpha. That
+ * is an M2-era value and it measures around 3.5:1 against a light surface --
+ * under the 4.5:1 WCAG AA minimum for body text. It shows up on every list in
+ * the app (44 instances across the audited pages), so it is fixed once here.
+ *
+ * The alpha is raised rather than the colour swapped to `on-surface-variant`:
+ * these labels also appear inside filled containers (primary-container cards,
+ * the inverse-surface tables), where a fixed neutral role would be wrong.
+ * Keeping `currentColor` means the caption always derives from whatever `on-`
+ * role its container established, and only the strength changes.
+ *
+ * 70% measures ~5.7:1 on surface-container-low; see docs/design-system.md.
+ */
+.q-item__label--caption,
+.q-item__label--overline {
+  color: color-mix(in srgb, currentColor 70%, transparent);
+}
+
+/*
+ * Two more Quasar secondary-text defaults at 54% currentColor, same story as
+ * the captions above: ~3.6:1, under the 4.5:1 minimum. Raised, not recoloured,
+ * so they keep deriving from their container's `on-` role.
+ */
+.q-item__section--side:not(.q-item__section--avatar),
+.q-item__label--header {
+  color: color-mix(in srgb, currentColor 70%, transparent);
+}
+
+/*
+ * Stepper labels for steps not yet reached.
+ *
+ * Quasar hardcodes #00000052 -- 32% black. Two problems: it measures 2.7:1 in
+ * light, and because the dark variant of this rule only applies when the
+ * `dark` prop is set (which the M3 theme does not use), black-on-dark makes
+ * these labels vanish entirely in dark mode.
+ *
+ * WCAG exempts genuinely disabled controls, but Quasar marks every
+ * not-yet-reached step disabled, and people read those as "what's coming",
+ * not as dead UI. on-surface-variant is the role for exactly that.
+ *
+ * The inactive tab itself is a separate problem: .q-stepper__tab is a frozen
+ * #9e9e9e, which measures 2.7:1 in light and follows no scheme at all.
+ */
+.q-stepper__tab,
+.q-stepper__tab--disabled .q-stepper__label,
+.q-stepper--dark .q-stepper__tab--disabled .q-stepper__label {
+  color: var(--md-sys-color-on-surface-variant);
+}
+
+/* --active / --done already resolve through the bridge; restated only so the
+ * rule above cannot outrank them by source order. */
+.q-stepper__tab--active,
+.q-stepper__tab--done {
+  color: var(--md-sys-color-primary);
+}

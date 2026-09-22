@@ -1,0 +1,97 @@
+/*
+ * Maps Quasar's brand palette onto M3 color roles.
+ *
+ * This is the single highest-leverage file in the theme. Quasar 2 defines its
+ * eight brand colours as custom properties on :root and every colour utility
+ * reads them indirectly --
+ *
+ *     .bg-primary { background: var(--q-primary) !important; }
+ *
+ * -- so re-pointing --q-primary at an M3 role re-themes every `bg-primary`,
+ * `text-primary`, `color="primary"` prop and Quasar internal already in the
+ * app, without touching a single component.
+ *
+ * This is also why src/css/quasar.variables.scss can stay nearly empty: the
+ * SCSS variables only seed the initial :root values at build time, and these
+ * override them at runtime.
+ *
+ *
+ * WHY THE WHOLE MAPPING IS REPEATED UNDER .body--dark
+ *
+ * Not redundancy -- without it, dark mode silently does nothing to colour.
+ *
+ * A custom property whose value contains var() is resolved on the element
+ * carrying the DECLARATION, and descendants inherit the already-substituted
+ * result. Quasar puts its dark class on <body>, but these declarations sit on
+ * :root (<html>), one level above. So `--q-primary: var(--md-sys-color-primary)`
+ * is substituted against the LIGHT roles on <html>, and <body> inherits the
+ * finished light colour -- the dark roles underneath it are never consulted.
+ *
+ * Re-declaring the identical mapping on .body--dark forces the substitution to
+ * happen a second time, on <body>, where the dark roles are in scope.
+ *
+ * The same trap applies to anything else that bridges a :root variable to an
+ * M3 role: it has to be repeated here, or it will be frozen light.
+ *
+ *
+ * NOT EVERY QUASAR COLOUR HAS AN M3 ROLE
+ * M3 defines error but has no success/info/warning roles -- semantic status
+ * colour is left to the product. positive/info/warning therefore keep Quasar's
+ * defaults rather than being forced onto tertiary, which would make "saved" and
+ * "decorative accent" indistinguishable.
+ */
+:root {
+  --q-primary:   var(--md-sys-color-primary);
+  --q-secondary: var(--md-sys-color-secondary);
+  --q-accent:    var(--md-sys-color-tertiary);
+  --q-negative:  var(--md-sys-color-error);
+
+  /* No M3 equivalent -- see note above. */
+  --q-positive: #21BA45;
+  --q-info:     #31CCEC;
+  --q-warning:  #F2C037;
+
+  /* Quasar's dark surfaces, expressed as M3 surfaces. */
+  --q-dark:      var(--md-sys-color-surface-container-high);
+  --q-dark-page: var(--md-sys-color-surface);
+}
+
+.body--dark {
+  /* Identical to the block above -- see "WHY THE WHOLE MAPPING IS REPEATED". */
+  --q-primary:   var(--md-sys-color-primary);
+  --q-secondary: var(--md-sys-color-secondary);
+  --q-accent:    var(--md-sys-color-tertiary);
+  --q-negative:  var(--md-sys-color-error);
+
+  --q-dark:      var(--md-sys-color-surface-container-high);
+  --q-dark-page: var(--md-sys-color-surface);
+
+  /*
+   * Tone 80-ish equivalents. On a dark surface the 500-weight status colours
+   * above drop below 4.5:1, so they lighten rather than staying put.
+   */
+  --q-positive: #7ddc95;
+  --q-info:     #9ce6f7;
+  --q-warning:  #ffd97d;
+}
+
+/*
+ * M3 treats the page as a surface, not as "white" or "grey-2". Setting it here
+ * rather than per-page means pages no longer need their own background class,
+ * and the dark toggle needs no per-page handling.
+ *
+ * Qualified with the body--light/body--dark classes rather than written as a
+ * bare `body {}` rule because Quasar ships `.body--dark { color: #fff }` at
+ * class specificity, which an element selector cannot outrank.
+ *
+ * `color-scheme` is what makes form controls, scrollbars and the browser's own
+ * UI follow the theme; without it a dark page keeps light scrollbars.
+ */
+body.body--light,
+body.body--dark {
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+}
+
+body.body--light { color-scheme: light; }
+body.body--dark  { color-scheme: dark; }

@@ -1,9 +1,26 @@
-**Quasar Prime Admin Template** (Join 79+ satisfied clients who have already unlocked the full potential of their dashboards): [https://quasar-prime-admin-template.netlify.app/analytics](https://quasar-prime-admin-template.netlify.app/analytics). Quasar Prime: Vue.js Admin Template – Powerfully Elegant, Ultimate Dashboard Solution! 🚀 Unlock the full potential of the code by sponsoring for (~~$549~~)$249 one time(Launching price), a one-time payment that grants you exclusive access to the template.
+## About us
 
-Quasar Admin Premium Demo: [https://quasar-admin-premium.netlify.app/](https://quasar-admin-premium.netlify.app/). Looking for beautiful premium Quasar admin template for Vue 3? To gain access to the code, you'll need to sponsor me for $69 per month (one-time payment). Please visit my sponsorship page([sponsor me](https://github.com/sponsors/pratik227)). Good News 🎉🎉 I want to let you know that I recently made some updates to my Quasar Admin Premium template, and it's now also available for Typescript with Composition API and <script setup>. 
+Welcome to **[Quasar Admin Templates](https://github.com/Quasar-Admin-Templates)** — a trusted
+Quasar template builder. We make premium, pre-built admin templates for Vue 3, and offer
+consulting to take a project from the first conversation through to deployment.
 
-Looking for minimalist Quasar template? I have the perfect solution for you. Simply sponsor me $49 a month for once [Sponsor](https://github.com/sponsors/pratik227) and you will gain access to the repo. Check out the website at https://quasar-minimalist-design.netlify.app/.
+### Our premium templates
 
+| Template | Customers | What it is | Access |
+| --- | --- | --- | --- |
+| **[Quasar Prime](https://quasar-prime-admin-template.netlify.app/analytics)** | **81** | A modern, sleek admin template known for its robust functionality and user-friendly interface. | ~~$549~~ **$249** one-time (launch price) |
+| **[Quasar Admin Premium](https://quasar-admin-premium.netlify.app/)** | 16 | A powerful, highly customizable admin dashboard — also available for TypeScript with Composition API and `<script setup>`. | [$69 one-time](https://github.com/sponsors/pratik227) |
+| **[Quasar Minimalist](https://quasar-minimalist-design.netlify.app/)** | 12 | A clean, minimalist dashboard for anyone who wants simplicity without giving up features. | [$49 one-time](https://github.com/sponsors/pratik227) |
+
+**Why choose us** — trusted by developers and businesses, end-to-end delivery, templates built
+to be customized, and expert consulting rather than just a download link.
+
+Looking to build something extraordinary? Get in touch at **pratikpatelpp802@gmail.com**.
+
+> The repository below is our **free** template. It ships the same design system as the
+> premium ones, so it doubles as a preview of how we build.
+
+---
 
 # Quasar Admin Template
 
@@ -50,35 +67,45 @@ npm install -g @quasar/cli
 See [Quasar CLI](https://quasar.dev/start/quasar-cli).
 
 ## Screens UI
-**Login**
 
-![Alt text](src/assets/Login.png?raw=true "Screenshot")
+Material 3 Expressive, with five built-in colour themes and light/dark that
+follows the OS.
 
 **Dashboard**
 
-![Alt text](src/assets/Dashboard.png?raw=true "Screenshot")
+![Dashboard](src/assets/Dashboard.jpg?raw=true "Dashboard")
 
-[comment]: <> (**CRM Dashboard**)
+**CRM Dashboard**
 
-[comment]: <> (![Alt text]&#40;src/assets/CRMDashboard.png?raw=true "Screenshot"&#41;)
+![CRM Dashboard](src/assets/CRMDashboard.png?raw=true "CRM Dashboard")
 
-**Mail**
+**Mail** — list-detail layout
 
-![Alt text](src/assets/Mail.png?raw=true "Screenshot")
+![Mail](src/assets/Mail.png?raw=true "Mail")
+
+**Login**
+
+![Login](src/assets/Login.png?raw=true "Login")
+
+**Sign Up**
+
+![Sign Up](src/assets/Signup.png?raw=true "Sign Up")
+
+**About Us**
+
+![About Us](src/assets/About.png?raw=true "About Us")
 
 **Lock Screen 1**
 
-![Alt text](src/assets/Lock-1.png?raw=true "Screenshot")
-
+![Lock Screen 1](src/assets/Lock-1.jpg?raw=true "Lock Screen 1")
 
 **Lock Screen 2**
 
-![Alt text](src/assets/Lock-2.png?raw=true "Screenshot")
-
+![Lock Screen 2](src/assets/Lock-2.png?raw=true "Lock Screen 2")
 
 **Pricing**
 
-![Alt text](src/assets/Pricing.png?raw=true "Screenshot")
+![Pricing](src/assets/Pricing.png?raw=true "Pricing")
 
 
 ### Customize the configuration
